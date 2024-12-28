@@ -5,7 +5,7 @@ import json
 
 app = Flask(__name__)
 
-@app.route('/get-chart-data/', methods=['POST'])
+@app.route('/api/get-chart-data/', methods=['POST'])
 def get_chart_data_endpoint():
     try:
         # Parse the incoming JSON payload from the request body

@@ -30,16 +30,22 @@ def convert_to_points(results, columns):
 
 
 # Main function to handle multiple queries and return chart points
-def get_chart_data(queries: list):
-    db = next(get_db())  # Get session
+def get_chart_data(queries: list): 
+    db = next(get_db())  # Get the database session
     all_points = []  # To hold results from all queries
 
     for query in queries:
-        results, columns = execute_query(query, db)
-        if results and columns:
-            all_points.append(convert_to_points(results, columns))
-        else:
-            print(f"No data found for query: {query}")
-    
-    db.close()  # Close session
+        try:
+            results, columns = execute_query(query, db)
+            if results and columns:
+                all_points.append({
+                    "query": query,
+                    "data": convert_to_points(results, columns)
+                })
+            else:
+                print(f"No data found for query: {query}")
+        except Exception as e:
+            print(f"Error executing query: {query} - {str(e)}")
+
+    db.close()  # Close the database session
     return json.dumps(all_points, indent=4)  # Convert to JSON format
