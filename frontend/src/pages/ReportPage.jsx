@@ -33,9 +33,12 @@ const ReportPage = () => {
   };
 
   const handleColorChange = (tableIndex, attributeIndex, color) => {
-    const updatedColors = [...(colorSelections[tableIndex] || [])];
-    updatedColors[attributeIndex] = color;
-    setColorSelections({ ...colorSelections, [tableIndex]: updatedColors });
+    const updatedColors = {
+      ...colorSelections,
+      [tableIndex]: [...(colorSelections[tableIndex] || [])],
+    };
+    updatedColors[tableIndex][attributeIndex] = color;
+    setColorSelections(updatedColors);
   };
 
   const handleTitleChange = (index, newTitle) => {
@@ -55,26 +58,67 @@ const ReportPage = () => {
   };
 
   const generateSelectedCharts = () => {
-    const selectedChartsData = queries.map((query, tableIndex) => {
-      if (!selectedTables.includes(tableIndex)) return null;
+    const selectedChartsData = queries
+      .map((query, tableIndex) => {
+        if (!selectedTables.includes(tableIndex)) return null;
 
-      const selectedData = query.data[0].filter((item, index) =>
-        selectedAttributes[tableIndex]?.has(item.attribute)
-      );
+        const selectedData = query.data[0].filter((item) =>
+          selectedAttributes[tableIndex]?.has(item.attribute)
+        );
 
-      const labels = selectedData.map((item) => item.attribute);
-      const dataPoints = selectedData.map((item) => item.count);
-      const colors = labels.map((_, index) => colorSelections[tableIndex]?.[index] || null);
+        const labels = selectedData.map((item) => item.attribute);
+        const dataPoints = selectedData.map((item) => item.count);
 
-      return {
-        title: chartTitles[tableIndex] || `Chart ${tableIndex + 1}`,
-        labels,
-        dataPoints,
-        colors,
-      };
-    }).filter((data) => data !== null);
+        // Create isolated color mapping for each chart
+        const attributeColorMap = {};
+        selectedData.forEach((item, index) => {
+          const selectedColor = colorSelections[tableIndex]?.[index];
+          if (selectedColor) {
+            attributeColorMap[item.attribute] = selectedColor;
+          }
+        });
 
-    console.log("Generated Chart Data:", selectedChartsData);
+        // Debug: Print attribute-color mapping for each chart
+        console.log(
+          `Table Index ${tableIndex} - Attribute Color Map:`,
+          attributeColorMap
+        );
+
+        // Ensure all labels have a corresponding color
+        const colors = labels.map((label) => {
+          if (!attributeColorMap[label]) {
+            // Retain previous color selection if available
+            const previousColor = colorSelections[tableIndex]?.find(
+              (color, idx) =>
+                queries[tableIndex].data[0][idx]?.attribute === label
+            );
+            attributeColorMap[label] = previousColor || "Gray";
+          }
+
+          console.log(
+            `Mapping Label: ${label} -> Color: ${attributeColorMap[label]}`
+          );
+          return attributeColorMap[label];
+        });
+
+        // Debug: Verify final chart data
+        console.log(`Generated Chart Data for Table ${tableIndex}:`, {
+          title: chartTitles[tableIndex] || `Chart ${tableIndex + 1}`,
+          labels,
+          dataPoints,
+          colors,
+        });
+
+        return {
+          title: chartTitles[tableIndex] || `Chart ${tableIndex + 1}`,
+          labels,
+          dataPoints,
+          colors,
+        };
+      })
+      .filter((data) => data !== null);
+
+    console.log("Final Generated Charts:", selectedChartsData);
     setChartData(selectedChartsData);
   };
 
@@ -115,7 +159,9 @@ const ReportPage = () => {
                 <Table
                   columns={Object.keys(queryResult.data[0][0] || {})}
                   data={queryResult.data[0]}
-                  onCheckboxChange={(attribute) => handleAttributeSelection(index, attribute)}
+                  onCheckboxChange={(attribute) =>
+                    handleAttributeSelection(index, attribute)
+                  }
                   selectedAttributes={selectedAttributes[index] || new Set()}
                   handleColorChange={(rowIndex, color) =>
                     handleColorChange(index, rowIndex, color)

@@ -1,6 +1,13 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
-const Table = ({ columns, data, onCheckboxChange, selectedAttributes, handleColorChange, colorSelections }) => {
+const Table = ({
+  columns,
+  data,
+  onCheckboxChange,
+  selectedAttributes,
+  handleColorChange,
+  colorSelections,
+}) => {
   const colorOptions = ["Red", "Green", "Blue"];
 
   return (
