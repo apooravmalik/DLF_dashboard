@@ -2,12 +2,16 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 
 const SQLQueryForm = ({ onSubmit }) => {
-  const [queries, setQueries] = useState(["", "", "", ""]);
+  const [queries, setQueries] = useState([""]);
 
   const handleInputChange = (index, value) => {
     const updatedQueries = [...queries];
     updatedQueries[index] = value;
     setQueries(updatedQueries);
+  };
+
+  const addQuery = () => {
+    setQueries([...queries, ""]);
   };
 
   const handleSubmit = (e) => {
@@ -17,10 +21,10 @@ const SQLQueryForm = ({ onSubmit }) => {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
-      <h2 className="text-lg font-semibold">Enter up to 4 SQL Queries:</h2>
+      <h2 className="text-lg font-semibold">Enter SQL Queries:</h2>
       {queries.map((query, index) => (
-        <div key={index}>
-          <label className="block text-sm font-medium mb-1">
+        <div key={index} className="space-y-2">
+          <label className="block text-sm font-medium">
             Query {index + 1}:
           </label>
           <input
@@ -32,12 +36,21 @@ const SQLQueryForm = ({ onSubmit }) => {
           />
         </div>
       ))}
-      <button
-        type="submit"
-        className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600"
-      >
-        Submit Queries
-      </button>
+      <div className="flex space-x-4">
+        <button
+          type="button"
+          onClick={addQuery}
+          className="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600"
+        >
+          Add Query
+        </button>
+        <button
+          type="submit"
+          className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600"
+        >
+          Generate Report
+        </button>
+      </div>
     </form>
   );
 };
