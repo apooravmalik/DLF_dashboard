@@ -7,45 +7,62 @@ import json
 def execute_query(query: str, db: Session):
     try:
         result = db.execute(text(query))  # Wrap query in text()
-        if result.returns_rows:  # Check if query returns rows
+        if result.returns_rows:
             return result.fetchall(), list(result.keys())  # Convert keys to a list
         else:
-            print(f"Query did not return rows: {query}")
             return [], []
     except Exception as e:
-        print(f"Error executing query: {e}")
         return [], []
 
-# Convert SQL results to chart points
-def convert_to_points(results, columns):
-    points = []
+# Convert SQL results to drill-down format
+def convert_to_drilldown(results, columns):
+    drilldown_data = {}
     for row in results:
-        for col_name, value in zip(columns, row):
-            point = {
-                "attribute": col_name,  # Use column name as the attribute
-                "count": value          # Use the corresponding value
-            }
-            points.append(point)
-    return [points]  # Wrap points in a list for each query
+        attribute_value = row[0]  # Assuming the first column is the main attribute
+        if attribute_value not in drilldown_data:
+            drilldown_data[attribute_value] = []
 
+        for col_name, value in zip(columns[1:], row[1:]):  # Skip the first column
+            drilldown_data[attribute_value].append({
+                "type": col_name,
+                "value": value
+            })
 
-# Main function to handle multiple queries and return chart points
-def get_chart_data(queries: list): 
-    db = next(get_db())  # Get the database session
-    all_points = []  # To hold results from all queries
+    # Restructure the data
+    structured_data = [
+        {
+            "attribute": "Building Name",
+            "value": key,
+            "counts": values
+        }
+        for key, values in drilldown_data.items()
+    ]
+    return structured_data
 
-    for query in queries:
-        try:
+# Get data for one chart
+def get_chart_data(chart_queries):
+    db = next(get_db())
+    chart_data = {}
+
+    for key, query in chart_queries.items():
+        if query:
             results, columns = execute_query(query, db)
-            if results and columns:
-                all_points.append({
-                    "query": query,
-                    "data": convert_to_points(results, columns)
-                })
+            if key == "drill_down_query":
+                chart_data[key] = {
+                    "data": convert_to_drilldown(results, columns),
+                    "query": query
+                } if results else {"data": [], "query": query}
             else:
-                print(f"No data found for query: {query}")
-        except Exception as e:
-            print(f"Error executing query: {query} - {str(e)}")
+                chart_data[key] = {
+                    "data": [{"attribute": col_name, "count": value} for row in results for col_name, value in zip(columns, row)],
+                    "query": query
+                } if results else {"data": [], "query": query}
+        else:
+            chart_data[key] = None
 
-    db.close()  # Close the database session
-    return json.dumps(all_points, indent=4)  # Convert to JSON format
+    db.close()
+    return chart_data
+
+# Process all charts
+def get_all_charts(charts):
+    return [get_chart_data(chart) for chart in charts]
