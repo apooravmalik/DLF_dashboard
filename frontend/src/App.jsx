@@ -1,19 +1,32 @@
+// App.jsx
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import HomePage from "./pages/HomePage";
-import QueryPage from "./pages/QueryPage";
-import ReportPage from "./pages/ReportPage";
-import DashboardPage from "./pages/DashboardPage";
+import Navbar from "./components/Navbar";
+import { AppProvider } from "./context/AppContext";
+
+// Admin Pages
+import QueryPage from "./pages/admin/QueryPage";
+
+// Client Pages
+import OverviewPage from "./pages/client/OverviewPage";
+import DrillDownPage from "./pages/client/DrillDownPage";
+import ReportPage from "./pages/client/ClientReport";
 
 const App = () => {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/query" element={<QueryPage />} />
-        <Route path="/report" element={<ReportPage />} />
-        <Route path="/dashboard" element={<DashboardPage />} />
-      </Routes>
-    </Router>
+    <AppProvider>
+      <Router>
+        <Navbar />
+        <Routes>
+          {/* Admin Routes */}
+          <Route path="/admin/query" element={<QueryPage />} />
+
+          {/* Client Routes */}
+          <Route path="/client/overview" element={<OverviewPage />} />
+          <Route path="/client/drilldown/:chartIndex" element={<DrillDownPage />} />
+          <Route path="/client/report" element={<ReportPage />} />
+        </Routes>
+      </Router>
+    </AppProvider>
   );
 };
 

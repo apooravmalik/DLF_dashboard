@@ -1,4 +1,4 @@
-import { Bar } from 'react-chartjs-2';
+import { Bar } from "react-chartjs-2";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -7,35 +7,36 @@ import {
   Title,
   Tooltip,
   Legend,
-} from 'chart.js';
-import PropTypes from 'prop-types';
+} from "chart.js";
+import ChartDataLabels from "chartjs-plugin-datalabels";
+import PropTypes from "prop-types";
 
-ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
+ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, ChartDataLabels);
 
-const Chart = ({ labels, dataPoints, title, colors }) => {
+const Chart = ({ labels, dataPoints, title, colors, onBarClick }) => {
   if (!labels || !dataPoints) {
-    return <div className="flex items-center justify-center h-full text-gray-400">Error: Missing chart data</div>;
+    return (
+      <div className="flex items-center justify-center h-full text-gray-400">
+        Error: Missing chart data
+      </div>
+    );
   }
 
-  const defaultColor = '#808080'; // Default gray color for missing entries
-
-  // Create a mapping of labels to colors
+  const defaultColor = "#808080"; // Default gray color for missing entries
   const labelColorMapping = labels.reduce((acc, label, index) => {
     acc[label] = colors[index] || defaultColor;
     return acc;
   }, {});
-
-  // Ensure colors align with labels
-  const orderedColors = labels.map(label => labelColorMapping[label] || defaultColor);
+  const orderedColors = labels.map((label) => labelColorMapping[label] || defaultColor);
 
   const data = {
-    labels: labels,
+    labels,
     datasets: [
       {
         label: title,
         data: dataPoints,
-        backgroundColor: orderedColors, // Use matched colors
-        borderColor: orderedColors.map(color => color.replace('0.6', '1')),
+        backgroundColor: orderedColors,
+        borderColor: orderedColors.map((color) => color.replace("0.6", "1")),
         borderWidth: 1,
       },
     ],
@@ -43,12 +44,21 @@ const Chart = ({ labels, dataPoints, title, colors }) => {
 
   const options = {
     responsive: true,
-    maintainAspectRatio: true, // This ensures the chart will resize based on container dimensions
+    maintainAspectRatio: true,
+    onClick: (event, elements) => {
+      if (elements.length > 0) {
+        const index = elements[0].index;
+        const clickedAttribute = labels[index];
+        if (onBarClick) {
+          onBarClick(clickedAttribute);
+        }
+      }
+    },
     plugins: {
       legend: {
-        position: 'top',
+        position: "top",
         labels: {
-          color: '#E2E8F0',
+          color: "#E2E8F0",
           font: {
             size: 12,
           },
@@ -57,37 +67,48 @@ const Chart = ({ labels, dataPoints, title, colors }) => {
       title: {
         display: true,
         text: title,
-        color: '#F7FAFC',
+        color: "#F7FAFC",
         font: {
           size: 16,
-          weight: 'bold',
+          weight: "bold",
         },
       },
       tooltip: {
-        backgroundColor: 'rgba(17, 24, 39, 0.8)',
-        titleColor: '#F7FAFC',
-        bodyColor: '#E2E8F0',
-        borderColor: '#4B5563',
+        backgroundColor: "rgba(17, 24, 39, 0.8)",
+        titleColor: "#F7FAFC",
+        bodyColor: "#E2E8F0",
+        borderColor: "#4B5563",
         borderWidth: 1,
         padding: 10,
         cornerRadius: 4,
+      },
+      datalabels: {
+        display: true,
+        color: "#FFFFFF", // Color of the labels
+        font: {
+          size: 18,
+          weight: "bold",
+        },
+        anchor: "end",
+        align: "start",
+        formatter: (value) => value, // Display the value as is
       },
     },
     scales: {
       x: {
         grid: {
-          color: 'rgba(75, 85, 99, 0.2)',
+          color: "rgba(75, 85, 99, 0.2)",
         },
         ticks: {
-          color: '#E2E8F0',
+          color: "#E2E8F0",
         },
       },
       y: {
         grid: {
-          color: 'rgba(75, 85, 99, 0.2)',
+          color: "rgba(75, 85, 99, 0.2)",
         },
         ticks: {
-          color: '#E2E8F0',
+          color: "#E2E8F0",
         },
       },
     },
@@ -101,7 +122,7 @@ const Chart = ({ labels, dataPoints, title, colors }) => {
     },
     animation: {
       duration: 2000,
-      easing: 'easeOutQuart',
+      easing: "easeOutQuart",
     },
   };
 
@@ -117,10 +138,12 @@ Chart.propTypes = {
   dataPoints: PropTypes.array.isRequired,
   title: PropTypes.string.isRequired,
   colors: PropTypes.array,
+  onBarClick: PropTypes.func,
 };
 
 Chart.defaultProps = {
-  colors: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40'],
+  colors: ["#FF6384", "#36A2EB", "#FFCE56", "#4BC0C0", "#9966FF", "#FF9F40"],
+  onBarClick: null,
 };
 
 export default Chart;
