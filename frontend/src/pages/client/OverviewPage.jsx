@@ -22,20 +22,11 @@ const OverviewPage = () => {
   const handleBarClick = (attribute, chartIndex) => {
     const { drill_down_query, report_query } = chartsData[chartIndex] || {};
   
-    if (attribute === "Total") {
-      if (drill_down_query) {
-        navigate(`/client/drilldown/${chartIndex}`, { state: { drillDownData: drill_down_query } });
-      } else {
-        console.warn("No drill-down data available for this chart.");
-      }
-    } else if (["Online", "Offline"].includes(attribute)) {
-      if (report_query) {
-        navigate(`/report/${chartIndex}`, { state: { reportData: report_query } });
-      } else {
-        console.warn("No report data available for this chart.");
-      }
+    // Redirect to drill-down page if drill_down_query exists
+    if (drill_down_query) {
+      navigate(`/client/drilldown/${chartIndex}`, { state: { drillDownData: drill_down_query } });
     } else {
-      console.warn("Invalid attribute clicked.");
+      navigate(`/client/report/${chartIndex}`, { state: { reportData: report_query } });
     }
   };
 
