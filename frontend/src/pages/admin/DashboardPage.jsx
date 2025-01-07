@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import { AppContext } from "../context/AppContext"; // Import AppContext
-import Chart from "../components/Chart";
+import { AppContext } from "../../context/AppContext"; // Import AppContext
+import Chart from "../../components/Chart";
 
 const DashboardPage = () => {
   const { chartData } = useContext(AppContext); // Get chartData from the context

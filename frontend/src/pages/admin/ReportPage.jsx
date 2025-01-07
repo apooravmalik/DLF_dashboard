@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useContext } from "react";
-import { AppContext } from "../context/AppContext";
-import Table from "../components/Table";
+import { AppContext } from "../../context/AppContext";
+import Table from "../../components/Table";
 import { v4 as uuidv4 } from "uuid";
 import { Link } from "react-router-dom";
 

@@ -1,8 +1,8 @@
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
-import { AppContext } from "../context/AppContext";
-import SQLQueryForm from "../components/SQLQueryForm";
-import config from "../config/config";
+import { AppContext } from "../../context/AppContext";
+import SQLQueryForm from "../../components/SQLQueryForm";
+import config from "../../config/config";
 
 const QueryPage = () => {
   const { setChartData, setQueries } = useContext(AppContext);
