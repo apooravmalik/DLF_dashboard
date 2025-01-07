@@ -8,7 +8,7 @@ import QueryPage from "./pages/admin/QueryPage";
 
 // Client Pages
 import OverviewPage from "./pages/client/OverviewPage";
-import DrillDownPage from "./pages/client/DrillDownPage";
+import DrillDownPage from "./pages/client/DrilldownPage";
 import ReportPage from "./pages/client/ClientReport";
 
 const App = () => {
@@ -23,7 +23,7 @@ const App = () => {
           {/* Client Routes */}
           <Route path="/client/overview" element={<OverviewPage />} />
           <Route path="/client/drilldown/:chartIndex" element={<DrillDownPage />} />
-          <Route path="/client/report" element={<ReportPage />} />
+          <Route path="/client/report/:chartIndex" element={<ReportPage />} />
         </Routes>
       </Router>
     </AppProvider>
