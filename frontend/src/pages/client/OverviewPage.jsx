@@ -21,13 +21,19 @@ const OverviewPage = () => {
 
   const handleBarClick = (attribute, chartIndex) => {
     const { drill_down_query, report_query } = chartsData[chartIndex] || {};
-  
-    // Redirect to drill-down page if drill_down_query exists
+
     if (drill_down_query) {
       navigate(`/client/drilldown/${chartIndex}`, { state: { drillDownData: drill_down_query } });
     } else {
       navigate(`/client/report/${chartIndex}`, { state: { reportData: report_query } });
     }
+  };
+
+  const getChartName = (chart) => {
+    if (chart.overview_query) return chart.overview_query.chart_name;
+    if (chart.drill_down_query) return chart.drill_down_query.chart_name;
+    if (chart.report_query) return chart.report_query.chart_name;
+    return "Unnamed Chart";
   };
 
   if (loading) {
@@ -52,27 +58,23 @@ const OverviewPage = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-2 px-4 pt-3">
           {chartsData.map((chart, index) => {
             const { overview_query } = chart;
-            const labels = overview_query.data
-              .map((item) => item.attribute)
-              .filter((attribute) => ["Total", "Online", "Offline"].includes(attribute));
+            const { data, legends } = overview_query;
 
-            const dataPoints = overview_query.data
-              .filter((item) => ["Total", "Online", "Offline"].includes(item.attribute))
-              .map((item) => item.count);
+            const labels = legends;
+            const dataPoints = labels.map(label =>
+              data.find(item => item.attribute === label)?.count || 0
+            );
 
             const colors = labels.map(
-              (label) => colorMapping[label] || defaultColor
+              label => colorMapping[label] || defaultColor
             );
 
             return (
-              <div
-                key={index}
-                className="bg-gray-800 rounded-lg shadow-md"
-              >
+              <div key={index} className="bg-gray-800 rounded-lg shadow-md">
                 <Chart
                   labels={labels}
                   dataPoints={dataPoints}
-                  title={`Chart ${index + 1}`}
+                  title={getChartName(chart)}
                   colors={colors}
                   onBarClick={(attribute) => handleBarClick(attribute, index)}
                   showValues={true}

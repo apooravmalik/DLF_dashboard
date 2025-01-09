@@ -58,9 +58,20 @@ const Chart = ({ labels, dataPoints, title, colors, onBarClick }) => {
       legend: {
         position: "top",
         labels: {
-          color: "#E2E8F0",
+          color: "#FFFFFF",
           font: {
             size: 12,
+          },
+          generateLabels: (chart) => {
+            const dataset = chart.data.datasets[0];
+            return labels.map((label, index) => ({
+              text: label,
+              fillStyle: dataset.backgroundColor[index],
+              strokeStyle: dataset.borderColor[index],
+              hidden: false,
+              index: index,
+              fontColor: "#FFFFFF",
+            }));
           },
         },
       },
