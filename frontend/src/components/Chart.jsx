@@ -10,10 +10,13 @@ import {
 } from "chart.js";
 import ChartDataLabels from "chartjs-plugin-datalabels";
 import PropTypes from "prop-types";
+import { useNavigate } from "react-router-dom";
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, ChartDataLabels);
 
-const Chart = ({ labels, dataPoints, title, colors, onBarClick }) => {
+const Chart = ({ labels, dataPoints, title, colors, onBarClick, path }) => {
+  const navigate = useNavigate();
+
   if (!labels || !dataPoints) {
     return (
       <div className="flex items-center justify-center h-full text-gray-400">
@@ -51,6 +54,9 @@ const Chart = ({ labels, dataPoints, title, colors, onBarClick }) => {
         const clickedAttribute = labels[index];
         if (onBarClick) {
           onBarClick(clickedAttribute);
+        }
+        if (path) {
+          navigate(path);
         }
       }
     },
@@ -95,14 +101,14 @@ const Chart = ({ labels, dataPoints, title, colors, onBarClick }) => {
       },
       datalabels: {
         display: true,
-        color: "#FFFFFF", // Color of the labels
+        color: "#FFFFFF",
         font: {
           size: 18,
           weight: "bold",
         },
         anchor: "end",
         align: "start",
-        formatter: (value) => value, // Display the value as is
+        formatter: (value) => value,
       },
     },
     scales: {
@@ -150,11 +156,13 @@ Chart.propTypes = {
   title: PropTypes.string.isRequired,
   colors: PropTypes.array,
   onBarClick: PropTypes.func,
+  path: PropTypes.string, // New prop for custom redirection path
 };
 
 Chart.defaultProps = {
   colors: ["#FF6384", "#36A2EB", "#FFCE56", "#4BC0C0", "#9966FF", "#FF9F40"],
   onBarClick: null,
+  path: null, // Default is no path
 };
 
 export default Chart;
