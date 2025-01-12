@@ -1,8 +1,8 @@
 import { useContext, useEffect, useState } from "react";
 import { useLocation, useParams, useNavigate } from "react-router-dom";
-import { AppContext } from "../../context/AppContext";
-import Chart from "../../components/Chart";
-import DoubleBarChart from "../../components/DoubleBarChart";
+import { AppContext } from "../../../context/AppContext";
+import Chart from "../../../components/Chart";
+import DoubleBarChart from "../../../components/DoubleBarChart";
 
 const DrillDownPage = () => {
   const { chartIndex } = useParams(); // Get the chart index from the route
@@ -16,21 +16,29 @@ const DrillDownPage = () => {
   const [loadingDrillDown, setLoadingDrillDown] = useState(true);
 
   useEffect(() => {
-    if (drillDownData && drillDownData.data && Array.isArray(drillDownData.data)) {
+    if (
+      drillDownData &&
+      drillDownData.data &&
+      Array.isArray(drillDownData.data)
+    ) {
       const formattedData = drillDownData.data.map((item) => {
-        const onlineCount = item.counts.find((count) => count.type === "Online")?.value || 0;
-        const offlineCount = item.counts.find((count) => count.type === "Offline")?.value || 0;
-  
+        const onlineCount =
+          item.counts.find((count) => count.type === "Online")?.value || 0;
+        const offlineCount =
+          item.counts.find((count) => count.type === "Offline")?.value || 0;
+
         // Check the mapping to ensure correct values are being extracted
-        console.log(`Building: ${item.value}, Online: ${onlineCount}, Offline: ${offlineCount}`);
-  
+        console.log(
+          `Building: ${item.value}, Online: ${onlineCount}, Offline: ${offlineCount}`
+        );
+
         return {
           buildingName: item.value,
           onlineCount,
           offlineCount,
         };
       });
-  
+
       console.log("Formatted Data:", formattedData); // Verify the formatted data
       setDrillDownChartData(formattedData);
       setLoadingDrillDown(false);
@@ -39,15 +47,18 @@ const DrillDownPage = () => {
       console.error("Invalid data structure:", drillDownData);
     }
   }, [drillDownData]);
-  
 
   const handleBarClick = (label) => {
     // Get the report_query for the current chart
     const { report_query } = chartsData[chartIndex] || {};
 
     if (report_query) {
-      console.log("Navigating to report with query and label:", report_query, label);
-      navigate(`/client/report/${chartIndex}`, {
+      console.log(
+        "Navigating to report with query and label:",
+        report_query,
+        label
+      );
+      navigate(`/client/dashboard-1/report/${chartIndex}`, {
         state: {
           reportData: report_query,
           label,
@@ -106,12 +117,14 @@ const DrillDownPage = () => {
           ) : (
             <DoubleBarChart
               labels={labels}
-              dataPoints={[onlineData, offlineData]}
+              dataPoints={[onlineData, offlineData]} // Pass the data as an array of arrays
               title={`Building-wise Online/Offline Status for Chart ${chartIndex}`}
-              colors={["#4CAF50", "#F44336"]}
+              colors={["#4CAF50", "#F44336"]} // Colors for each dataset
               onBarClick={handleBarClick}
               showValues={true}
               chartIndex={chartIndex}
+              isStacked={false} // Explicitly set to false for grouped bars
+              drillDownData={drillDownData} // Pass drillDownData here
             />
           )}
         </div>

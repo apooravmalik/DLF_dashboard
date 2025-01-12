@@ -14,8 +14,18 @@ import { useNavigate } from "react-router-dom";
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, ChartDataLabels);
 
-const DoubleBarChart = ({ labels, dataPoints, title, colors, onBarClick, showValues, chartIndex }) => {
-  const navigate = useNavigate(); // Hook to navigate to another page
+const DoubleBarChartTEST = ({
+  labels,
+  dataPoints,
+  title,
+  colors,
+  onBarClick,
+  showValues,
+  chartIndex,
+  isStacked,
+  drillDownData, // Added drillDownData prop
+}) => {
+  const navigate = useNavigate();
 
   if (!labels || !dataPoints || dataPoints.length < 2) {
     return (
@@ -25,15 +35,23 @@ const DoubleBarChart = ({ labels, dataPoints, title, colors, onBarClick, showVal
     );
   }
 
+//   console.log("Drill Down Data:", drillDownData); // Check the drillDownData prop
+
   const barData = {
     labels: labels,
-    datasets: dataPoints.map((point, index) => ({
-      label: `Dataset ${index + 1}`,
-      data: point,
-      backgroundColor: colors[index] || "#808080",
-      borderColor: colors[index] || "#808080",
-      borderWidth: 1,
-    })),
+    datasets: dataPoints.map((point, index) => {
+      // Access the label from drillDownData based on the index
+      const label = drillDownData?.data?.[index]?.counts?.[index]?.type || `Dataset ${index + 1}`;
+    //   console.log(`Dataset ${index + 1}:`, label); // Log the dataset label for each index
+      return {
+        label: label,
+        data: point,
+        backgroundColor: colors[index] || "#808080",
+        borderColor: colors[index] || "#808080",
+        borderWidth: 1,
+        stack: isStacked ? `Stack ${Math.floor(index / 2) + 1}` : undefined, // Conditionally assign stack names
+      };
+    }),
   };
 
   const options = {
@@ -51,21 +69,45 @@ const DoubleBarChart = ({ labels, dataPoints, title, colors, onBarClick, showVal
         align: "top",
         color: "white",
       },
+      legend: {
+        position: "top",
+        labels: {
+          color: "#FFFFFF",
+          font: {
+            size: 12,
+          },
+          generateLabels: (chart) => {
+            const labels = chart.data.datasets.map((dataset, index) => {
+              console.log(`Legend for Dataset ${index + 1}:`, dataset.label); // Log the legend label being added
+              return {
+                text: dataset.label, // Use the dynamically set label for each dataset
+                fillStyle: dataset.backgroundColor,
+                strokeStyle: dataset.borderColor,
+                hidden: false,
+                index,
+                fontColor: "#FFFFFF",
+              };
+            });
+            console.log("Legend Labels:", labels); // Check the final generated legend labels
+            return labels;
+          },
+        },
+      },
     },
     scales: {
       x: {
-        stacked: true,
+        stacked: isStacked, // Dynamically set stacking for x-axis
       },
       y: {
-        stacked: true,
+        stacked: isStacked, // Dynamically set stacking for y-axis
       },
     },
     onClick: (event, elements) => {
       if (elements.length > 0) {
-        const barIndex = elements[0].index; // Get the index of the clicked bar
-        const label = labels[barIndex]; // Get the corresponding label
-        onBarClick(label); // Trigger the `onBarClick` callback
-        navigate(`/client/report/${chartIndex}`); // Redirect dynamically to the correct report page
+        const barIndex = elements[0].index;
+        const label = labels[barIndex];
+        onBarClick(label);
+        navigate(`/client/DashboardPage/report/${chartIndex}`);
       }
     },
   };
@@ -78,7 +120,7 @@ const DoubleBarChart = ({ labels, dataPoints, title, colors, onBarClick, showVal
   );
 };
 
-DoubleBarChart.propTypes = {
+DoubleBarChartTEST.propTypes = {
   labels: PropTypes.array.isRequired,
   dataPoints: PropTypes.array.isRequired,
   title: PropTypes.string.isRequired,
@@ -86,6 +128,12 @@ DoubleBarChart.propTypes = {
   onBarClick: PropTypes.func.isRequired,
   showValues: PropTypes.bool.isRequired,
   chartIndex: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  isStacked: PropTypes.bool, // New prop for toggling stacking
+  drillDownData: PropTypes.object.isRequired, // Accept drillDownData as a prop
 };
 
-export default DoubleBarChart;
+DoubleBarChartTEST.defaultProps = {
+  isStacked: false, // Default to non-stacked
+};
+
+export default DoubleBarChartTEST;

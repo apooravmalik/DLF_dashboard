@@ -1,6 +1,6 @@
 // ClientReport.jsx
 import { useLocation } from "react-router-dom";
-import Table from "../../components/Table";
+import Table from "../../../components/Table";
 import { useEffect, useState } from "react";
 
 const ClientReport = () => {

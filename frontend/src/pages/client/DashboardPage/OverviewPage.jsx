@@ -1,7 +1,7 @@
 import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { AppContext } from "../../context/AppContext";
-import Chart from "../../components/Chart";
+import { AppContext } from "../../../context/AppContext";
+import Chart from "../../../components/Chart";
 
 const OverviewPage = () => {
   const { chartsData, loading, error } = useContext(AppContext);
@@ -22,10 +22,21 @@ const OverviewPage = () => {
   const handleBarClick = (attribute, chartIndex) => {
     const { drill_down_query, report_query } = chartsData[chartIndex] || {};
 
-    if (drill_down_query) {
-      navigate(`/client/drilldown/${chartIndex}`, { state: { drillDownData: drill_down_query } });
+    // Check for the error attribute
+    const errorResponse = drill_down_query?.error;
+
+    if (errorResponse && errorResponse === "query_obj for key 'drill_down_query' is None") {
+      console.error(`Error: Drilldown data is missing for chart ${chartIndex}. Redirecting to ReportPage.`);
+      
+      // Redirect to the ReportPage with report_query as state if there's an error in drill_down_query
+      if (report_query) {
+        navigate(`/client/dashboard-1/report/${chartIndex}`, { state: { reportData: report_query } });
+      } else {
+        console.error("No report query found for this chart.");
+      }
     } else {
-      navigate(`/client/report/${chartIndex}`, { state: { reportData: report_query } });
+      // If no error, navigate to DrillDownPage
+      navigate(`/client/dashboard-1/drilldown/${chartIndex}`, { state: { drillDownData: drill_down_query } });
     }
   };
 
