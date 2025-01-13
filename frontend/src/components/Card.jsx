@@ -8,7 +8,7 @@ const Card = ({ name, createdAt, link, dashboardId }) => {
         <p className="text-sm text-gray-500">Created at: {createdAt}</p>
         <p className="text-sm text-gray-500">ID: {dashboardId}</p>
         <Link
-          to={`${link}/${dashboardId}`}
+          to={`${link}`}
           className="text-blue-500 hover:underline mt-2 block"
         >
           View Dashboard

@@ -14,8 +14,18 @@ import { useNavigate } from "react-router-dom";
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, ChartDataLabels);
 
-const DoubleBarChart = ({ labels, dataPoints, title, colors, onBarClick, showValues, chartIndex }) => {
-  const navigate = useNavigate(); // Hook to navigate to another page
+const DoubleBarChart = ({
+  labels,
+  dataPoints,
+  title,
+  colors,
+  onBarClick,
+  showValues,
+  isStacked,
+  drillDownData,
+  path, // Added path prop
+}) => {
+  const navigate = useNavigate();
 
   if (!labels || !dataPoints || dataPoints.length < 2) {
     return (
@@ -27,13 +37,17 @@ const DoubleBarChart = ({ labels, dataPoints, title, colors, onBarClick, showVal
 
   const barData = {
     labels: labels,
-    datasets: dataPoints.map((point, index) => ({
-      label: `Dataset ${index + 1}`,
-      data: point,
-      backgroundColor: colors[index] || "#808080",
-      borderColor: colors[index] || "#808080",
-      borderWidth: 1,
-    })),
+    datasets: dataPoints.map((point, index) => {
+      const label = drillDownData?.data?.[index]?.counts?.[index]?.type || `Dataset ${index + 1}`;
+      return {
+        label: label,
+        data: point,
+        backgroundColor: colors[index] || "#808080",
+        borderColor: colors[index] || "#808080",
+        borderWidth: 1,
+        stack: isStacked ? `Stack ${Math.floor(index / 2) + 1}` : undefined,
+      };
+    }),
   };
 
   const options = {
@@ -51,21 +65,44 @@ const DoubleBarChart = ({ labels, dataPoints, title, colors, onBarClick, showVal
         align: "top",
         color: "white",
       },
+      legend: {
+        position: "top",
+        labels: {
+          color: "#FFFFFF",
+          font: {
+            size: 12,
+          },
+          generateLabels: (chart) => {
+            return chart.data.datasets.map((dataset, index) => ({
+              text: dataset.label,
+              fillStyle: dataset.backgroundColor,
+              strokeStyle: dataset.borderColor,
+              hidden: false,
+              index,
+              fontColor: "#FFFFFF",
+            }));
+          },
+        },
+      },
     },
     scales: {
       x: {
-        stacked: true,
+        stacked: isStacked,
       },
       y: {
-        stacked: true,
+        stacked: isStacked,
       },
     },
     onClick: (event, elements) => {
       if (elements.length > 0) {
-        const barIndex = elements[0].index; // Get the index of the clicked bar
-        const label = labels[barIndex]; // Get the corresponding label
-        onBarClick(label); // Trigger the `onBarClick` callback
-        navigate(`/client/report/${chartIndex}`); // Redirect dynamically to the correct report page
+        const barIndex = elements[0].index;
+        const label = labels[barIndex];
+        if (onBarClick) {
+          onBarClick(label);
+        };
+        if (path) {
+          navigate(path); // Use the provided path for redirection
+        }
       }
     },
   };
@@ -86,6 +123,14 @@ DoubleBarChart.propTypes = {
   onBarClick: PropTypes.func.isRequired,
   showValues: PropTypes.bool.isRequired,
   chartIndex: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  isStacked: PropTypes.bool,
+  drillDownData: PropTypes.object.isRequired,
+  path: PropTypes.string, // New prop for custom redirection path
+};
+
+DoubleBarChart.defaultProps = {
+  isStacked: false,
+  path: null, // Default is no path
 };
 
 export default DoubleBarChart;
