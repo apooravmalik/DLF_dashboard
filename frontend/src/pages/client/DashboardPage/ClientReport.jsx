@@ -1,4 +1,3 @@
-// ClientReport.jsx
 import { useLocation } from "react-router-dom";
 import Table from "../../../components/Table";
 import { useEffect, useState } from "react";
@@ -39,9 +38,14 @@ const ClientReport = () => {
 
       setColumns(Array.from(tempColumns));
       setFormattedData(tempFormattedData);
-      console.log("Formatted Data for Table:", tempFormattedData)
+      console.log("Formatted Data for Table:", tempFormattedData);
     }
   }, [reportData]);
+
+  const handleDownloadClick = () => {
+    // Handle the download logic here when API is connected
+    console.log("Download Report button clicked!");
+  };
 
   if (!reportData || !reportData.data) {
     return (
@@ -53,9 +57,17 @@ const ClientReport = () => {
 
   return (
     <div className="min-h-screen bg-gray-900 text-white px-4 pt-3">
-      <h1 className="text-lg font-bold mb-4">
-        Client Report for {reportData.title || "Selected Attribute"}
-      </h1>
+      <div className="flex justify-between items-center mb-4">
+        <h1 className="text-lg font-bold">
+          Client Report for {reportData.title || "Selected Attribute"}
+        </h1>
+        <button
+          onClick={handleDownloadClick}
+          className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded"
+        >
+          Download Report
+        </button>
+      </div>
       <Table columns={columns} data={formattedData} />
     </div>
   );

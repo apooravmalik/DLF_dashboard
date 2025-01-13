@@ -32,7 +32,8 @@ const Navbar = () => {
         <div className="p-6 space-y-4 mt-10">
           <Link to="/" className="block text-white hover:underline">Home</Link>
           <Link to="/query" className="block text-white hover:underline">Admin</Link>
-          <Card name="Dashboard 1" createdAt="2024-12-30" link="/dashboard" dashboardId="1" />
+          <Card name="Dashboard 1" createdAt="2024-12-30" link="/client/dashboard-1/overview" dashboardId="1" />
+          <Card name="Fire" createdAt="2024-12-30" link="/client/fire/overview" dashboardId="2" />
         </div>
       </div>
 
