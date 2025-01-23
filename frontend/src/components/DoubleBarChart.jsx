@@ -10,7 +10,6 @@ import {
 } from "chart.js";
 import ChartDataLabels from "chartjs-plugin-datalabels";
 import PropTypes from "prop-types";
-import { useNavigate } from "react-router-dom";
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, ChartDataLabels);
 
@@ -23,9 +22,7 @@ const DoubleBarChart = ({
   showValues,
   isStacked,
   drillDownData,
-  path, // Added path prop
 }) => {
-  const navigate = useNavigate();
 
   if (!labels || !dataPoints || dataPoints.length < 2) {
     return (
@@ -100,9 +97,6 @@ const DoubleBarChart = ({
         if (onBarClick) {
           onBarClick(label);
         };
-        if (path) {
-          navigate(path); // Use the provided path for redirection
-        }
       }
     },
   };
@@ -125,7 +119,6 @@ DoubleBarChart.propTypes = {
   chartIndex: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
   isStacked: PropTypes.bool,
   drillDownData: PropTypes.object.isRequired,
-  path: PropTypes.string, // New prop for custom redirection path
 };
 
 DoubleBarChart.defaultProps = {

@@ -53,7 +53,7 @@ export const FireProvider = ({ children }) => {
                     name: "IOT Device Status Building Wise",
                     query:
                       "SELECT bldBuildingName_TXT AS 'Building Name', ISNULL([Online], 0) AS Online, ISNULL([Offline], 0) AS Offline, ISNULL([Online], 0) + ISNULL([Offline], 0) AS Total FROM ( SELECT bldBuildingName_TXT, CASE WHEN ptsCurrentState_LNG = 1 THEN 'Online' WHEN ptsCurrentState_LNG = 2 THEN 'Offline' END AS Status, PingTest_PRK FROM Test.dbo.PingTest_TBL LEFT OUTER JOIN Test.dbo.Building_TBL ON ptsBuilding_FRK = Building_PRK WHERE PingTest_PRK IN (171, 172, 173) ) AS SourceTable PIVOT ( COUNT(PingTest_PRK) FOR Status IN ([Online], [Offline]) ) AS PivotTable ORDER BY bldBuildingName_TXT;",
-                    legends: ["Building Name", "Online", "Offline"],
+                    legends: ["Total", "Online", "Offline"],
                   },
                   report_query: {
                     name: "IOT Device Report",

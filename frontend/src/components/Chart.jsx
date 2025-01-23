@@ -10,12 +10,10 @@ import {
 } from "chart.js";
 import ChartDataLabels from "chartjs-plugin-datalabels";
 import PropTypes from "prop-types";
-import { useNavigate } from "react-router-dom";
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, ChartDataLabels);
 
-const Chart = ({ labels, dataPoints, title, colors, onBarClick, path }) => {
-  const navigate = useNavigate();
+const Chart = ({ labels, dataPoints, title, colors, onBarClick}) => {
 
   if (!labels || !dataPoints) {
     return (
@@ -54,9 +52,6 @@ const Chart = ({ labels, dataPoints, title, colors, onBarClick, path }) => {
         const clickedAttribute = labels[index];
         if (onBarClick) {
           onBarClick(clickedAttribute);
-        }
-        if (path) {
-          navigate(path);
         }
       }
     },
@@ -156,13 +151,11 @@ Chart.propTypes = {
   title: PropTypes.string.isRequired,
   colors: PropTypes.array,
   onBarClick: PropTypes.func,
-  path: PropTypes.string, // New prop for custom redirection path
 };
 
 Chart.defaultProps = {
   colors: ["#FF6384", "#36A2EB", "#FFCE56", "#4BC0C0", "#9966FF", "#FF9F40"],
   onBarClick: null,
-  path: null, // Default is no path
 };
 
 export default Chart;
