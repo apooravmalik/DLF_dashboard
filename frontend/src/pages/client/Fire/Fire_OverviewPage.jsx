@@ -36,12 +36,11 @@ const Fire_OverviewPage = () => {
     labels: fireData[1]?.overview_query?.legends || [],
     dataPoints:
       fireData[1]?.overview_query?.data.map((item) => item.count) || [],
-    colors: ["#06245E", "#06A650", "#EC0808"],
+    colors: ["#06245E", "#EC0808", "#06A650"],
   };
 
   // Updated formatHourlyTrendData function
   const formatHourlyTrendData = (data) => {
-    // First, get all unique hour intervals
     const hours = [
       ...new Set(
         data
@@ -49,23 +48,17 @@ const Fire_OverviewPage = () => {
           .map((item) => item.count)
       ),
     ].sort((a, b) => parseInt(a) - parseInt(b));
-
-    // Initialize hourly data structure
+  
     const hourlyData = {};
     hours.forEach((hour) => {
-      hourlyData[hour] = {
-        totalAlarms: 0,
-        falseAlarms: 0,
-        trueAlarms: 0,
-      };
+      hourlyData[hour] = { totalAlarms: 0, falseAlarms: 0, trueAlarms: 0 };
     });
-
-    // Group data by hour
+  
     let currentHour = null;
     data.forEach((item) => {
       if (item.attribute === "HourInterval") {
         currentHour = item.count;
-      } else if (currentHour !== null && hourlyData[currentHour]) {
+      } else if (currentHour && hourlyData[currentHour]) {
         switch (item.attribute) {
           case "Total Alarms":
             hourlyData[currentHour].totalAlarms = parseInt(item.count) || 0;
@@ -79,29 +72,26 @@ const Fire_OverviewPage = () => {
         }
       }
     });
-
-    // Format the data for the chart
-    const datasets = [
-      {
-        label: "Total Alarms",
-        dataPoints: hours.map((hour) => hourlyData[hour].totalAlarms),
-        color: "#4C7CB2",
-      },
-      {
-        label: "False Alarms",
-        dataPoints: hours.map((hour) => hourlyData[hour].falseAlarms),
-        color: "#78629A",
-      },
-      {
-        label: "True Alarms",
-        dataPoints: hours.map((hour) => hourlyData[hour].trueAlarms),
-        color: "#EC0808",
-      },
-    ];
-
+  
     return {
       labels: hours,
-      datasets,
+      datasets: [
+        {
+          label: "Total Alarms",
+          dataPoints: hours.map((hour) => hourlyData[hour].totalAlarms),
+          color: "#4C7CB2",
+        },
+        {
+          label: "False Alarms",
+          dataPoints: hours.map((hour) => hourlyData[hour].falseAlarms),
+          color: "#78629A",
+        },
+        {
+          label: "True Alarms",
+          dataPoints: hours.map((hour) => hourlyData[hour].trueAlarms),
+          color: "#EC0808",
+        },
+      ],
     };
   };
 
@@ -151,14 +141,14 @@ const Fire_OverviewPage = () => {
           onBarClick={(attribute) => handleBarClick(attribute, 0)} // Chart index 0
         />
         <Chart
-          labels={deviceStatusData.labels}
+          labels={["Total Alarms", "False Alarms", "True Alarms"]}
           dataPoints={deviceStatusData.dataPoints}
           title="IoT Device Status"
           colors={deviceStatusData.colors}
           showValues
           onBarClick={(attribute) => handleBarClick(attribute, 1)} // Chart index 1
         />
-        <div className="col-span-2 !h-40px">
+        <div className="col-span-2 !h-20px">
           <DoubleBarChart
             chartIndex={2}
             labels={hourlyTrendData.labels}
