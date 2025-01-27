@@ -6,7 +6,7 @@ import DoubleBarChart from "../../../components/DoubleBarChart";
 
 const Fire_OverviewPage = () => {
   const navigate = useNavigate();
-  const { fireData, loading, error} = useContext(FireContext);
+  const { fireData, loading, error } = useContext(FireContext);
   console.log("chartsData:", fireData);
 
   useEffect(() => {
@@ -41,6 +41,7 @@ const Fire_OverviewPage = () => {
 
   // Updated formatHourlyTrendData function
   const formatHourlyTrendData = (data) => {
+    // First, get all unique hour intervals
     const hours = [
       ...new Set(
         data
@@ -48,17 +49,23 @@ const Fire_OverviewPage = () => {
           .map((item) => item.count)
       ),
     ].sort((a, b) => parseInt(a) - parseInt(b));
-  
+
+    // Initialize hourly data structure
     const hourlyData = {};
     hours.forEach((hour) => {
-      hourlyData[hour] = { totalAlarms: 0, falseAlarms: 0, trueAlarms: 0 };
+      hourlyData[hour] = {
+        totalAlarms: 0,
+        falseAlarms: 0,
+        trueAlarms: 0,
+      };
     });
-  
+
+    // Group data by hour
     let currentHour = null;
     data.forEach((item) => {
       if (item.attribute === "HourInterval") {
         currentHour = item.count;
-      } else if (currentHour && hourlyData[currentHour]) {
+      } else if (currentHour !== null && hourlyData[currentHour]) {
         switch (item.attribute) {
           case "Total Alarms":
             hourlyData[currentHour].totalAlarms = parseInt(item.count) || 0;
@@ -72,26 +79,29 @@ const Fire_OverviewPage = () => {
         }
       }
     });
-  
+
+    // Format the data for the chart
+    const datasets = [
+      {
+        label: "Total Alarms",
+        dataPoints: hours.map((hour) => hourlyData[hour].totalAlarms),
+        color: "#4C7CB2",
+      },
+      {
+        label: "False Alarms",
+        dataPoints: hours.map((hour) => hourlyData[hour].falseAlarms),
+        color: "#78629A",
+      },
+      {
+        label: "True Alarms",
+        dataPoints: hours.map((hour) => hourlyData[hour].trueAlarms),
+        color: "#EC0808",
+      },
+    ];
+
     return {
       labels: hours,
-      datasets: [
-        {
-          label: "Total Alarms",
-          dataPoints: hours.map((hour) => hourlyData[hour].totalAlarms),
-          color: "#4C7CB2",
-        },
-        {
-          label: "False Alarms",
-          dataPoints: hours.map((hour) => hourlyData[hour].falseAlarms),
-          color: "#78629A",
-        },
-        {
-          label: "True Alarms",
-          dataPoints: hours.map((hour) => hourlyData[hour].trueAlarms),
-          color: "#EC0808",
-        },
-      ],
+      datasets,
     };
   };
 
@@ -141,7 +151,7 @@ const Fire_OverviewPage = () => {
           onBarClick={(attribute) => handleBarClick(attribute, 0)} // Chart index 0
         />
         <Chart
-          labels={["Total Alarms", "False Alarms", "True Alarms"]}
+          labels={["Total", "Offline", "Online"]}
           dataPoints={deviceStatusData.dataPoints}
           title="IoT Device Status"
           colors={deviceStatusData.colors}
@@ -149,6 +159,20 @@ const Fire_OverviewPage = () => {
           onBarClick={(attribute) => handleBarClick(attribute, 1)} // Chart index 1
         />
         <div className="col-span-2 !h-20px">
+          <div className="flex mb-4">
+            <div className="flex items-center mr-8">
+              <div className="w-4 h-4 bg-[#4C7CB2] mr-2"></div>
+              <span>Total Alarms</span>
+            </div>
+            <div className="flex items-center mr-8">
+              <div className="w-4 h-4 bg-[#78629A] mr-2"></div>
+              <span>False Alarms</span>
+            </div>
+            <div className="flex items-center">
+              <div className="w-4 h-4 bg-[#F44336] mr-2"></div>
+              <span>True Alarms</span>
+            </div>
+          </div>
           <DoubleBarChart
             chartIndex={2}
             labels={hourlyTrendData.labels}
