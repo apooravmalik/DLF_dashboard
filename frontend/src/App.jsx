@@ -1,4 +1,3 @@
-// App.jsx
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import { AppProvider } from "./context/AppContext";
@@ -17,6 +16,9 @@ import Fire_OverviewPage from "./pages/client/Fire/Fire_OverviewPage";
 import FireDrilldownPage from "./pages/client/Fire/Fire_DrilldownPage";
 import Fire_ReportPage from "./pages/client/Fire/Fire_ReportPage";
 
+// ERT Pages
+import ERT_OverviewPage from "./pages/client/ERT/ERT_OverviewPage";
+
 const App = () => {
   return (
     <AppProvider>
@@ -28,14 +30,8 @@ const App = () => {
 
           {/* Dashboard-1 Routes */}
           <Route path="/client/dashboard-1/overview" element={<OverviewPage />} />
-          <Route
-            path="/client/dashboard-1/drilldown/:chartIndex"
-            element={<DrillDownPage />}
-          />
-          <Route
-            path="/client/dashboard-1/report/:chartIndex"
-            element={<ReportPage />}
-          />
+          <Route path="/client/dashboard-1/drilldown/:chartIndex" element={<DrillDownPage />} />
+          <Route path="/client/dashboard-1/report/:chartIndex" element={<ReportPage />} />
 
           {/* Fire Routes */}
           <Route
@@ -44,18 +40,15 @@ const App = () => {
               <FireProvider>
                 <Routes>
                   <Route path="overview" element={<Fire_OverviewPage />} />
-                  <Route
-                    path="drilldown/:chartIndex"
-                    element={<FireDrilldownPage />}
-                  />
-                  <Route
-                    path="report/:chartIndex"
-                    element={<Fire_ReportPage />}
-                  />
+                  <Route path="drilldown/:chartIndex" element={<FireDrilldownPage />} />
+                  <Route path="report/:chartIndex" element={<Fire_ReportPage />} />
                 </Routes>
               </FireProvider>
             }
           />
+
+          {/* ERT Route (Fixed) */}
+          <Route path="/client/ert/*" element={<ERT_OverviewPage />} />
         </Routes>
       </Router>
     </AppProvider>
