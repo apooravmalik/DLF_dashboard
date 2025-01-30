@@ -19,6 +19,9 @@ import Fire_ReportPage from "./pages/client/Fire/Fire_ReportPage";
 // ERT Pages
 import ERT_OverviewPage from "./pages/client/ERT/ERT_OverviewPage";
 
+// FLS Pages
+import FLS_OverviewPage from "./pages/client/FLS/FLS_OverviewPage";
+
 const App = () => {
   return (
     <AppProvider>
@@ -49,6 +52,9 @@ const App = () => {
 
           {/* ERT Route (Fixed) */}
           <Route path="/client/ert/*" element={<ERT_OverviewPage />} />
+
+          {/* FLS Route */}
+          <Route path="/client/fls/*" element={<FLS_OverviewPage />} />
         </Routes>
       </Router>
     </AppProvider>
