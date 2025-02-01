@@ -105,16 +105,7 @@ const DrillDownPage = () => {
             </div>
           </div>
 
-          {chartIndex === "0" ? (
-            <Chart
-              labels={labels}
-              dataPoints={onlineData}
-              title={`Building-wise Online Status for Chart ${chartIndex}`}
-              colors={Array(onlineData.length).fill("#4CAF50")}
-              onBarClick={handleBarClick}
-              showValues={true}
-            />
-          ) : (
+          {chartIndex === "0" && (
             <DoubleBarChart
               labels={labels}
               dataPoints={[onlineData, offlineData]} // Pass the data as an array of arrays

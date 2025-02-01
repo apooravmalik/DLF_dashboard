@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { csv } from 'd3-fetch';
-import Chart from '../../../components/Chart';
+import PropTypes from 'prop-types';
 import DoubleBarChart from '../../../components/DoubleBarChart';
 
 // Color constants
@@ -114,3 +114,7 @@ const FLS_OverviewPage = () => {
 };
 
 export default FLS_OverviewPage;
+
+Legend.propTypes = {
+  colors: PropTypes.array.isRequired,
+};

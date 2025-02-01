@@ -109,6 +109,18 @@ const Navbar = () => {
             link="/client/fire/overview"
             dashboardId="2"
           />
+          <Card
+            name="Fire-ERT"
+            createdAt="2025-01-31"
+            link="/client/ert/overview"
+            dashboardId="3"
+          />
+          <Card
+            name="Fire-FLS"
+            createdAt="2024-12-30"
+            link="/client/fls/overview"
+            dashboardId="4"
+          />
         </div>
       </div>
 

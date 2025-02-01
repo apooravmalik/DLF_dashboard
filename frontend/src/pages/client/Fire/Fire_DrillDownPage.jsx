@@ -2,13 +2,14 @@ import { useEffect, useState, useContext } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import Chart from "../../../components/Chart";
 import DoubleBarChart from "../../../components/DoubleBarChart";
+import StackedBarChart from "../../../components/StackedBarChart"; // ✅ New Component
 import { FireContext } from "../../../context/FireContext";
 import { useNavigate } from "react-router-dom";
 
 const FireDrilldownPage = () => {
-  const { chartIndex } = useParams(); // Get chart index from the route
-  const { state } = useLocation(); // Get the passed state (drillDownData)
-  const { drillDownData } = state || {}; // drillDownData passed from OverviewPage
+  const { chartIndex } = useParams(); 
+  const { state } = useLocation(); 
+  const { drillDownData } = state || {}; 
   console.log("Drill Down Data:", drillDownData);
 
   const navigate = useNavigate();
@@ -20,8 +21,7 @@ const FireDrilldownPage = () => {
 
   const formatHourlyTrendData = (data) => {
     if (!data || !Array.isArray(data)) return [];
-    
-    // Format the data to match the overview page structure
+
     const hourlyData = data.map((item) => {
       const falseAlarms = item.counts.find(count => count.type === "False Alarms")?.value || 0;
       const trueAlarms = item.counts.find(count => count.type === "True Alarms")?.value || 0;
@@ -35,7 +35,6 @@ const FireDrilldownPage = () => {
       };
     });
 
-    // Sort by hour
     hourlyData.sort((a, b) => parseInt(a.hour) - parseInt(b.hour));
 
     return {
@@ -61,78 +60,49 @@ const FireDrilldownPage = () => {
   };
 
   useEffect(() => {
-    if (
-      drillDownData &&
-      drillDownData.data &&
-      Array.isArray(drillDownData.data)
-    ) {
+    if (drillDownData && drillDownData.data && Array.isArray(drillDownData.data)) {
       if (chartIndex === "0") {
-        // Aggregate totals
         let falseAlarms = 0;
         let trueAlarms = 0;
         let totalAlarms = 0;
-      
+
         drillDownData.data.forEach((item) => {
-          falseAlarms +=
-            item.counts.find((count) => count.type === "False Alarms")?.value || 0;
-          trueAlarms +=
-            item.counts.find((count) => count.type === "True Alarms")?.value || 0;
-      
-          // Use 'value' field if 'Total Alarms' is not explicitly provided
+          falseAlarms += item.counts.find(count => count.type === "False Alarms")?.value || 0;
+          trueAlarms += item.counts.find(count => count.type === "True Alarms")?.value || 0;
           totalAlarms += item.value || falseAlarms + trueAlarms;
         });
-      
-        const aggregatedData = [
+
+        setChartData([
           { label: "Total Alarms", value: totalAlarms },
           { label: "False Alarms", value: falseAlarms },
-          { label: "True Alarms", value: trueAlarms },
-        ];
-      
-        console.log("Aggregated Data:", aggregatedData);
-        setChartData(aggregatedData);
+          { label: "True Alarms", value: trueAlarms }
+        ]);
       } else if (chartIndex === "1") {
-        // Building-wise aggregation
         const formattedData = drillDownData.data.map((item) => {
-          const totalAlarms =
-            item.counts.find((count) => count.type === "Total")?.value || 0;
-          const onlineAlarms =
-            item.counts.find((count) => count.type === "Online")?.value || 0;
-          const offlineAlarms =
-            item.counts.find((count) => count.type === "Offline")?.value || 0;
-
           return {
             buildingName: item.value,
-            totalAlarms,
-            onlineAlarms,
-            offlineAlarms,
+            totalAlarms: item.counts.find(count => count.type === "Total")?.value || 0,
+            onlineAlarms: item.counts.find(count => count.type === "Online")?.value || 0,
+            offlineAlarms: item.counts.find(count => count.type === "Offline")?.value || 0,
           };
         });
 
-        console.log("Building-wise Data:", formattedData);
         setBuildingData(formattedData);
       } else if (chartIndex === "2") {
-        // Hourly trend
         const hourlyTrendData = formatHourlyTrendData(drillDownData.data);
-        console.log("Hourly Data:", hourlyTrendData);
         setChartData(hourlyTrendData);
       }
       setLoadingDrillDown(false);
     } else {
-      setLoadingDrillDown(false); // No valid data structure
+      setLoadingDrillDown(false);
       console.error("Invalid data structure:", drillDownData);
     }
   }, [drillDownData, chartIndex]);
 
   const handleBarClick = (label) => {
-    // Get the report_query for the current chart
     const { report_query } = fireData[chartIndex] || {};
 
     if (report_query) {
-      console.log(
-        "Navigating to report with query and label:",
-        report_query,
-        label
-      );
       navigate(`/client/fire/report/${chartIndex}`, {
         state: {
           reportData: report_query,
@@ -169,99 +139,71 @@ const FireDrilldownPage = () => {
   }
 
   if (chartIndex === "0") {
-    const labels = chartData.map((item) => item.label);
-    const dataPoints = chartData.map((item) => item.value);
-
     return (
       <div className="min-h-screen bg-gray-900 text-white">
-        <div className="h-full flex flex-col">
-          <div className="px-4 pt-3">
-            <Chart
-              labels={labels}
-              dataPoints={dataPoints}
-              title={`Aggregated Alarms for Chart ${chartIndex}`}
-              colors={["#4C7CB2", "#78629A", "#F44336"]}
-              showValues={true}
-              onBarClick={handleBarClick}
-            />
-          </div>
+        <div className="px-4 pt-3">
+          <Chart
+            labels={chartData.map((item) => item.label)}
+            dataPoints={chartData.map((item) => item.value)}
+            title={`Aggregated Alarms for Chart ${chartIndex}`}
+            colors={["#4C7CB2", "#78629A", "#F44336"]}
+            showValues={true}
+            onBarClick={handleBarClick}
+          />
         </div>
       </div>
     );
   }
 
   if (chartIndex === "1") {
-    const labels = buildingData.map((item) => item.buildingName);
-    const onlineAlarms = buildingData.map((item) => item.onlineAlarms);
-    const offlineAlarms = buildingData.map((item) => item.offlineAlarms);
-
     return (
       <div className="min-h-screen bg-gray-900 text-white">
-        <div className="h-full flex flex-col">
-          <div className="px-4 pt-3">
-            {/* Legend for the colors */}
-            <div className="flex mb-4">
-              <div className="flex items-center mr-8">
-                <div className="w-4 h-4 bg-[#4CAF50] mr-2"></div>
-                <span>Online Alarms</span>
-              </div>
-              <div className="flex items-center">
-                <div className="w-4 h-4 bg-[#F44336] mr-2"></div>
-                <span>Offline Alarms</span>
-              </div>
-            </div>
-
-            <DoubleBarChart
-              labels={labels}
-              dataPoints={[onlineAlarms, offlineAlarms]}
-              title={`Building-wise Alarms for Chart ${chartIndex}`}
-              colors={["#4CAF50", "#F44336"]}
-              showValues={true}
-              chartIndex={chartIndex}
-              isStacked={false}
-              drillDownData={drillDownData}
-              onBarClick={handleBarClick}
-            />
-          </div>
+        <div className="px-4 pt-3">
+          <DoubleBarChart
+            labels={buildingData.map((item) => item.buildingName)}
+            dataPoints={[
+              buildingData.map((item) => item.onlineAlarms),
+              buildingData.map((item) => item.offlineAlarms),
+            ]}
+            title={`Building-wise Alarms for Chart ${chartIndex}`}
+            colors={["#4CAF50", "#F44336"]}
+            showValues={true}
+            chartIndex={chartIndex}
+            isStacked={false}
+            drillDownData={drillDownData}
+            onBarClick={handleBarClick}
+          />
         </div>
       </div>
     );
   }
 
   if (chartIndex === "2") {
-    const hourlyTrendData = chartData;
-    
     return (
       <div className="min-h-screen bg-gray-900 text-white">
-        <div className="h-full flex flex-col">
-          <div className="px-4 pt-3">
-            <div className="flex mb-4">
-              <div className="flex items-center mr-8">
-                <div className="w-4 h-4 bg-[#4C7CB2] mr-2"></div>
-                <span>Total Alarms</span>
-              </div>
-              <div className="flex items-center mr-8">
-                <div className="w-4 h-4 bg-[#78629A] mr-2"></div>
-                <span>False Alarms</span>
-              </div>
-              <div className="flex items-center">
-                <div className="w-4 h-4 bg-[#EC0808] mr-2"></div>
-                <span>True Alarms</span>
-              </div>
+        <div className="px-4 pt-3">
+        <div className="flex justify-center space-x-6 mb-4">
+            <div className="flex items-center">
+              <div className="w-4 h-4 bg-[#4C7CB2] mr-2"></div>
+              <span>Total Alarms</span>
             </div>
-
-            <DoubleBarChart
-              labels={hourlyTrendData.labels}
-              dataPoints={hourlyTrendData.datasets.map(d => d.dataPoints)}
-              title={`Hourly Trend for Chart ${chartIndex}`}
-              colors={hourlyTrendData.datasets.map(d => d.color)}
-              showValues={true}
-              chartIndex={chartIndex}
-              isStacked={true}
-              drillDownData={drillDownData}
-              onBarClick={handleBarClick}
-            />
+            <div className="flex items-center">
+              <div className="w-4 h-4 bg-[#78629A] mr-2"></div>
+              <span>False Alarms</span>
+            </div>
+            <div className="flex items-center">
+              <div className="w-4 h-4 bg-[#EC0808] mr-2"></div>
+              <span>True Alarms</span>
+            </div>
           </div>
+          <StackedBarChart
+            labels={chartData.labels}
+            dataPoints={chartData.datasets.map(d => d.dataPoints)}
+            title={`Hourly Trend for Chart ${chartIndex}`}
+            colors={chartData.datasets.map(d => d.color)}
+            showValues={true}
+            onBarClick={handleBarClick}
+          />
         </div>
       </div>
     );

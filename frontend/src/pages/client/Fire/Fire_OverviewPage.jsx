@@ -2,7 +2,7 @@ import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { FireContext } from "../../../context/FireContext";
 import Chart from "../../../components/Chart";
-import DoubleBarChart from "../../../components/DoubleBarChart";
+import StackedBarChart from "../../../components/StackedBarChart";
 
 const Fire_OverviewPage = () => {
   const navigate = useNavigate();
@@ -173,15 +173,13 @@ const Fire_OverviewPage = () => {
               <span>True Alarms</span>
             </div>
           </div>
-          <DoubleBarChart
-            chartIndex={2}
+          <StackedBarChart
             labels={hourlyTrendData.labels}
             dataPoints={hourlyTrendData.datasets.map((d) => d.dataPoints)}
             title="Hourly Trend"
             colors={hourlyTrendData.datasets.map((d) => d.color)}
-            showValues
-            isStacked
-            onBarClick={(attribute) => handleBarClick(attribute, 2)} // Chart index 2
+            showValues={true}
+            onBarClick={(attribute) => handleBarClick(attribute, 2)}
           />
         </div>
       </div>
