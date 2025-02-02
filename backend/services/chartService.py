@@ -1,6 +1,8 @@
 from sqlalchemy.orm import Session
 from sqlalchemy.sql import text
 from config.database import get_db
+import csv
+from datetime import datetime
 
 # Execute SQL query and fetch results
 def execute_query(query: str, db: Session):
@@ -79,3 +81,47 @@ def get_all_charts(charts):
     if not charts:
         return {"error": "charts list is empty or None"}
     return [get_chart_data(chart["name"], chart["queries"]) for chart in charts]
+
+def map_report_data_to_table(request_data):
+    """
+    Maps the input data to a structured format for exporting.
+
+    :param request_data: The JSON request data containing 'data'.
+    :return: A dictionary containing 'columns' and 'formatted_data'.
+    """
+    try:
+        # Extract data from the request
+        data = request_data.get('data', [])
+
+        # Ensure the data is a list of dictionaries with consistent keys
+        if not all(isinstance(item, dict) for item in data):
+            raise ValueError("'data' must be a list of dictionaries.")
+
+        # Determine the columns based on keys in the first dictionary
+        columns = list(data[0].keys()) if data else []
+
+        # Format the data for output
+        formatted_data = [{col: row.get(col, "") for col in columns} for row in data]
+
+        return {
+            "columns": columns,
+            "formatted_data": formatted_data
+        }
+    except Exception as e:
+        raise Exception(f"Error mapping report data: {str(e)}")
+
+def export_report_to_csv(mapped_data, filename):
+    """
+    Exports the mapped report data to a CSV file.
+
+    :param mapped_data: The data to be exported, containing columns and formatted_data.
+    :param filename: The name of the file to save the CSV as.
+    """
+    try:
+        with open(filename, 'w', newline='', encoding='utf-8') as output_file:
+            writer = csv.DictWriter(output_file, fieldnames=mapped_data['columns'])
+            writer.writeheader()
+            writer.writerows(mapped_data['formatted_data'])
+        return filename  # Return the filename for further use
+    except Exception as e:
+        raise Exception(f"Error writing to CSV: {str(e)}")

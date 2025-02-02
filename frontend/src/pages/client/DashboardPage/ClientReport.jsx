@@ -1,18 +1,18 @@
+/* eslint-disable no-unused-vars */
 import { useLocation } from "react-router-dom";
 import Table from "../../../components/Table";
 import { useEffect, useState } from "react";
+import axios from 'axios'; // Make sure to install axios if not already installed
+import config from "../../../config/config";
 
 const ClientReport = () => {
   const { state } = useLocation();
-  const { reportData, label } = state || {}; // Extract the report query data
-  console.log("Report Data Received in ClientReport:", reportData);
-  console.log("Label Received:", label);
+  const { reportData, label } = state || {}; 
   const [formattedData, setFormattedData] = useState([]);
   const [columns, setColumns] = useState([]);
 
   useEffect(() => {
     if (reportData?.data) {
-      // Process data into tabular format
       const tempFormattedData = [];
       const tempColumns = new Set();
 
@@ -26,7 +26,6 @@ const ClientReport = () => {
 
         row[attribute] = count || "-";
 
-        // Move to the next row if we've encountered all attributes for this item
         if (
           index === reportData.data.length - 1 ||
           reportData.data[index + 1]?.attribute === reportData.data[0]?.attribute
@@ -38,13 +37,47 @@ const ClientReport = () => {
 
       setColumns(Array.from(tempColumns));
       setFormattedData(tempFormattedData);
-      console.log("Formatted Data for Table:", tempFormattedData);
     }
   }, [reportData]);
 
-  const handleDownloadClick = () => {
-    // Handle the download logic here when API is connected
-    console.log("Download Report button clicked!");
+  const handleDownloadClick = async () => {
+    try {
+      // Use formattedData directly for the download request
+      const downloadData = {
+        name: reportData.chart_name || "Report",
+        data: formattedData
+      };
+  
+      // Make the API call to download the report
+      const response = await axios.post(`${config.API_BASE_URL}/api/report/download`, downloadData, {
+        responseType: 'blob' // Important for file download
+      });
+  
+      // Create a blob URL and trigger download
+      const blob = new Blob([response.data], { type: 'text/csv' });
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      
+      // Generate filename based on report title or default
+      const filename = `${reportData.chart_name || 'report'}_${new Date().toISOString().split('T')[0]}.csv`;
+      link.setAttribute('download', filename);
+      
+      document.body.appendChild(link);
+      link.click();
+      
+      // Cleanup
+      link.parentNode.removeChild(link);
+      window.URL.revokeObjectURL(url);
+  
+    } catch (error) {
+      console.error('Error downloading report:', error);
+      // Log the full error for debugging
+      console.error('Full error details:', error.response?.data);
+      
+      // More informative error handling
+      alert(`Failed to download report: ${error.response?.data?.error || 'Unknown error'}`);
+    }
   };
 
   if (!reportData || !reportData.data) {
@@ -59,7 +92,7 @@ const ClientReport = () => {
     <div className="min-h-screen bg-gray-900 text-white px-4 pt-3">
       <div className="flex justify-between items-center mb-4">
         <h1 className="text-lg font-bold">
-          Client Report for {reportData.title || "Selected Attribute"}
+          Client Report for {reportData.chart_name || "Selected Attribute"}
         </h1>
         <button
           onClick={handleDownloadClick}

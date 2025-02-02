@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "d3-fetch": "^3.0.1",
+    "vite-plugin-csv": "^1.0.0"
+  }
+}

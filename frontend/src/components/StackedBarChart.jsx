@@ -13,38 +13,26 @@ import PropTypes from "prop-types";
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, ChartDataLabels);
 
-const DoubleBarChart = ({
-  labels,
-  dataPoints,
-  title,
-  colors,
-  onBarClick,
-  showValues,
-  isStacked,
-  drillDownData,
-}) => {
-
-  if (!labels || !dataPoints || dataPoints.length < 2) {
+const StackedBarChart = ({ labels, dataPoints, title, colors, onBarClick, showValues }) => {
+  if (!labels || !dataPoints || dataPoints.length === 0) {
     return (
       <div className="flex items-center justify-center h-full text-gray-400">
-        Error: Missing chart data or incorrect data format
+        Error: Missing or incorrect chart data
       </div>
     );
   }
 
+  // Dynamically create dataset objects
   const barData = {
-    labels: labels,
-    datasets: dataPoints.map((point, index) => {
-      const label = drillDownData?.data?.[index]?.counts?.[index]?.type || `Dataset ${index + 1}`;
-      return {
-        label: label,
-        data: point,
-        backgroundColor: colors[index] || "#808080",
-        borderColor: colors[index] || "#808080",
-        borderWidth: 1,
-        stack: isStacked ? `Stack ${Math.floor(index / 2) + 1}` : undefined,
-      };
-    }),
+    labels,
+    datasets: dataPoints.map((point, index) => ({
+      label: `Dataset ${index + 1}`,
+      data: point,
+      backgroundColor: colors[index] || `hsl(${(index * 60) % 360}, 70%, 50%)`, // Unique color per dataset
+      borderColor: colors[index] || `hsl(${(index * 60) % 360}, 70%, 40%)`,
+      borderWidth: 1,
+      stack: "totalStack",
+    })),
   };
 
   const options = {
@@ -69,26 +57,12 @@ const DoubleBarChart = ({
           font: {
             size: 12,
           },
-          generateLabels: (chart) => {
-            return chart.data.datasets.map((dataset, index) => ({
-              text: dataset.label,
-              fillStyle: dataset.backgroundColor,
-              strokeStyle: dataset.borderColor,
-              hidden: false,
-              index,
-              fontColor: "#FFFFFF",
-            }));
-          },
         },
       },
     },
     scales: {
-      x: {
-        stacked: isStacked,
-      },
-      y: {
-        stacked: isStacked,
-      },
+      x: { stacked: true },
+      y: { stacked: true },
     },
     onClick: (event, elements) => {
       if (elements.length > 0) {
@@ -96,7 +70,7 @@ const DoubleBarChart = ({
         const label = labels[barIndex];
         if (onBarClick) {
           onBarClick(label);
-        };
+        }
       }
     },
   };
@@ -109,21 +83,13 @@ const DoubleBarChart = ({
   );
 };
 
-DoubleBarChart.propTypes = {
+StackedBarChart.propTypes = {
   labels: PropTypes.array.isRequired,
   dataPoints: PropTypes.array.isRequired,
   title: PropTypes.string.isRequired,
   colors: PropTypes.array.isRequired,
   onBarClick: PropTypes.func.isRequired,
   showValues: PropTypes.bool.isRequired,
-  chartIndex: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-  isStacked: PropTypes.bool,
-  drillDownData: PropTypes.object.isRequired,
 };
 
-DoubleBarChart.defaultProps = {
-  isStacked: false,
-  path: null, // Default is no path
-};
-
-export default DoubleBarChart;
+export default StackedBarChart;
