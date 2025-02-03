@@ -29,7 +29,7 @@ const Fire_ReportPage = () => {
       console.error("Invalid report data:", data);
       return;
     }
-
+  
     const alarmsChart = {
       labels: [],
       datasets: [
@@ -38,58 +38,40 @@ const Fire_ReportPage = () => {
         { label: "True Alarms", dataPoints: [], color: "#EC0808" },
       ],
     };
-
+  
     const deviceStatus = [];
     const hourlyTrend = {
-      labels: Array.from({ length: 24 }, (_, i) =>
-        i.toString().padStart(2, "0")
-      ),
+      labels: Array.from({ length: 24 }, (_, i) => i.toString().padStart(2, "0")),
       datasets: [
-        {
-          label: "Total Alarms",
-          dataPoints: Array(24).fill(0),
-          color: "#4C7CB2",
-        },
-        {
-          label: "False Alarms",
-          dataPoints: Array(24).fill(0),
-          color: "#78629A",
-        },
+        { label: "Total Alarms", dataPoints: Array(24).fill(0), color: "#4C7CB2" },
+        { label: "False Alarms", dataPoints: Array(24).fill(0), color: "#78629A" },
       ],
     };
-
+  
     let currentBuilding = null;
     const buildingData = {};
-
+  
     data.data.forEach((item) => {
       const { attribute, count } = item;
-
+  
       // Process for chartIndex 0 (alarmsChart)
       if (attribute === "Building") {
         currentBuilding = count;
         if (!buildingData[currentBuilding]) {
-          buildingData[currentBuilding] = {
-            falseAlarms: 0,
-            trueAlarms: 0,
-            totalAlarms: 0,
-          };
+          buildingData[currentBuilding] = { totalAlarms: 0, falseAlarms: 0, trueAlarms: 0 };
         }
-      } else if (
-        ["Total Alarms", "False Alarms", "True Alarms"].includes(attribute)
-      ) {
+      } else if (["TotalAlarms", "False Alarms", "True Alarms"].includes(attribute)) {
         if (currentBuilding) {
-          if (attribute === "False Alarms") {
-            buildingData[currentBuilding].falseAlarms =
-              parseInt(count, 10) || 0;
+          if (attribute === "TotalAlarms") {
+            buildingData[currentBuilding].totalAlarms = parseInt(count, 10) || 0;
+          } else if (attribute === "False Alarms") {
+            buildingData[currentBuilding].falseAlarms = parseInt(count, 10) || 0;
           } else if (attribute === "True Alarms") {
             buildingData[currentBuilding].trueAlarms = parseInt(count, 10) || 0;
-          } else if (attribute === "Total Alarms") {
-            buildingData[currentBuilding].totalAlarms =
-              parseInt(count, 10) || 0;
           }
         }
       }
-
+  
       // Process for chartIndex 1 (deviceStatus)
       if (["Device Name", "IP Detail", "Status"].includes(attribute)) {
         const lastDevice = deviceStatus[deviceStatus.length - 1];
@@ -99,7 +81,7 @@ const Fire_ReportPage = () => {
           lastDevice[attribute] = count;
         }
       }
-
+  
       // Process for chartIndex 2 (hourlyTrend)
       if (attribute === "Hour") {
         const hour = parseInt(count, 10);
@@ -111,23 +93,21 @@ const Fire_ReportPage = () => {
         }
       }
     });
-
-    // Finalize chart data for chartIndex 0
+  
+    // Use TotalAlarms directly instead of summing False + True Alarms
     Object.entries(buildingData).forEach(([buildingName, values]) => {
       alarmsChart.labels.push(buildingName);
-      alarmsChart.datasets[0].dataPoints.push(
-        values.falseAlarms + values.trueAlarms // Total Alarms derived dynamically
-      );
+      alarmsChart.datasets[0].dataPoints.push(values.totalAlarms); // ✅ Correct Total Alarms
       alarmsChart.datasets[1].dataPoints.push(values.falseAlarms);
       alarmsChart.datasets[2].dataPoints.push(values.trueAlarms);
     });
-
+  
     setReportData({
       alarmsChart,
       deviceStatus,
       hourlyTrend,
     });
-  };
+  };  
 
   const handleBarClick = (attribute, index) => {
     console.log(`Bar clicked: Attribute - ${attribute}, Index - ${index}`);
