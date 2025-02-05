@@ -9,13 +9,17 @@ app = Flask(__name__)
 def get_dashboard_charts():
     try:
         data = request.get_json()
+        dashboard_id = data.get("dashboard_id")
+        
+        if not dashboard_id:
+            return jsonify({"error": "'dashboard_id' is required."}), 400
         if 'charts' not in data or not isinstance(data['charts'], list):
             return jsonify({"error": "'charts' must be a list of chart query objects."}), 400
 
         charts = data['charts']
-        chart_results = get_all_charts(charts)
+        chart_results = get_all_charts(charts, dashboard_id)
 
-        return jsonify({"charts": chart_results}), 200
+        return jsonify(chart_results), 200
     except Exception as e:
         return jsonify({"error": str(e)}), 500
     
@@ -64,3 +68,4 @@ def download_report():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
