@@ -22,6 +22,9 @@ import ERT_OverviewPage from "./pages/client/ERT/ERT_OverviewPage";
 // FLS Pages
 import FLS_OverviewPage from "./pages/client/FLS/FLS_OverviewPage";
 
+// RJOC_DT Pages
+import RJOC_DT from "./pages/client/RJOC_DT/RJOC_DT_OverviewPage";
+
 const App = () => {
   return (
     <AppProvider>
@@ -55,6 +58,9 @@ const App = () => {
 
           {/* FLS Route */}
           <Route path="/client/fls/*" element={<FLS_OverviewPage />} />
+
+          {/* FLS Route */}
+          <Route path="/client/rjoc_dt/*" element={<RJOC_DT />} />
         </Routes>
       </Router>
     </AppProvider>
