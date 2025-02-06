@@ -23,6 +23,7 @@ export const AppProvider = ({ children }) => {
         const response = await axios.post(
           `${config.API_BASE_URL}/api/dashboard/charts`,
           {
+            "dashboard_id": "dashboard_1",
             charts: [
               {
                 name: "Recorder Status",

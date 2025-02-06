@@ -16,6 +16,7 @@ export const FireProvider = ({ children }) => {
         const response = await axios.post(
           `${config.API_BASE_URL}/api/dashboard/charts`,
           {
+            dashboard_id: "Fire",
             charts: [
               {
                 name: "Recorder Status",

@@ -12,6 +12,13 @@ IST = pytz.timezone("Asia/Kolkata")
 
 # Execute SQL query and fetch results
 def execute_query(query: str, db: Session):
+    """
+    Execute a SQL query and fetch results.
+
+    :param query: The SQL query to execute.
+    :param db: The database session.
+    :return: A tuple containing results and columns.
+    """
     try:
         result = db.execute(text(query))
         if result.returns_rows:
@@ -23,6 +30,13 @@ def execute_query(query: str, db: Session):
 
 # Convert SQL results to drill-down format
 def convert_to_drilldown(results, columns):
+    """
+    Convert SQL results to a drill-down format.
+
+    :param results: The results from the SQL query.
+    :param columns: The columns returned from the query.
+    :return: A dictionary containing the drill-down data.
+    """
     drilldown_data = {}
     for row in results:
         attribute_value = row[0]  # Assuming the first column is the main attribute
@@ -48,6 +62,15 @@ def convert_to_drilldown(results, columns):
 
 # Get data for one chart
 def get_chart_data(chart_name, chart_queries, dashboard_id, refresh_interval=900):
+    """
+    Get data for one chart.
+
+    :param chart_name: The name of the chart.
+    :param chart_queries: A dictionary containing query objects.
+    :param dashboard_id: The ID of the dashboard.
+    :param refresh_interval: The refresh interval in seconds.
+    :return: A dictionary containing chart data.
+    """
     if is_cache_valid(dashboard_id, refresh_interval):
         cached_data, _ = load_cache(dashboard_id)
         return cached_data
@@ -78,6 +101,14 @@ def get_chart_data(chart_name, chart_queries, dashboard_id, refresh_interval=900
 
 # Process all charts
 def get_all_charts(charts, dashboard_id, refresh_interval=900):
+    """
+    Process all charts.
+
+    :param charts: A list of dictionaries containing chart data.
+    :param dashboard_id: The ID of the dashboard.
+    :param refresh_interval: The refresh interval in seconds.
+    :return: A dictionary containing all chart data.
+    """
     if is_cache_valid(dashboard_id, refresh_interval):
         cached_data, timestamp = load_cache(dashboard_id)
         ist_timestamp = datetime.fromtimestamp(timestamp, IST).strftime("%Y-%m-%d %H:%M:%S")
@@ -137,13 +168,14 @@ def export_report_to_csv(mapped_data, filename):
 
     :param mapped_data: The data to be exported, containing columns and formatted_data.
     :param filename: The name of the file to save the CSV as.
+    :return: The filename for further use.
     """
     try:
         with open(filename, 'w', newline='', encoding='utf-8') as output_file:
             writer = csv.DictWriter(output_file, fieldnames=mapped_data['columns'])
             writer.writeheader()
             writer.writerows(mapped_data['formatted_data'])
-        return filename  # Return the filename for further use
+        return filename
     except Exception as e:
         raise Exception(f"Error writing to CSV: {str(e)}")
 
@@ -154,12 +186,24 @@ os.makedirs(CACHE_DIR, exist_ok=True)
 
 # Save data to .pkl cache
 def save_cache(dashboard_id, data):
+    """
+    Save data to .pkl cache.
+
+    :param dashboard_id: The ID of the dashboard.
+    :param data: The data to be cached.
+    """
     cache_file = os.path.join(CACHE_DIR, f"{dashboard_id}.pkl")
     with open(cache_file, "wb") as f:
         pickle.dump({"timestamp": time.time(), "data": data}, f)
 
 # Load cached data if available
 def load_cache(dashboard_id):
+    """
+    Load cached data if available.
+
+    :param dashboard_id: The ID of the dashboard.
+    :return: A tuple containing the cache data and timestamp.
+    """
     cache_file = os.path.join(CACHE_DIR, f"{dashboard_id}.pkl")
     if os.path.exists(cache_file):
         with open(cache_file, "rb") as f:
@@ -169,6 +213,13 @@ def load_cache(dashboard_id):
 
 # Check if cache is valid
 def is_cache_valid(dashboard_id, refresh_interval):
+    """
+    Check if cache is valid.
+
+    :param dashboard_id: The ID of the dashboard.
+    :param refresh_interval: The refresh interval in seconds.
+    :return: True if cache is valid, False otherwise.
+    """
     _, timestamp = load_cache(dashboard_id)
     if timestamp and (time.time() - timestamp) < refresh_interval:
         return True
@@ -176,6 +227,12 @@ def is_cache_valid(dashboard_id, refresh_interval):
 
 # Clear cache for a specific dashboard
 def clear_cache(dashboard_id):
+    """
+    Clear cache for a specific dashboard.
+
+    :param dashboard_id: The ID of the dashboard.
+    """
     cache_file = os.path.join(CACHE_DIR, f"{dashboard_id}.pkl")
     if os.path.exists(cache_file):
         os.remove(cache_file)
+ 

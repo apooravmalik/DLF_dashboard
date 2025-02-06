@@ -3,3 +3,5 @@ flask-cors
 sqlalchemy==2.0.21
 python-dotenv
 pyodbc
+pickle
+pytz
