@@ -7,8 +7,10 @@ from config.database import get_db
 import csv
 from datetime import datetime
 import pytz
+from apscheduler.schedulers.background import BackgroundScheduler
 
 IST = pytz.timezone("Asia/Kolkata")
+scheduler = BackgroundScheduler()
 
 # Execute SQL query and fetch results
 def execute_query(query: str, db: Session):
@@ -187,14 +189,16 @@ os.makedirs(CACHE_DIR, exist_ok=True)
 # Save data to .pkl cache
 def save_cache(dashboard_id, data):
     """
-    Save data to .pkl cache.
-
-    :param dashboard_id: The ID of the dashboard.
-    :param data: The data to be cached.
+    Save data to .pkl cache and schedule automatic refresh.
     """
     cache_file = os.path.join(CACHE_DIR, f"{dashboard_id}.pkl")
     with open(cache_file, "wb") as f:
         pickle.dump({"timestamp": time.time(), "data": data}, f)
+
+    # Schedule the cache update if not already scheduled
+    job_id = f"update_cache_{dashboard_id}"
+    if not scheduler.get_job(job_id):
+        scheduler.add_job(update_cache, "interval", seconds=900, args=[dashboard_id], id=job_id, replace_existing=True)
 
 # Load cached data if available
 def load_cache(dashboard_id):
@@ -228,11 +232,26 @@ def is_cache_valid(dashboard_id, refresh_interval):
 # Clear cache for a specific dashboard
 def clear_cache(dashboard_id):
     """
-    Clear cache for a specific dashboard.
-
-    :param dashboard_id: The ID of the dashboard.
+    Clear cache for a specific dashboard and remove scheduled updates.
     """
     cache_file = os.path.join(CACHE_DIR, f"{dashboard_id}.pkl")
     if os.path.exists(cache_file):
         os.remove(cache_file)
+
+    # Remove scheduled job if it exists
+    job_id = f"update_cache_{dashboard_id}"
+    if scheduler.get_job(job_id):
+        scheduler.remove_job(job_id)
+
+        
+def update_cache(dashboard_id):
+    """
+    Function to refresh the cache for a dashboard.
+    """
+    print(f"Updating cache for dashboard {dashboard_id}...")  # Debug log
+    # Fetch all charts again and save to cache
+    charts = []  # You need to provide the chart structure here
+    get_all_charts(charts, dashboard_id, refresh_interval=900)
+    print(f"Cache updated for dashboard {dashboard_id}.")
+
  

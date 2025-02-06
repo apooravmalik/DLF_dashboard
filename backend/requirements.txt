@@ -5,3 +5,4 @@ python-dotenv
 pyodbc
 pickle
 pytz
+apscheduler
