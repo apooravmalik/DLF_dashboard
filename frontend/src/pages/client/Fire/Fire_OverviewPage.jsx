@@ -140,7 +140,7 @@ const Fire_OverviewPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white">
+    <div className="min-h-[calc(100vh-80px)] bg-gray-900 text-white">
       <div className="grid grid-cols-2 gap-2 px-4 pt-3">
         <Chart
           labels={alarmsData.labels}

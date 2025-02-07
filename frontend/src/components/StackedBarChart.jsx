@@ -28,7 +28,7 @@ const StackedBarChart = ({ labels, dataPoints, title, colors, onBarClick, showVa
     datasets: dataPoints.map((point, index) => ({
       label: `Dataset ${index + 1}`,
       data: point,
-      backgroundColor: colors[index] || `hsl(${(index * 60) % 360}, 70%, 50%)`, // Unique color per dataset
+      backgroundColor: colors[index] || `hsl(${(index * 60) % 360}, 70%, 50%)`,
       borderColor: colors[index] || `hsl(${(index * 60) % 360}, 70%, 40%)`,
       borderWidth: 1,
       stack: "totalStack",
@@ -37,6 +37,7 @@ const StackedBarChart = ({ labels, dataPoints, title, colors, onBarClick, showVa
 
   const options = {
     responsive: true,
+    maintainAspectRatio: false, // Allow custom container size
     plugins: {
       tooltip: {
         callbacks: {
@@ -60,9 +61,47 @@ const StackedBarChart = ({ labels, dataPoints, title, colors, onBarClick, showVa
         },
       },
     },
+    layout: {
+      padding: {
+        top: 20,
+        bottom: 10,
+        left: 10,
+        right: 10,
+      },
+    },
     scales: {
-      x: { stacked: true },
-      y: { stacked: true },
+      x: {
+        stacked: true,
+        ticks: {
+          color: "#FFFFFF",
+          font: {
+            size: 12,
+          },
+        },
+        grid: {
+          display: false,
+        },
+        categoryPercentage: 0.8, // Space between bars
+        barPercentage: 0.8, // Adjust bar width
+      },
+      y: {
+        stacked: true,
+        ticks: {
+          color: "#FFFFFF",
+          font: {
+            size: 12,
+          },
+        },
+        grid: {
+          color: "#424242",
+        },
+      },
+    },
+    elements: {
+      bar: {
+        barThickness: 40, // Fixed bar width
+        maxBarThickness: 50, // Max bar width
+      },
     },
     onClick: (event, elements) => {
       if (elements.length > 0) {
@@ -76,7 +115,7 @@ const StackedBarChart = ({ labels, dataPoints, title, colors, onBarClick, showVa
   };
 
   return (
-    <div className="flex flex-col items-center">
+    <div className="w-full h-[25rem] flex flex-col items-center">
       <h2 className="text-xl font-semibold mb-2">{title}</h2>
       <Bar data={barData} options={options} />
     </div>

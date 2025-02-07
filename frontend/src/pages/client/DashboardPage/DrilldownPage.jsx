@@ -1,17 +1,16 @@
 import { useContext, useEffect, useState } from "react";
 import { useLocation, useParams, useNavigate } from "react-router-dom";
 import { AppContext } from "../../../context/AppContext";
-import Chart from "../../../components/Chart";
 import DoubleBarChart from "../../../components/DoubleBarChart";
 
 const DrillDownPage = () => {
-  const { chartIndex } = useParams(); // Get the chart index from the route
-  const { state } = useLocation(); // Get the passed state (drillDownData)
-  const { drillDownData } = state || {}; // drillDownData passed from OverviewPage
+  const { chartIndex } = useParams();
+  const { state } = useLocation();
+  const { drillDownData } = state || {};
   console.log("Drill Down Data:", drillDownData);
 
   const navigate = useNavigate();
-  const { chartsData } = useContext(AppContext); // Assuming chartsData is in context
+  const { chartsData } = useContext(AppContext);
   const [drillDownChartData, setDrillDownChartData] = useState([]);
   const [loadingDrillDown, setLoadingDrillDown] = useState(true);
 
@@ -27,7 +26,6 @@ const DrillDownPage = () => {
         const offlineCount =
           item.counts.find((count) => count.type === "Offline")?.value || 0;
 
-        // Check the mapping to ensure correct values are being extracted
         console.log(
           `Building: ${item.value}, Online: ${onlineCount}, Offline: ${offlineCount}`
         );
@@ -39,17 +37,16 @@ const DrillDownPage = () => {
         };
       });
 
-      console.log("Formatted Data:", formattedData); // Verify the formatted data
+      console.log("Formatted Data:", formattedData);
       setDrillDownChartData(formattedData);
       setLoadingDrillDown(false);
     } else {
-      setLoadingDrillDown(false); // No valid data structure
+      setLoadingDrillDown(false);
       console.error("Invalid data structure:", drillDownData);
     }
   }, [drillDownData]);
 
   const handleBarClick = (label) => {
-    // Get the report_query for the current chart
     const { report_query } = chartsData[chartIndex] || {};
 
     if (report_query) {
@@ -105,17 +102,17 @@ const DrillDownPage = () => {
             </div>
           </div>
 
-          {chartIndex === "0" && (
+          {(chartIndex === "0" || chartIndex === "1") && (
             <DoubleBarChart
               labels={labels}
-              dataPoints={[onlineData, offlineData]} // Pass the data as an array of arrays
+              dataPoints={[onlineData, offlineData]}
               title={`Building-wise Online/Offline Status for Chart ${chartIndex}`}
-              colors={["#4CAF50", "#F44336"]} // Colors for each dataset
+              colors={["#4CAF50", "#F44336"]}
               onBarClick={handleBarClick}
               showValues={true}
               chartIndex={chartIndex}
-              isStacked={false} // Explicitly set to false for grouped bars
-              drillDownData={drillDownData} // Pass drillDownData here
+              isStacked={false}
+              drillDownData={drillDownData}
             />
           )}
         </div>
