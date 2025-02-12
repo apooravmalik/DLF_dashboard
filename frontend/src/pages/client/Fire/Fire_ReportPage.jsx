@@ -14,10 +14,7 @@ const Fire_ReportPage = () => {
 
   useEffect(() => {
     if (location.state?.reportData) {
-      console.log(
-        "Report Data Received in Fire_ReportPage:",
-        location.state.reportData
-      );
+      console.log("Report Data Received in Fire_ReportPage:", location.state.reportData);
       processReportData(location.state.reportData);
     } else {
       console.error("No report data received in location.state.");
@@ -29,7 +26,7 @@ const Fire_ReportPage = () => {
       console.error("Invalid report data:", data);
       return;
     }
-  
+
     const alarmsChart = {
       labels: [],
       datasets: [
@@ -38,7 +35,7 @@ const Fire_ReportPage = () => {
         { label: "True Alarms", dataPoints: [], color: "#EC0808" },
       ],
     };
-  
+
     const deviceStatus = [];
     const hourlyTrend = {
       labels: Array.from({ length: 24 }, (_, i) => i.toString().padStart(2, "0")),
@@ -47,14 +44,13 @@ const Fire_ReportPage = () => {
         { label: "False Alarms", dataPoints: Array(24).fill(0), color: "#78629A" },
       ],
     };
-  
+
     let currentBuilding = null;
     const buildingData = {};
-  
+
     data.data.forEach((item) => {
       const { attribute, count } = item;
-  
-      // Process for chartIndex 0 (alarmsChart)
+
       if (attribute === "Building") {
         currentBuilding = count;
         if (!buildingData[currentBuilding]) {
@@ -71,8 +67,7 @@ const Fire_ReportPage = () => {
           }
         }
       }
-  
-      // Process for chartIndex 1 (deviceStatus)
+
       if (["Device Name", "IP Detail", "Status"].includes(attribute)) {
         const lastDevice = deviceStatus[deviceStatus.length - 1];
         if (!lastDevice || lastDevice[attribute]) {
@@ -81,8 +76,7 @@ const Fire_ReportPage = () => {
           lastDevice[attribute] = count;
         }
       }
-  
-      // Process for chartIndex 2 (hourlyTrend)
+
       if (attribute === "Hour") {
         const hour = parseInt(count, 10);
         if (!isNaN(hour) && hour >= 0 && hour < 24) {
@@ -93,21 +87,16 @@ const Fire_ReportPage = () => {
         }
       }
     });
-  
-    // Use TotalAlarms directly instead of summing False + True Alarms
+
     Object.entries(buildingData).forEach(([buildingName, values]) => {
       alarmsChart.labels.push(buildingName);
-      alarmsChart.datasets[0].dataPoints.push(values.totalAlarms); // ✅ Correct Total Alarms
+      alarmsChart.datasets[0].dataPoints.push(values.totalAlarms);
       alarmsChart.datasets[1].dataPoints.push(values.falseAlarms);
       alarmsChart.datasets[2].dataPoints.push(values.trueAlarms);
     });
-  
-    setReportData({
-      alarmsChart,
-      deviceStatus,
-      hourlyTrend,
-    });
-  };  
+
+    setReportData({ alarmsChart, deviceStatus, hourlyTrend });
+  };
 
   const handleBarClick = (attribute, index) => {
     console.log(`Bar clicked: Attribute - ${attribute}, Index - ${index}`);
@@ -128,17 +117,15 @@ const Fire_ReportPage = () => {
                 <span>False Alarms</span>
               </div>
               <div className="flex items-center">
-                <div className="w-4 h-4 bg-[#F44336] mr-2"></div>
+                <div className="w-4 h-4 bg-[#EC0808] mr-2"></div>
                 <span>True Alarms</span>
               </div>
             </div>
             <DoubleBarChart
               labels={reportData.alarmsChart.labels}
-              dataPoints={reportData.alarmsChart.datasets.map(
-                (d) => d.dataPoints
-              )}
+              dataPoints={reportData.alarmsChart.datasets.map(d => d.dataPoints)}
               title="Alarm Building Wise Report"
-              colors={reportData.alarmsChart.datasets.map((d) => d.color)}
+              colors={reportData.alarmsChart.datasets.map(d => d.color)}
               chartIndex={chartIndex}
               showValues
               isStacked
@@ -147,7 +134,7 @@ const Fire_ReportPage = () => {
             />
           </>
         ) : (
-          <div>Loading alarms chart...</div>
+          <div className="text-gray-400">Loading alarms chart...</div>
         );
       case "1":
         return reportData.deviceStatus ? (
@@ -156,7 +143,7 @@ const Fire_ReportPage = () => {
             data={reportData.deviceStatus}
           />
         ) : (
-          <div>Loading device status...</div>
+          <div className="text-gray-400">Loading device status...</div>
         );
       case "2":
         return reportData.hourlyTrend ? (
@@ -164,26 +151,22 @@ const Fire_ReportPage = () => {
             columns={["Hour", "Total Alarms", "False Alarms"]}
             data={reportData.hourlyTrend.labels.map((hour, index) => ({
               Hour: hour,
-              "Total Alarms":
-                reportData.hourlyTrend.datasets[0].dataPoints[index],
-              "False Alarms":
-                reportData.hourlyTrend.datasets[1].dataPoints[index],
+              "Total Alarms": reportData.hourlyTrend.datasets[0].dataPoints[index],
+              "False Alarms": reportData.hourlyTrend.datasets[1].dataPoints[index],
             }))}
           />
         ) : (
-          <div>Loading hourly trend...</div>
+          <div className="text-gray-400">Loading hourly trend...</div>
         );
       default:
-        return <div>No report data available for this chart index.</div>;
+        return <div className="text-gray-400">No report data available for this chart index.</div>;
     }
   };
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white px-4 py-6">
-      <h1 className="text-2xl font-bold text-center mb-6">
-        Fire Client Report
-      </h1>
-      <div className="mb-8">{renderContent()}</div>
+    <div className="min-h-screen bg-[#33414C] text-white px-4 py-6">
+      <h1 className="text-2xl font-bold text-center mb-6">Fire Client Report</h1>
+      <div className="bg-[#3f505d] p-4 rounded-lg shadow-md">{renderContent()}</div>
     </div>
   );
 };

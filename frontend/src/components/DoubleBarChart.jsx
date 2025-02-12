@@ -11,7 +11,15 @@ import {
 import ChartDataLabels from "chartjs-plugin-datalabels";
 import PropTypes from "prop-types";
 
-ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, ChartDataLabels);
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
+  ChartDataLabels
+);
 
 const DoubleBarChart = ({
   labels,
@@ -23,7 +31,6 @@ const DoubleBarChart = ({
   isStacked,
   drillDownData,
 }) => {
-
   if (!labels || !dataPoints || dataPoints.length < 2) {
     return (
       <div className="flex items-center justify-center h-full text-gray-400">
@@ -35,7 +42,9 @@ const DoubleBarChart = ({
   const barData = {
     labels: labels,
     datasets: dataPoints.map((point, index) => {
-      const label = drillDownData?.data?.[index]?.counts?.[index]?.type || `Dataset ${index + 1}`;
+      const label =
+        drillDownData?.data?.[index]?.counts?.[index]?.type ||
+        `Dataset ${index + 1}`;
       return {
         label: label,
         data: point,
@@ -61,13 +70,16 @@ const DoubleBarChart = ({
         display: showValues,
         align: "top",
         color: "white",
+        font: {
+          size: 14, // Increased from default
+        },
       },
       legend: {
         position: "top",
         labels: {
           color: "#FFFFFF",
           font: {
-            size: 12,
+            size: 14,
           },
           generateLabels: (chart) => {
             return chart.data.datasets.map((dataset, index) => ({
@@ -85,9 +97,27 @@ const DoubleBarChart = ({
     scales: {
       x: {
         stacked: isStacked,
+        ticks: {
+          font: {
+            size: 14, // Increased size
+          },
+          color: "#FFFFFF",
+        },
+        grid: {
+          color: "rgba(255, 255, 255, 0.1)", // Grid color
+        },
       },
       y: {
         stacked: isStacked,
+        ticks: {
+          font: {
+            size: 14, // Increased size
+          },
+          color: "#FFFFFF",
+        },
+        grid: {
+          color: "rgba(255, 255, 255, 0.1)", // Grid color
+        },
       },
     },
     onClick: (event, elements) => {
@@ -96,7 +126,7 @@ const DoubleBarChart = ({
         const label = labels[barIndex];
         if (onBarClick) {
           onBarClick(label);
-        };
+        }
       }
     },
   };
@@ -116,7 +146,8 @@ DoubleBarChart.propTypes = {
   colors: PropTypes.array.isRequired,
   onBarClick: PropTypes.func.isRequired,
   showValues: PropTypes.bool.isRequired,
-  chartIndex: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  chartIndex: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+    .isRequired,
   isStacked: PropTypes.bool,
   drillDownData: PropTypes.object.isRequired,
 };

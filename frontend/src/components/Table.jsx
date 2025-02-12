@@ -2,20 +2,20 @@ import PropTypes from "prop-types";
 
 const Table = ({ columns, data }) => {
   return (
-    <table className="table-auto w-full bg-gray-800 text-white border border-gray-700">
+    <table className="table-auto w-full bg-[#3E4B57] text-white border border-[#4A5A68]">
       <thead>
         {/* Total Rows Row at the Top */}
-        <tr className="bg-gray-700 font-bold">
-          <td className="px-4 py-2 border border-gray-700" colSpan={columns.length + 1}>
+        <tr className="bg-[#2C3945] font-bold text-white">
+          <td className="px-4 py-2 border border-[#4A5A68]" colSpan={columns.length + 1}>
             Total Rows: {data.length}
           </td>
         </tr>
 
         {/* Column Headers */}
-        <tr>
-          <th className="px-4 py-2 border border-gray-700">S.No.</th>
+        <tr className="bg-[#25323E] text-gray-300">
+          <th className="px-4 py-2 border border-[#4A5A68]">S.No.</th>
           {columns.map((column) => (
-            <th key={column} className="px-4 py-2 border border-gray-700">
+            <th key={column} className="px-4 py-2 border border-[#4A5A68]">
               {column}
             </th>
           ))}
@@ -24,10 +24,15 @@ const Table = ({ columns, data }) => {
       <tbody>
         {/* Data Rows */}
         {data.map((row, rowIndex) => (
-          <tr key={rowIndex}>
-            <td className="px-4 py-2 border border-gray-700">{rowIndex + 1}</td>
+          <tr
+            key={rowIndex}
+            className={`${
+              rowIndex % 2 === 0 ? "bg-[#3A4855]" : "bg-[#313D48]"
+            } hover:bg-[#4A5A68] transition-colors`}
+          >
+            <td className="px-4 py-2 border border-[#4A5A68]">{rowIndex + 1}</td>
             {columns.map((column) => (
-              <td key={column} className="px-4 py-2 border border-gray-700">
+              <td key={column} className="px-4 py-2 border border-[#4A5A68]">
                 {row[column] || "-"}
               </td>
             ))}

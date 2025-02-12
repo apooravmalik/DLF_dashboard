@@ -87,17 +87,17 @@ const DrillDownPage = () => {
   const offlineData = drillDownChartData.map((item) => item.offlineCount);
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white">
+    <div className= "min-h-screen bg-[#33414C] text-white">
       <div className="h-full flex flex-col">
         <div className="px-4 pt-3">
           {/* Legend for the colors */}
           <div className="flex mb-4">
             <div className="flex items-center mr-8">
-              <div className="w-4 h-4 bg-[#4CAF50] mr-2"></div>
+              <div className="w-4 h-4 bg-[#00b050] mr-2"></div>
               <span>Online</span>
             </div>
             <div className="flex items-center">
-              <div className="w-4 h-4 bg-[#F44336] mr-2"></div>
+              <div className="w-4 h-4 bg-[#ff0000] mr-2"></div>
               <span>Offline</span>
             </div>
           </div>
@@ -107,7 +107,7 @@ const DrillDownPage = () => {
               labels={labels}
               dataPoints={[onlineData, offlineData]}
               title={`Building-wise Online/Offline Status for Chart ${chartIndex}`}
-              colors={["#4CAF50", "#F44336"]}
+              colors={["#00b050", "#ff0000"]}
               onBarClick={handleBarClick}
               showValues={true}
               chartIndex={chartIndex}

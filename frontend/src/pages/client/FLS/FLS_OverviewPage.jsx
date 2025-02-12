@@ -27,11 +27,11 @@ const Legend = ({ colors }) => (
   <div className="flex justify-center space-x-6 mb-4">
     <div className="flex items-center">
       <div className="w-4 h-4 rounded mr-2" style={{ backgroundColor: colors[1] }}></div>
-      <span className="text-sm">Last 7 Days</span>
+      <span className="text-sm text-white">Last 7 Days</span>
     </div>
     <div className="flex items-center">
       <div className="w-4 h-4 rounded mr-2" style={{ backgroundColor: colors[0] }}></div>
-      <span className="text-sm">Week Before Last</span>
+      <span className="text-sm text-white">Week Before Last</span>
     </div>
   </div>
 );
@@ -75,7 +75,7 @@ const FLS_OverviewPage = () => {
   const renderChart = (title, chartData) => {
     const colors = getChartColors(title);
     return (
-      <div className="bg-gray-800 rounded-lg p-4 shadow-md">
+      <div className="bg-[#3f505d] rounded-lg p-4 shadow-md">
         <h2 className="text-lg font-semibold text-center mb-2 text-white">{title}</h2>
         <Legend colors={colors} />
         <DoubleBarChart
@@ -91,7 +91,7 @@ const FLS_OverviewPage = () => {
           options={{
             plugins: {
               legend: {
-                display: false // Hide default Chart.js legend since we're using custom legend
+                display: false // Hide default Chart.js legend since we're using a custom legend
               }
             }
           }}
@@ -101,7 +101,7 @@ const FLS_OverviewPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white">
+    <div className="min-h-screen bg-[#33414C] text-white">
       <h1 className="text-2xl font-bold text-center pt-4">Fire System Equipment Up Time Status</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 gap-4 px-4 py-6">
         {renderChart('NCR-1', data.ncr01)}

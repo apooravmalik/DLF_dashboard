@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import { AppProvider } from "./context/AppContext";
 import { FireProvider } from "./context/FireContext";
+import { RJOCLiveProvider } from "./context/RJOCLiveContext";
 
 // Admin Pages
 import QueryPage from "./pages/admin/QueryPage";
@@ -24,6 +25,11 @@ import FLS_OverviewPage from "./pages/client/FLS/FLS_OverviewPage";
 
 // RJOC_DT Pages
 import RJOC_DT from "./pages/client/RJOC_DT/RJOC_DT_OverviewPage";
+
+// RJOCLive Pages
+import RJOCLive_OverviewPage from "./pages/client/RJOCLive/RJOCLive_OverviewPage";
+import RJOCLive_DrilldownPage from "./pages/client/RJOCLive/RJOCLive_DrilldownPage";
+import RJOCLive_ReportPage from "./pages/client/RJOCLive/RJOCLive_ReportPage";
 
 const App = () => {
   return (
@@ -53,14 +59,28 @@ const App = () => {
             }
           />
 
-          {/* ERT Route (Fixed) */}
+          {/* ERT Route */}
           <Route path="/client/ert/*" element={<ERT_OverviewPage />} />
 
           {/* FLS Route */}
           <Route path="/client/fls/*" element={<FLS_OverviewPage />} />
 
-          {/* FLS Route */}
+          {/* RJOC_DT Route */}
           <Route path="/client/rjoc_dt/*" element={<RJOC_DT />} />
+
+          {/* RJOCLive Routes */}
+          <Route
+            path="/client/rjoclive/*"
+            element={
+              <RJOCLiveProvider>
+                <Routes>
+                  <Route path="overview" element={<RJOCLive_OverviewPage />} />
+                  <Route path="drilldown/:chartIndex" element={<RJOCLive_DrilldownPage />} />
+                  <Route path="report/:chartIndex" element={<RJOCLive_ReportPage />} />
+                </Routes>
+              </RJOCLiveProvider>
+            }
+          />
         </Routes>
       </Router>
     </AppProvider>

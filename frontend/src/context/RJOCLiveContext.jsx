@@ -4,9 +4,9 @@ import PropTypes from "prop-types";
 import axios from "axios";
 import config from "../config/config";
 
-export const AppContext = createContext();
+export const RJOCLiveContext = createContext();
 
-export const AppProvider = ({ children }) => {
+export const RJOCLiveProvider = ({ children }) => {
   // State for admin workflows
   const [queries, setQueries] = useState([]);
   const [queryResults, setQueryResults] = useState([]);
@@ -22,7 +22,7 @@ export const AppProvider = ({ children }) => {
       const response = await axios.post(
         `${config.API_BASE_URL}/api/dashboard/charts`,
         {
-          "dashboard_id": "dashboard_1",
+          "dashboard_id": "RJOC-Live",
           charts: [
             {
               name: "Recorder Status",
@@ -130,7 +130,7 @@ export const AppProvider = ({ children }) => {
   }, []);
 
   return (
-    <AppContext.Provider
+    <RJOCLiveContext.Provider
       value={{
         // Admin capabilities
         queries,
@@ -145,10 +145,10 @@ export const AppProvider = ({ children }) => {
       }}
     >
       {children}
-    </AppContext.Provider>
+    </RJOCLiveContext.Provider>
   );
 };
 
-AppProvider.propTypes = {
+RJOCLiveProvider.propTypes = {
   children: PropTypes.node.isRequired,
 };

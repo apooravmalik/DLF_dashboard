@@ -64,7 +64,7 @@ const StackedBarChart = ({ labels, dataPoints, title, colors, onBarClick, showVa
     layout: {
       padding: {
         top: 20,
-        bottom: 10,
+        bottom: 30,
         left: 10,
         right: 10,
       },
@@ -93,7 +93,7 @@ const StackedBarChart = ({ labels, dataPoints, title, colors, onBarClick, showVa
           },
         },
         grid: {
-          color: "#424242",
+          color: "rgba(255, 255, 255, 0.1)", // Grid color
         },
       },
     },

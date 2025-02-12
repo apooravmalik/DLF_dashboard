@@ -60,7 +60,7 @@ const Navbar = () => {
   return (
     <>
       {/* Top navigation bar */}
-      <nav className="bg-gray-800 p-2 text-white flex justify-between items-center relative z-50">
+      <nav className="bg-[#3f505d] p-2 text-white flex justify-between items-center relative z-50">
         {/* Back button */}
         <button
           onClick={goBack}
@@ -164,6 +164,12 @@ const Navbar = () => {
             createdAt="2025-02-4"
             link="/client/rjoc_dt/overview"
             dashboardId="5"
+          />
+          <Card
+            name="RJOC-DT-Live"
+            createdAt="2025-02-12"
+            link="/client/rjoclive/overview"
+            dashboardId="6"
           />
         </div>
       </div>

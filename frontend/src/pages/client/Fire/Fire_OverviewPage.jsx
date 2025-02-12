@@ -140,28 +140,32 @@ const Fire_OverviewPage = () => {
   };
 
   return (
-    <div className="min-h-[calc(100vh-80px)] bg-gray-900 text-white">
+    <div className="min-h-screen bg-[#33414C] text-white">
       <div className="grid grid-cols-2 gap-2 px-4 pt-3">
-        <Chart
-          labels={alarmsData.labels}
-          dataPoints={alarmsData.dataPoints}
-          title="ALARMS CHART"
-          colors={alarmsData.colors}
-          showValues
-          onBarClick={(attribute) => handleBarClick(attribute, 0)} // Chart index 0
-        />
-        <Chart
-          labels={["Total", "Offline", "Online"]}
-          dataPoints={deviceStatusData.dataPoints}
-          title="IoT Device Status"
-          colors={deviceStatusData.colors}
-          showValues
-          onBarClick={(attribute) => handleBarClick(attribute, 1)} // Chart index 1
-        />
-        <div className="col-span-2 !h-20px">
+        <div className="bg-[#3f505d] rounded-lg shadow-md p-4">
+          <Chart
+            labels={alarmsData.labels}
+            dataPoints={alarmsData.dataPoints}
+            title="ALARMS CHART"
+            colors={alarmsData.colors}
+            showValues
+            onBarClick={(attribute) => handleBarClick(attribute, 0)}
+          />
+        </div>
+        <div className="bg-[#3f505d] rounded-lg shadow-md p-4">
+          <Chart
+            labels={["Total", "Offline", "Online"]}
+            dataPoints={deviceStatusData.dataPoints}
+            title="IoT Device Status"
+            colors={deviceStatusData.colors}
+            showValues
+            onBarClick={(attribute) => handleBarClick(attribute, 1)}
+          />
+        </div>
+        <div className="col-span-2 bg-[#3f505d] rounded-lg shadow-md p-4 overflow-hidden">
           <div className="flex mb-4">
             <div className="flex items-center mr-8">
-              <div className="w-4 h-4 bg-[#4C7CB2] mr-2"></div>
+              <div className="w-4 h-4 bg-[#00b0f0] mr-2"></div>
               <span>Total Alarms</span>
             </div>
             <div className="flex items-center mr-8">
@@ -169,7 +173,7 @@ const Fire_OverviewPage = () => {
               <span>False Alarms</span>
             </div>
             <div className="flex items-center">
-              <div className="w-4 h-4 bg-[#F44336] mr-2"></div>
+              <div className="w-4 h-4 bg-[#EC0808] mr-2"></div>
               <span>True Alarms</span>
             </div>
           </div>
@@ -178,7 +182,7 @@ const Fire_OverviewPage = () => {
             dataPoints={hourlyTrendData.datasets.map((d) => d.dataPoints)}
             title="Hourly Trend"
             colors={hourlyTrendData.datasets.map((d) => d.color)}
-            showValues={true}
+            showValues
             onBarClick={(attribute) => handleBarClick(attribute, 2)}
           />
         </div>
