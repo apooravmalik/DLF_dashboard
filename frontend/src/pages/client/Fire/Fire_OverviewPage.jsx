@@ -1,7 +1,7 @@
 import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { FireContext } from "../../../context/FireContext";
-import Chart from "../../../components/Chart";
+import BigBarChart from "../../../components/BigBarChart";
 import StackedBarChart from "../../../components/StackedBarChart";
 
 const Fire_OverviewPage = () => {
@@ -31,12 +31,16 @@ const Fire_OverviewPage = () => {
       fireData[0]?.overview_query?.data.map((item) => item.count) || [],
     colors: ["#4C7CB2", "#78629A", "#EC0808"],
   };
+  console.log("Device Status Data:", fireData[1]?.overview_query?.data);
 
   const deviceStatusData = {
-    labels: fireData[1]?.overview_query?.legends || [],
-    dataPoints:
-      fireData[1]?.overview_query?.data.map((item) => item.count) || [],
-    colors: ["#06245E", "#EC0808", "#06A650"],
+    labels: ["Total", "Offline", "Online"],  // Labels for the chart
+    dataPoints: [
+      fireData[1]?.overview_query?.data?.find(item => item.attribute === "Total")?.count || 0,  // Total count (7)
+      fireData[1]?.overview_query?.data?.find(item => item.attribute === "Offline")?.count || 0,  // Offline count (2)
+      fireData[1]?.overview_query?.data?.find(item => item.attribute === "Online")?.count || 0   // Online count (5)
+    ],
+    colors: ["#06245E", "#EC0808", "#06A650"]  // Colors for each status
   };
 
   // Updated formatHourlyTrendData function
@@ -140,28 +144,33 @@ const Fire_OverviewPage = () => {
   };
 
   return (
-    <div className="min-h-[calc(100vh-80px)] bg-gray-900 text-white">
-      <div className="grid grid-cols-2 gap-2 px-4 pt-3">
-        <Chart
-          labels={alarmsData.labels}
-          dataPoints={alarmsData.dataPoints}
-          title="ALARMS CHART"
-          colors={alarmsData.colors}
-          showValues
-          onBarClick={(attribute) => handleBarClick(attribute, 0)} // Chart index 0
-        />
-        <Chart
-          labels={["Total", "Offline", "Online"]}
-          dataPoints={deviceStatusData.dataPoints}
-          title="IoT Device Status"
-          colors={deviceStatusData.colors}
-          showValues
-          onBarClick={(attribute) => handleBarClick(attribute, 1)} // Chart index 1
-        />
-        <div className="col-span-2 !h-20px">
+    <div className="min-h-screen bg-[#33414C] text-white">
+      <h1 className="text-2xl font-bold text-center">Fire Dashboard</h1>
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 gap-4">
+        <div className="bg-[#3f505d] rounded-lg shadow-md p-4">
+          <BigBarChart
+            labels={alarmsData.labels}
+            dataPoints={alarmsData.dataPoints}
+            title="ALARMS CHART"
+            colors={alarmsData.colors}
+            showValues
+            onBarClick={(attribute) => handleBarClick(attribute, 0)}
+          />
+        </div>
+        <div className="bg-[#3f505d] rounded-lg shadow-md p-4">
+          <BigBarChart
+			labels={deviceStatusData.labels}        // ["Total", "Offline", "Online"]
+			dataPoints={deviceStatusData.dataPoints} // [7, 2, 5]
+			title="IoT Device Status"
+			colors={deviceStatusData.colors}        // ["#06245E", "#EC0808", "#06A650"]
+			showValues
+			onBarClick={(attribute) => handleBarClick(attribute, 1)}  // handle the bar click event
+		  />
+        </div>
+        <div className="col-span-2 bg-[#3f505d] rounded-lg shadow-md p-4 overflow-hidden">
           <div className="flex mb-4">
             <div className="flex items-center mr-8">
-              <div className="w-4 h-4 bg-[#4C7CB2] mr-2"></div>
+              <div className="w-4 h-4 bg-[#00b0f0] mr-2"></div>
               <span>Total Alarms</span>
             </div>
             <div className="flex items-center mr-8">
@@ -169,7 +178,7 @@ const Fire_OverviewPage = () => {
               <span>False Alarms</span>
             </div>
             <div className="flex items-center">
-              <div className="w-4 h-4 bg-[#F44336] mr-2"></div>
+              <div className="w-4 h-4 bg-[#EC0808] mr-2"></div>
               <span>True Alarms</span>
             </div>
           </div>
@@ -178,7 +187,7 @@ const Fire_OverviewPage = () => {
             dataPoints={hourlyTrendData.datasets.map((d) => d.dataPoints)}
             title="Hourly Trend"
             colors={hourlyTrendData.datasets.map((d) => d.color)}
-            showValues={true}
+            showValues
             onBarClick={(attribute) => handleBarClick(attribute, 2)}
           />
         </div>

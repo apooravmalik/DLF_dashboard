@@ -1,0 +1,5951 @@
+{
+  "last_refresh_time": "2025-05-05T13:22:30.751280",
+  "next_refresh_time": "2025-05-05T13:32:30.751280",
+  "data": [
+    {
+      "chart_name": "Recorder Status",
+      "overview_query": {
+        "chart_name": "Recorder Status",
+        "legends": [
+          "Total",
+          "Online",
+          "Offline"
+        ],
+        "data": [
+          {
+            "attribute": "Total",
+            "count": 148
+          },
+          {
+            "attribute": "Online",
+            "count": 148
+          },
+          {
+            "attribute": "Offline",
+            "count": 0
+          }
+        ],
+        "query": "SELECT COUNT(*) AS 'Total', SUM(CASE WHEN ptsCurrentState_LNG = 1 THEN 1 ELSE 0 END) AS 'Online', SUM(CASE WHEN ptsCurrentState_LNG = 2 THEN 1 ELSE 0 END) AS 'Offline' FROM PingTest_TBL WHERE ptsCameraZone_FRK = 3 AND (PingTest_PRK NOT BETWEEN 603 AND 786) AND (PingTest_PRK NOT BETWEEN 800 AND 806) AND (PingTest_PRK NOT BETWEEN 882 AND 888);"
+      },
+      "drill_down_query": {
+        "chart_name": "Recorder Status Building Wise",
+        "legends": [
+          "Building Name",
+          "Online",
+          "Offline"
+        ],
+        "data": [
+          {
+            "attribute": "Building Name",
+            "value": "Building 10",
+            "counts": [
+              {
+                "type": "Online",
+                "value": 80
+              },
+              {
+                "type": "Offline",
+                "value": 0
+              }
+            ]
+          },
+          {
+            "attribute": "Building Name",
+            "value": "Building 8",
+            "counts": [
+              {
+                "type": "Online",
+                "value": 57
+              },
+              {
+                "type": "Offline",
+                "value": 0
+              }
+            ]
+          },
+          {
+            "attribute": "Building Name",
+            "value": "GatewayTower",
+            "counts": [
+              {
+                "type": "Online",
+                "value": 11
+              },
+              {
+                "type": "Offline",
+                "value": 0
+              }
+            ]
+          }
+        ],
+        "query": "SELECT bldBuildingName_TXT AS 'Building Name', SUM(CASE WHEN pts.ptsCurrentState_LNG = 1 THEN 1 ELSE 0 END) AS 'Online', SUM(CASE WHEN pts.ptsCurrentState_LNG = 2 THEN 1 ELSE 0 END) AS 'Offline' FROM PingTest_TBL pts JOIN Building_TBL ON Building_PRK = ptsBuilding_FRK JOIN CameraZone_TBL ON CameraZone_PRK = ptsCameraZone_FRK WHERE ptsCameraZone_FRK = 3 AND (PingTest_PRK NOT BETWEEN 603 AND 786) AND (PingTest_PRK NOT BETWEEN 800 AND 806) AND (PingTest_PRK NOT BETWEEN 882 AND 888) GROUP BY bldBuildingName_TXT ORDER BY [Building Name];"
+      },
+      "report_query": {
+        "chart_name": "Recorder Status Building Wise Report",
+        "legends": [],
+        "data": [
+          {
+            "attribute": "Device Name",
+            "count": "Building10_102"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.0.102"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building10_103"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.0.103"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building10_104"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.0.104"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building10_105"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.0.105"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building10_106"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.0.106"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building10_107"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.0.107"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building10_108"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.0.108"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building10_109"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.0.109"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building10_110"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.0.110"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building10_111"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.0.111"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building10_112"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.0.112"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building10_113"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.0.113"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building10_114"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.0.114"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building10_115"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.0.115"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building10_116"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.0.116"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building10_117"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.0.117"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building10_118"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.0.118"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building10_119"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.0.119"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building10_120"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.0.120"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building10_121"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.0.121"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building10_122"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.0.122"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building10_123"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.0.123"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building10_124"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.0.124"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building10_125"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.0.125"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building10_126"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.0.126"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building10_127"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.0.127"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building10_128"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.0.128"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building10_129"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.0.129"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building10_130"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.0.130"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building10_131"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.0.131"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building10_132"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.0.132"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building10_133"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.0.133"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building10_134"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.0.134"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building10_135"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.0.135"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building10_136"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.0.136"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building10_137"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.0.137"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building10_138"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.0.138"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building10_139"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.0.139"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building10_141"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.0.141"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building10_142"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.0.142"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building10_143"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.0.143"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building10_144"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.0.144"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building10_145"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.0.145"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building10_146"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.0.146"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building10_147"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.0.147"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building10_148"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.0.148"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building10_149"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.0.149"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building10_150"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.0.150"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building10_151"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.0.151"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building10_152"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.0.152"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building10_153"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.0.153"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building10_154"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.0.154"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building10_155"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.0.155"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building10_156"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.0.156"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building10_157"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.0.157"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building10_158"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.0.158"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building10_159"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.0.159"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building10_160"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.0.160"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building10_161"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.0.161"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building10_162"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.0.162"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building10_163"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.0.163"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building10_164"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.0.164"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building10_165"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.0.165"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building10_166"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.0.166"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building10_167"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.0.167"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building10_168"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.0.168"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building10_169"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.0.169"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building10_170"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.0.179"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building10_171"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.0.171"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building10_172"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.0.172"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building10_173"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.0.173"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building10_174"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.0.174"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building10_175"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.0.175"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building10_176"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.0.176"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building10_177"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.0.177"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building10_192(2)_NVR"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.0.192"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "NVR"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building10_193(2)_NVR"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.0.194"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "NVR"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building10_194(2)_NVR"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.0.194"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "NVR"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building10_JOC_NVR"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.0.101"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "NVR"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Builidng 10"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.0.104"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building 8(21)"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.16.21"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 8"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building 8(22)"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.16.22"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 8"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building 8(23)"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.16.23"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 8"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building 8(24)"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.16.24"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 8"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building 8(25)"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.16.25"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 8"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building 8(26)"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.16.26"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 8"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building 8(27)"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.16.27"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 8"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building 8(28)"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.16.28"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 8"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building 8(29)"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.16.29"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 8"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building 8(30)"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.16.30"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 8"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building 8(31)"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.16.31"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 8"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building 8(32)"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.16.32"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 8"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building 8(33)"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.16.33"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 8"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building 8(34)"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.16.34"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 8"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building 8(35)"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.16.35"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 8"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building 8(36)"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.16.36"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 8"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building 8(37)"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.16.37"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 8"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building 8(38)"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.16.38"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 8"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building 8(39)"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.16.39"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 8"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building 8(40)"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.16.40"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 8"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building 8(41)"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.16.41"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 8"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building 8(42)"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.16.42"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 8"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building 8(43)"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.16.43"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 8"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building 8(44)"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.16.44"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 8"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building 8(45)"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.16.45"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 8"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building 8(46)"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.16.46"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 8"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building 8(47)"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.16.47"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 8"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building 8(48)"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.16.48"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 8"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building 8(49)"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.16.49"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 8"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building 8(50)"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.16.50"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 8"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building 8(51)"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.16.51"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 8"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building 8(52)"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.16.52"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 8"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building 8(53)"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.16.53"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 8"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building 8(54)"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.16.54"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 8"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building 8(55)"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.16.55"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 8"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building 8(56)"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.16.56"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 8"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building 8(57)"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.16.57"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 8"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building 8(58)"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.16.58"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 8"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building 8(59)"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.16.59"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 8"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building 8(60)"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.16.60"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 8"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building 8(61)"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.16.61"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 8"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building 8(62)"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.16.62"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 8"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building 8(63)"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.16.63"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 8"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building 8(64)"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.16.64"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 8"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building 8(65)"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.16.65"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 8"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building 8(67)"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.16.67"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 8"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building 8(68)"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.16.68"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 8"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building 8(69)"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.16.69"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 8"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building 8(70)"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.16.70"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 8"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building 8(71)"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.16.71"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 8"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building 8(72)"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.16.72"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 8"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building 8(73)"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.16.73"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 8"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building 8(74)"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.16.74"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 8"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building 8(75)"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.16.75"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 8"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building 8(76)"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.16.76"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 8"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building 8(77)_NVR"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.16.77"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 8"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "NVR"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Building 8(78)"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.16.78"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 8"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Gateway tower dvr 10(27)"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.24.27"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "GatewayTower"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "DVR"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Gateway tower dvr 11(28)"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.24.28"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "GatewayTower"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "DVR"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Gateway tower DVR 12(31)"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.24.31"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "GatewayTower"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "DVR"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Gateway tower dvr 4(21)"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.24.21"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "GatewayTower"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "DVR"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Gateway tower dvr 5(22)"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.24.22"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "GatewayTower"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "DVR"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Gateway tower dvr 6(23)"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.24.23"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "GatewayTower"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "DVR"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Gateway tower dvr 7(24)"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.24.24"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "GatewayTower"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "DVR"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Gateway tower dvr 8(25)"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.24.25"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "GatewayTower"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "DVR"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Gateway tower dvr 9(26)"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.24.26"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "GatewayTower"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "DVR"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Gateway tower(30)"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.24.30"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "GatewayTower"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Gateway tower12(30)"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.24.30"
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "GatewayTower"
+          },
+          {
+            "attribute": "Device Type",
+            "count": "Unknown"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          }
+        ],
+        "query": "SELECT ptsDeviceName_TXT AS 'Device Name', ptsIPAddress_TXT AS 'IP Detail', strName_TXT AS 'Region', bldBuildingName_TXT AS 'Building Name', CASE WHEN ptsDeviceName_TXT LIKE '%DVR%' THEN 'DVR' WHEN ptsDeviceName_TXT LIKE '%NVR%' THEN 'NVR' ELSE 'Unknown' END AS 'Device Type', ptsOfflineTime_DTM AS 'Offline Date Time', CASE WHEN ptsCurrentState_LNG = 2 AND ptsOfflineTime_DTM IS NOT NULL THEN 'Offline' WHEN ptsCurrentState_LNG = 1 THEN 'Online' END AS Status, DATEDIFF(HH, ptsOfflineTime_DTM, GETDATE()) AS 'Down Time (hours)' FROM [TEST].[dbo].PingTest_TBL JOIN [TEST].[dbo].Building_TBL ON Building_PRK = ptsBuilding_FRK JOIN [TEST].[dbo].Street_TBL ON Street_PRK = ptsStreet_FRK JOIN [TEST].[dbo].CameraZone_TBL ON CameraZone_PRK = ptsCameraZone_FRK WHERE ptsCameraZone_FRK = 3 AND PingTest_PRK NOT BETWEEN 158 AND 167 AND PingTest_PRK NOT BETWEEN 603 AND 786 AND PingTest_PRK NOT BETWEEN 800 AND 806 AND PingTest_PRK NOT BETWEEN 882 AND 883 AND ptsDeviceName_TXT NOT LIKE '%GGN%' ORDER BY [Building Name], Region, [Device Name];"
+      }
+    },
+    {
+      "chart_name": "Camera Status",
+      "overview_query": {
+        "chart_name": "Camera Status",
+        "legends": [
+          "Total",
+          "Online",
+          "Offline"
+        ],
+        "data": [
+          {
+            "attribute": "Total",
+            "count": 0
+          },
+          {
+            "attribute": "Online",
+            "count": null
+          },
+          {
+            "attribute": "Offline",
+            "count": null
+          }
+        ],
+        "query": "SELECT COUNT(*) AS Total, SUM(CASE WHEN nc.ConnectionStatus = 1 THEN 1 ELSE 0 END) AS Online, SUM(CASE WHEN nc.ConnectionStatus = 0 THEN 1 ELSE 0 END) AS Offline FROM Veracity_Middleware_DB.dbo.NVRChannels nc JOIN Device_TBL dt ON nc.ID = dt.dvcNvrChannel_FRK WHERE dt.dvcZone_FRK = 3;"
+      },
+      "drill_down_query": {
+        "chart_name": "Camera Building wise Status",
+        "legends": [
+          "Total",
+          "Online",
+          "Offline"
+        ],
+        "data": [],
+        "query": "SELECT bt.bldBuildingName_TXT AS BuildingName, SUM(CASE WHEN nvr.ConnectionStatus = 1 AND nc.ConnectionStatus = 1 THEN 1 ELSE 0 END) AS Online, SUM(CASE WHEN (nvr.ConnectionStatus = 1 AND nc.ConnectionStatus = 0) OR (nvr.ConnectionStatus = 0 AND nc.ConnectionStatus IN (1, 0)) THEN 1 ELSE 0 END) AS Offline FROM Device_TBL dt JOIN NVRChannel_TBL nct ON nct.NVRChannel_PRK = dt.dvcNvrChannel_FRK JOIN Camera_TBL ct ON ct.Camera_PRK = nct.nchCamera_FRK JOIN CameraZone_TBL czt ON czt.CameraZone_PRK = dt.dvcZone_FRK JOIN Street_TBL st ON st.Street_PRK = dt.dvcStreet_FRK JOIN Building_TBL bt ON bt.Building_PRK = dt.dvcBuilding_FRK JOIN Veracity_Middleware_DB.dbo.NVRChannels nc ON nc.ID = nct.NVRChannel_PRK JOIN Veracity_Middleware_DB.dbo.NVR nvr ON nvr.ID = nc.NvrID WHERE dt.dvcZone_FRK = 3 GROUP BY bt.bldBuildingName_TXT ORDER BY bt.bldBuildingName_TXT;"
+      },
+      "report_query": {
+        "chart_name": "Camera Status Report",
+        "legends": [],
+        "data": [],
+        "query": "SELECT CASE WHEN LEFT(dvcName_TXT, 3) = 'Cam' THEN STUFF(dvcName_TXT, 1, 3, '') ELSE dvcName_TXT END AS 'Device Name', NVR.ipAddress AS 'IP Detail', NVRChannel_TBL.nchChannelNumber_LNG AS 'Device Channel', strName_TXT AS 'Region', bldBuildingName_TXT AS 'Building Name', nvrAlias_TXT as 'Recorder Name', CASE WHEN NVRChannels.ConnectionStatus = 0 THEN NVRChannels.ModificationDate ELSE NULL END AS 'Offline Date Time', CASE WHEN NVRChannels.ConnectionStatus = 0 THEN 'Offline' WHEN NVRChannels.ConnectionStatus = 1 THEN 'Online' ELSE 'Unknown' END AS 'Status', CASE WHEN NVRChannels.ConnectionStatus = 0 AND NVRChannels.ModificationDate IS NOT NULL THEN DATEDIFF(HOUR, NVRChannels.ModificationDate, GETDATE()) ELSE NULL END AS 'Down Time (hours)' FROM Device_TBL JOIN NVRChannel_TBL ON NVRChannel_PRK = dvcNvrChannel_FRK JOIN Camera_TBL ON Camera_PRK = nchCamera_FRK JOIN CameraZone_TBL ON CameraZone_PRK = dvcZone_FRK JOIN Street_TBL ON Street_PRK = dvcStreet_FRK JOIN Building_TBL ON Building_PRK = dvcBuilding_FRK JOIN Veracity_Middleware_DB.dbo.NVRChannels ON NVRChannels.ID = NVRChannel_PRK JOIN Veracity_Middleware_DB.dbo.NVR ON NVR.ID = NvrID join NVR_TBL on nchNVR_FRK=NVR_PRK WHERE dvcZone_FRK = 3 AND dvcName_TXT NOT LIKE '%GGN%' ORDER BY [Building Name], [Region], [Device Name];"
+      }
+    },
+    {
+      "chart_name": "ACS Controller Status",
+      "overview_query": {
+        "chart_name": "ACS Controller Status",
+        "legends": [
+          "Total",
+          "Online",
+          "Offline"
+        ],
+        "data": [
+          {
+            "attribute": "Total",
+            "count": 0
+          },
+          {
+            "attribute": "Online",
+            "count": null
+          },
+          {
+            "attribute": "Offline",
+            "count": null
+          }
+        ],
+        "query": "SELECT COUNT(*) AS 'Total', SUM(CASE WHEN ptsCurrentState_LNG = 1 THEN 1 ELSE 0 END) AS 'Online', SUM(CASE WHEN ptsCurrentState_LNG = 2 THEN 1 ELSE 0 END) AS 'Offline' FROM PingTest_TBL WHERE ptsCameraZone_FRK = 3 AND (PingTest_PRK BETWEEN 603 AND 786 OR PingTest_PRK BETWEEN 882 AND 888);"
+      },
+      "drill_down_query": {
+        "chart_name": "ACS Controller Building wise Status",
+        "legends": [
+          "Total",
+          "Online",
+          "Offline"
+        ],
+        "data": [],
+        "query": "SELECT bld.bldBuildingName_TXT AS 'Building Name', SUM(CASE WHEN ptsCurrentState_LNG = 1 THEN 1 ELSE 0 END) AS 'Online', SUM(CASE WHEN ptsCurrentState_LNG = 2 THEN 1 ELSE 0 END) AS 'Offline' FROM PingTest_TBL pts JOIN Building_TBL bld ON Building_PRK = ptsBuilding_FRK JOIN Street_TBL st ON Street_PRK = ptsStreet_FRK JOIN CameraZone_TBL cz ON CameraZone_PRK = ptsCameraZone_FRK WHERE ptsCameraZone_FRK = 3 AND (PingTest_PRK BETWEEN 603 AND 786 OR PingTest_PRK BETWEEN 882 AND 888) GROUP BY bldBuildingName_TXT ORDER BY [Building Name];"
+      },
+      "report_query": {
+        "chart_name": "ACS Controller Status Report",
+        "legends": [],
+        "data": [],
+        "query": "SELECT ptsDeviceName_TXT AS 'Device Name', ptsIPAddress_TXT AS 'IP Detail', strName_TXT AS 'Region', bldBuildingName_TXT AS 'Building Name', ptsOfflineTime_DTM AS 'Offline Date Time', CASE WHEN ptsCurrentState_LNG = 2 AND ptsOfflineTime_DTM IS NOT NULL THEN 'Offline' WHEN ptsCurrentState_LNG = 1 THEN 'Online' END AS Status, DATEDIFF(HH, ptsOfflineTime_DTM, GETDATE()) AS 'Down Time (hours)' FROM PingTest_TBL JOIN Building_TBL ON Building_PRK = ptsBuilding_FRK JOIN Street_TBL ON Street_PRK = ptsStreet_FRK WHERE ptsCameraZone_FRK = 3 AND (PingTest_PRK BETWEEN 603 AND 786 OR PingTest_PRK BETWEEN 882 AND 888);"
+      }
+    },
+    {
+      "chart_name": "Flap Barrier Status",
+      "overview_query": {
+        "chart_name": "Flap Barrier Status",
+        "legends": [
+          "Total",
+          "Online",
+          "Offline"
+        ],
+        "data": [
+          {
+            "attribute": "Total",
+            "count": null
+          },
+          {
+            "attribute": "Online",
+            "count": null
+          },
+          {
+            "attribute": "Offline",
+            "count": null
+          }
+        ],
+        "query": "SELECT SUM(COALESCE([Online], 0)) + SUM(COALESCE([Offline], 0)) AS Total, SUM(COALESCE([Online], 0)) AS Online, SUM(COALESCE([Offline], 0)) AS Offline FROM (SELECT bldBuildingName_TXT AS 'Building Name', COALESCE([Online], 0) AS [Online], COALESCE([Offline], 0) AS [Offline] FROM (SELECT bldBuildingName_TXT, CASE WHEN dvcCurrentState_TXT IN ('ACCESS GRANTED', 'ACCESS DENIED', 'NEW ONE UNKNOWN CARD', 'Door Left Open', 'Door open too long', 'Door Forced Open', 'Door Close', 'Door Open', 'Online', 'VOID', 'UNKNOWN') THEN 'Online' WHEN dvcCurrentState_TXT = 'Offline' THEN 'Offline' ELSE 'Online' END AS Status, Device_PRK FROM Device_TBL LEFT JOIN Building_TBL ON dvcBuilding_FRK = Building_PRK WHERE dvcDeviceType_FRK = 22 AND dvcName_TXT LIKE '%Siemens%') AS SourceTable PIVOT (COUNT(Device_PRK) FOR Status IN ([Online], [Offline])) AS PivotTable) AS Totals;"
+      },
+      "drill_down_query": {
+        "chart_name": "Flap Barrier Building wise Status",
+        "legends": [],
+        "data": [
+          {
+            "attribute": "Building Name",
+            "value": "Building 10",
+            "counts": [
+              {
+                "type": "Online",
+                "value": 25
+              },
+              {
+                "type": "Offline",
+                "value": 10
+              },
+              {
+                "type": "Total",
+                "value": 35
+              }
+            ]
+          }
+        ],
+        "query": "SELECT BuildingLabel AS [Building Name], COALESCE([Online], 0) AS [Online], COALESCE([Offline], 0) AS [Offline], COALESCE([Online], 0) + COALESCE([Offline], 0) AS [Total] FROM (SELECT CASE WHEN dvcName_TXT LIKE '%ggn_bldg-10%' THEN 'Building 10' WHEN dvcName_TXT LIKE '%ggn_bldg-8%' THEN 'Building 8' WHEN dvcName_TXT LIKE '%ggn_bldg-5%' THEN 'Building 5' WHEN dvcName_TXT LIKE '%ggn_bldg-6%' THEN 'Building 6' WHEN dvcName_TXT LIKE '%ggn_bldg-7%' THEN 'Building 7' WHEN dvcName_TXT LIKE '%ggn_bldg-9%' THEN 'Building 9' WHEN dvcName_TXT LIKE '%ggn_bldg-14%' THEN 'Building 14' WHEN dvcName_TXT LIKE '%ggn_gateway%' THEN 'GatewayTower' WHEN dvcName_TXT LIKE '%ggn_cyber%' THEN 'Cyber Green' WHEN dvcName_TXT LIKE '%ggn_infinity%' THEN 'Infinity' ELSE 'Other' END AS BuildingLabel, CASE WHEN dvcCurrentState_TXT IN ('ACCESS GRANTED', 'ACCESS DENIED', 'NEW ONE UNKNOWN CARD', 'Door Left Open', 'Door open too long', 'Door Forced Open', 'Door Close', 'Door Open', 'Online', 'VOID', 'UNKNOWN') THEN 'Online' WHEN dvcCurrentState_TXT = 'Offline' THEN 'Offline' ELSE 'Online' END AS Status, Device_PRK FROM Device_TBL WHERE dvcDeviceType_FRK = 22 AND dvcName_TXT LIKE '%ggn_bldg-%') AS SourceTable PIVOT (COUNT(Device_PRK) FOR Status IN ([Online], [Offline])) AS PivotTable ORDER BY [Building Name];"
+      },
+      "report_query": {
+        "chart_name": "Flap Barrier Status Report",
+        "legends": [],
+        "data": [
+          {
+            "attribute": "Device Name",
+            "count": "GGN_BLDG-10_LG_CCTV_RM_IN"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": null
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "GGN_BLDG-10_TA_GF WB_FLAP-1_READER_IN"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": null
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "GGN_BLDG-10_TA_GF WB_FLAP-1_READER_OUT"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": null
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "GGN_BLDG-10_TA_GF WB_P_GATE_READER_IN"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": null
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "GGN_BLDG-10_TA_GF WB_P_GATE_READER_OUT"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": null
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "GGN_BLDG-10_TA_GF_FLAP-1_READER_IN"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": null
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "GGN_BLDG-10_TA_GF_FLAP-2_READER_IN"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": null
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "GGN_BLDG-10_TA_GF_FLAP-2_READER_OUT"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": null
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "GGN_BLDG-10_TA_GF_P GATE_READER_IN"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": null
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "GGN_BLDG-10_TA_GF_P GATE_READER_OUT"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": null
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "GGN_BLDG-10_TB_B1_HT_RMM_RRADER_IN"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": null
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "GGN_BLDG-10_TB_GF WB_FLAP-1_READER_IN"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": null
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "GGN_BLDG-10_TB_GF WB_FLAP-1_READER_OUT"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": null
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "GGN_BLDG-10_TB_GF WB_P_GATE_READER_IN"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": null
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "GGN_BLDG-10_TB_GF WB_P_GATE_READER_OUT"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": null
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "GGN_BLDG-10_TB_GF_FLAP-1_READER_IN"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": null
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "GGN_BLDG-10_TB_GF_FLAP-1_READER_OUT"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": null
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "GGN_BLDG-10_TB_GF_FLAP-2_READER_IN"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": null
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "GGN_BLDG-10_TB_GF_FLAP-2_READER_OUT"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": null
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "GGN_BLDG-10_TB_GF_FLAP-3_READER_IN"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": null
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "GGN_BLDG-10_TB_GF_FLAP-3_READER_OUT"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": null
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "GGN_BLDG-10_TB_GF_FLAP-4_READER_IN"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": null
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "GGN_BLDG-10_TB_GF_FLAP-4_READER_OUT"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": null
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "GGN_BLDG-10_TB_GF_P GATE_READER_IN"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": null
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "GGN_BLDG-10_TB_GF_P GATE_READER_OUT"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": null
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "GGN_BLDG-10_TC_GF_FLAP-1_READER_IN"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": null
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": "2024-11-06T11:00:14"
+          },
+          {
+            "attribute": "Status",
+            "count": "Offline"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": 4322
+          },
+          {
+            "attribute": "Device Name",
+            "count": "GGN_BLDG-10_TC_GF_FLAP-1_READER_OUT"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": null
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": "2024-11-15T19:09:31"
+          },
+          {
+            "attribute": "Status",
+            "count": "Offline"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": 4098
+          },
+          {
+            "attribute": "Device Name",
+            "count": "GGN_BLDG-10_TC_GF_FLAP-2_READER_IN"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": null
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": "2024-11-15T19:06:31"
+          },
+          {
+            "attribute": "Status",
+            "count": "Offline"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": 4098
+          },
+          {
+            "attribute": "Device Name",
+            "count": "GGN_BLDG-10_TC_GF_FLAP-2_READER_OUT"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": null
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": "2024-11-14T17:32:21"
+          },
+          {
+            "attribute": "Status",
+            "count": "Offline"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": 4124
+          },
+          {
+            "attribute": "Device Name",
+            "count": "GGN_BLDG-10_TC_GF_FLAP-3_READER_IN"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": null
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": "2024-11-15T14:44:25"
+          },
+          {
+            "attribute": "Status",
+            "count": "Offline"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": 4103
+          },
+          {
+            "attribute": "Device Name",
+            "count": "GGN_BLDG-10_TC_GF_FLAP-3_READER_OUT"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": null
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": "2024-11-15T19:10:00"
+          },
+          {
+            "attribute": "Status",
+            "count": "Offline"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": 4098
+          },
+          {
+            "attribute": "Device Name",
+            "count": "GGN_BLDG-10_TC_GF_FLAP-4_READER_IN"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": null
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": "2024-11-15T14:44:27"
+          },
+          {
+            "attribute": "Status",
+            "count": "Offline"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": 4103
+          },
+          {
+            "attribute": "Device Name",
+            "count": "GGN_BLDG-10_TC_GF_FLAP-4_READER_OUT"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": null
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": "2024-11-15T19:08:57"
+          },
+          {
+            "attribute": "Status",
+            "count": "Offline"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": 4098
+          },
+          {
+            "attribute": "Device Name",
+            "count": "GGN_BLDG-10_TC_GF_P GATE_READER_IN"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": null
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": "2024-11-15T19:09:34"
+          },
+          {
+            "attribute": "Status",
+            "count": "Offline"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": 4098
+          },
+          {
+            "attribute": "Device Name",
+            "count": "GGN_BLDG-10_TC_GF_P GATE_READER_OUT"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": null
+          },
+          {
+            "attribute": "Region",
+            "count": "RJOC 10 A"
+          },
+          {
+            "attribute": "Building Name",
+            "count": "Building 10"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": "2024-11-15T19:06:05"
+          },
+          {
+            "attribute": "Status",
+            "count": "Offline"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": 4098
+          }
+        ],
+        "query": "SELECT dvcName_TXT AS [Device Name], dvcIPAddress_TXT AS [IP Detail], 'RJOC 10 A' AS [Region], CASE WHEN dvcName_TXT LIKE '%ggn_bldg-10%' THEN 'Building 10' WHEN dvcName_TXT LIKE '%ggn_bldg-14%' THEN 'Building 14' WHEN dvcName_TXT LIKE '%ggn_bldg-5%' THEN 'Building 5' WHEN dvcName_TXT LIKE '%ggn_bldg-6%' THEN 'Building 6' WHEN dvcName_TXT LIKE '%ggn_bldg-7%' THEN 'Building 7' WHEN dvcName_TXT LIKE '%ggn_bldg-8%' THEN 'Building 8' WHEN dvcName_TXT LIKE '%ggn_bldg-9%' THEN 'Building 9' WHEN dvcName_TXT LIKE '%CG%' OR dvcName_TXT LIKE '%Cyber Green%' THEN 'Cyber Green' WHEN dvcName_TXT LIKE '%GatewayTower%' THEN 'GatewayTower' WHEN dvcName_TXT LIKE '%Infinity%' THEN 'Infinity' ELSE 'Unknown' END AS [Building Name], CASE WHEN dvcCurrentState_TXT = 'Offline' THEN dvcCurrentStateSetTime_DTM ELSE NULL END AS [Offline Date Time], CASE WHEN dvcCurrentState_TXT = 'Offline' THEN 'Offline' ELSE 'Online' END AS [Status], CASE WHEN dvcCurrentState_TXT = 'Offline' THEN DATEDIFF(HOUR, dvcCurrentStateSetTime_DTM, GETDATE()) ELSE NULL END AS [Down Time (hours)] FROM Device_TBL WHERE dvcDeviceType_FRK = 22 AND (dvcName_TXT LIKE '%ggn_bldg-10%' OR dvcName_TXT LIKE '%ggn_bldg-14%' OR dvcName_TXT LIKE '%ggn_bldg-5%' OR dvcName_TXT LIKE '%ggn_bldg-6%' OR dvcName_TXT LIKE '%ggn_bldg-7%' OR dvcName_TXT LIKE '%ggn_bldg-8%' OR dvcName_TXT LIKE '%ggn_bldg-9%' OR dvcName_TXT LIKE '%CG%' OR dvcName_TXT LIKE '%GatewayTower%' OR dvcName_TXT LIKE '%Infinity%');"
+      }
+    }
+  ],
+  "instance_id": 23820
+}

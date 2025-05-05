@@ -1,111 +1,82 @@
-// Import required libraries and components
-import { Link, useNavigate, useLocation } from "react-router-dom"; // For navigation and routing
-import { useState, useEffect } from "react"; // React hooks for state management and lifecycle methods
-import Card from "./Card"; // Custom Card component
-import DLFLogo from "../assets/DLF.NS_BIG.D.png"; // Importing DLF logo
-import VeracityLogo from "../assets/Veracity_logo.png"; // Importing Veracity logo
+import { Link, useNavigate, useLocation } from "react-router-dom";
+import { useState, useEffect } from "react";
+import Card from "./Card";
+import DLFLogo from "../assets/DLF.NS_BIG.D.png";
 
-// Navbar component
 const Navbar = () => {
-  // State to control whether the sidebar is open or closed
   const [isOpen, setIsOpen] = useState(false);
-
-  // State to store the refresh time (in seconds) selected by the user
-  const [refreshTime, setRefreshTime] = useState(null);
-
-  // Hooks for navigation and getting the current route
+  const [navbarVisible, setNavbarVisible] = useState(false);
+  const [mouseInTriggerZone, setMouseInTriggerZone] = useState(false);
+  const [mouseInNavbar, setMouseInNavbar] = useState(false);
+  
   const navigate = useNavigate();
   const location = useLocation();
 
-  // Function to toggle the sidebar open or closed
+  // Function to toggle the sidebar
   const toggleMenu = () => {
-    setIsOpen(!isOpen); // Invert the current state
+    setIsOpen(!isOpen);
   };
 
-  // Function to go back to the previous page (like a browser back button)
+  // Function to go back to the previous page
   const goBack = () => {
-    navigate(-1); // Navigate back by one page
+    navigate(-1);
   };
 
-  // Function to handle changes to the refresh time dropdown
-  const handleRefreshTimeChange = (event) => {
-    const time = parseInt(event.target.value, 10); // Convert selected value to an integer
-    setRefreshTime(time); // Update the refresh time state
-  };
+  // Check if we should show back button
+  const showBackButton = location.pathname.includes("drilldown") || location.pathname.includes("report");
 
-  // Effect that runs whenever `refreshTime` changes
+  // Effect to handle the navbar visibility
   useEffect(() => {
-    if (refreshTime) {
-      // Set a timer based on the refresh time selected by the user
+    if (mouseInTriggerZone || mouseInNavbar) {
+      setNavbarVisible(true);
+    } else {
+      // Add a small delay before hiding to avoid flickering
       const timer = setTimeout(() => {
-        // Get the current route path
-        const currentPath = location.pathname;
-
-        // Modify the current path to redirect to its corresponding overview page
-        const overviewPath = currentPath.replace(/\/[^/]+$/, "/overview");
-
-        // Navigate to the overview page
-        navigate(overviewPath, { replace: true });
-
-        // Refresh the page to force reloading data
-        window.location.reload();
-      }, refreshTime * 1000); // Convert seconds to milliseconds
-
-      // Cleanup function to clear the timer when the component unmounts or refreshTime changes
+        setNavbarVisible(false);
+      }, 300);
+      
       return () => clearTimeout(timer);
     }
-  }, [refreshTime, navigate, location.pathname]);
+  }, [mouseInTriggerZone, mouseInNavbar]);
 
-  // Return the JSX structure for the Navbar component
   return (
     <>
-      {/* Top navigation bar */}
-      <nav className="bg-gray-800 p-2 text-white flex justify-between items-center relative z-50">
-        {/* Back button */}
-        <button
-          onClick={goBack}
-          className="text-white focus:outline-none hover:bg-gray-700 rounded-full p-2"
-        >
-          ← Back {/* Unicode arrow for back */}
-        </button>
+      {/* Hover trigger zone - an invisible area at the top of the screen */}
+      <div 
+        className="fixed top-0 left-0 right-0 h-4 z-50"
+        onMouseEnter={() => setMouseInTriggerZone(true)}
+        onMouseLeave={() => setMouseInTriggerZone(false)}
+      />
 
-        {/* Logos section */}
-        <div className="flex items-center space-x-4">
-          {/* DLF logo */}
-          <img
-            src={DLFLogo}
-            alt="DLF Logo"
-            className="h-10" // Adjust height as needed
-          />
-          {/* Veracity logo */}
-          <img
-            src={VeracityLogo}
-            alt="Veracity Logo"
-            className="h-16" // Adjust height as needed
-          />
+      {/* Navbar - slides down when hovered */}
+      <nav 
+        className={`fixed top-0 left-0 right-0 bg-[#3f505d] p-2 text-white flex justify-between items-center z-40 transition-transform duration-300 ease-in-out ${
+          navbarVisible ? 'transform translate-y-0' : 'transform -translate-y-full'
+        }`}
+        onMouseEnter={() => setMouseInNavbar(true)}
+        onMouseLeave={() => setMouseInNavbar(false)}
+      >
+        {/* Back button (conditionally rendered) */}
+        <div className="w-1/3">
+          {showBackButton && (
+            <button
+              onClick={goBack}
+              className="text-white focus:outline-none hover:bg-gray-700 rounded-full p-2"
+            >
+              ← Back
+            </button>
+          )}
         </div>
 
-        {/* Right-side controls: refresh time dropdown and menu toggle button */}
-        <div className="flex items-center">
-          {/* Dropdown for selecting refresh time */}
-          <select
-            onChange={handleRefreshTimeChange}
-            className="bg-gray-700 text-white p-1 rounded-md mr-4"
-          >
-            <option value="">Select refresh time</option> {/* Default option */}
-            <option value="300">5 minutes</option>
-            <option value="600">10 minutes</option>
-            <option value="900">15 minutes</option>
-            <option value="1200">20 minutes</option>
-            <option value="1800">30 minutes</option>
-          </select>
+        {/* Logos section (always centered) */}
+        <div className="flex items-center space-x-4 w-1/3 justify-center">
+          <img src={DLFLogo} alt="DLF Logo" className="h-10" />
+        </div>
 
-          {/* Button to toggle the sidebar */}
-          <button
-            onClick={toggleMenu}
-            className="text-white focus:outline-none"
-          >
-            &#9776; {/* Unicode hamburger menu icon */}
+        {/* Sidebar toggle button (right-aligned) */}
+        <div className="w-1/3 flex justify-end">
+          <button onClick={toggleMenu} className="text-white focus:outline-none">
+            &#9776;
           </button>
         </div>
       </nav>
@@ -121,59 +92,24 @@ const Navbar = () => {
           onClick={toggleMenu}
           className="absolute top-4 right-4 text-white focus:outline-none"
         >
-          ✕ {/* Unicode cross icon */}
+          ✕
         </button>
 
         {/* Sidebar content */}
         <div className="p-6 space-y-4 mt-10">
-          {/* Links and cards */}
-          <Link to="/" className="block text-white hover:underline">
-            Home {/* Link to the home page */}
-          </Link>
-          <Link to="/query" className="block text-white hover:underline">
-            Admin {/* Link to the admin page */}
-          </Link>
-
-          {/* Cards representing different dashboards */}
-          <Card
-            name="Dashboard 1"
-            createdAt="2024-12-30"
-            link="/client/dashboard-1/overview"
-            dashboardId="1"
-          />
-          <Card
-            name="Fire"
-            createdAt="2024-12-30"
-            link="/client/fire/overview"
-            dashboardId="2"
-          />
-          <Card
-            name="Fire-ERT"
-            createdAt="2025-01-31"
-            link="/client/ert/overview"
-            dashboardId="3"
-          />
-          <Card
-            name="Fire-FLS"
-            createdAt="2025-01-31"
-            link="/client/fls/overview"
-            dashboardId="4"
-          />
-          <Card
-            name="RJOC-DT"
-            createdAt="2025-02-4"
-            link="/client/rjoc_dt/overview"
-            dashboardId="5"
-          />
+          <Card name="Fire" createdAt="2024-12-30" link="/client/fire/overview" dashboardId="2" />
+          <Card name="Fire-ERT" createdAt="2025-01-31" link="/client/ert/overview" dashboardId="3" />
+          <Card name="Fire-FLS" createdAt="2025-01-31" link="/client/fls/overview" dashboardId="4" />
+          <Card name="Malls" createdAt="2025-04-09" link="/client/Malls/overview" dashboardId="5" />
+          <Card name="ROI" createdAt="2025-04-10" link="/client/ROI/overview" dashboardId="6" />
+          <Card name="NCR2" createdAt="2025-04-10" link="/client/NCR2/overview" dashboardId="7" />
+          <Card name="NCR1" createdAt="2025-04-10" link="/" dashboardId="8" />
         </div>
       </div>
 
       {/* Overlay to close the sidebar when clicked outside */}
       {isOpen && (
-        <div
-          className="fixed inset-0 bg-black bg-opacity-50 z-40"
-          onClick={toggleMenu} // Close sidebar on clicking the overlay
-        ></div>
+        <div className="fixed inset-0 bg-black bg-opacity-50 z-40" onClick={toggleMenu}></div>
       )}
     </>
   );

@@ -1,0 +1,326 @@
+[
+    {
+        "chart_name": "Recorder Status",
+        "overview_query": {
+            "chart_name": "Overview of Recorder Status",
+            "legends": [
+                "Total Alarms",
+                "False Alarms",
+                "True Alarms"
+            ],
+            "data": [
+                {
+                    "attribute": "Total Alarms",
+                    "count": 534
+                },
+                {
+                    "attribute": "False Alarms",
+                    "count": 498
+                },
+                {
+                    "attribute": "True Alarms",
+                    "count": 0
+                }
+            ],
+            "query": "SELECT COUNT(CASE WHEN inlCategory_FRK = 2 THEN 1 END) AS [Total Alarms], COUNT(CASE WHEN inlSubCategory_FRK = 1 THEN 1 END) AS [False Alarms], COUNT(CASE WHEN inlSubCategory_FRK = 2 THEN 1 END) AS [True Alarms] FROM Test2.dbo.IncidentLog_TBL il LEFT JOIN Test2.dbo.ProEvent_TBL pe ON il.inlAlarmProEvent_FRK = pe.ProEvent_PRK LEFT JOIN Test2.dbo.DeviceStateLink_TBL dst ON dst.dstProEvent_FRK = pe.ProEvent_PRK LEFT JOIN Test2.dbo.Device_TBL d ON d.Device_PRK = dst.dstDevice_FRK LEFT JOIN Test2.dbo.IncidentCategory_TBL ict ON ict.IncidentCategory_PRK = il.inlCategory_FRK LEFT JOIN Test2.dbo.CameraZone_TBL czt ON czt.CameraZone_PRK = il.inlZone_FRK LEFT JOIN Test2.dbo.Street_TBL st ON st.Street_PRK = il.inlStreet_FRK LEFT JOIN Test2.dbo.Building_TBL b ON b.Building_PRK = il.inlBuilding_FRK LEFT JOIN Test2.dbo.Unit_TBL ut ON ut.Unit_PRK = il.inlUnit_FRK LEFT JOIN Test2.dbo.ProAlarmType_TBL pat ON pat.ProAlarmType_PRK = il.inlProAlarmType_FRK LEFT JOIN Test2.dbo.Camera_TBL ct ON ct.Camera_PRK = d.dvcCamera_FRK WHERE il.inlCategory_FRK IN (2) AND dvcName_TXT NOT LIKE '%panel zone 1%' AND il.inlDateTime_DTM >= DATEADD(DAY, -30, CAST(SYSDATETIME() AS DATE));"
+        },
+        "drill_down_query": {
+            "chart_name": "Alarm NCR Wise",
+            "legends": [
+                "Total Alarms",
+                "False Alarms",
+                "True Alarms"
+            ],
+            "data": [
+                {
+                    "attribute": "Total Alarms",
+                    "count": 534
+                },
+                {
+                    "attribute": "False Alarms",
+                    "count": 498
+                },
+                {
+                    "attribute": "True Alarms",
+                    "count": 0
+                }
+            ],
+            "query": "SELECT COUNT(CASE WHEN inlCategory_FRK = 2 THEN 1 END) AS [Total Alarms], COUNT(CASE WHEN inlSubCategory_FRK = 1 THEN 1 END) AS [False Alarms], COUNT(CASE WHEN inlSubCategory_FRK = 2 THEN 1 END) AS [True Alarms] FROM Test2.dbo.IncidentLog_TBL il LEFT JOIN Test2.dbo.ProEvent_TBL pe ON il.inlAlarmProEvent_FRK = pe.ProEvent_PRK LEFT JOIN Test2.dbo.DeviceStateLink_TBL dst ON dst.dstProEvent_FRK = pe.ProEvent_PRK LEFT JOIN Test2.dbo.Device_TBL d ON d.Device_PRK = dst.dstDevice_FRK LEFT JOIN Test2.dbo.IncidentCategory_TBL ict ON ict.IncidentCategory_PRK = il.inlCategory_FRK LEFT JOIN Test2.dbo.CameraZone_TBL czt ON czt.CameraZone_PRK = il.inlZone_FRK LEFT JOIN Test2.dbo.Street_TBL st ON st.Street_PRK = il.inlStreet_FRK LEFT JOIN Test2.dbo.Building_TBL b ON b.Building_PRK = il.inlBuilding_FRK LEFT JOIN Test2.dbo.Unit_TBL ut ON ut.Unit_PRK = il.inlUnit_FRK LEFT JOIN Test2.dbo.ProAlarmType_TBL pat ON pat.ProAlarmType_PRK = il.inlProAlarmType_FRK LEFT JOIN Test2.dbo.Camera_TBL ct ON ct.Camera_PRK = d.dvcCamera_FRK WHERE il.inlCategory_FRK IN (2) AND dvcName_TXT NOT LIKE '%panel zone 1%' AND il.inlDateTime_DTM >= DATEADD(DAY, -30, CAST(SYSDATETIME() AS DATE));"
+        },
+        "report_query": {
+            "chart_name": "Alarm building wise report",
+            "legends": [
+                "Total Alarms",
+                "False Alarms",
+                "True Alarms"
+            ],
+            "data": [
+                {
+                    "attribute": "Building",
+                    "count": "Building 10"
+                },
+                {
+                    "attribute": "False Alarms",
+                    "count": 94
+                },
+                {
+                    "attribute": "True Alarms",
+                    "count": 0
+                },
+                {
+                    "attribute": "TotalAlarms",
+                    "count": 104
+                },
+                {
+                    "attribute": "Building",
+                    "count": "Building 8"
+                },
+                {
+                    "attribute": "False Alarms",
+                    "count": 334
+                },
+                {
+                    "attribute": "True Alarms",
+                    "count": 0
+                },
+                {
+                    "attribute": "TotalAlarms",
+                    "count": 354
+                },
+                {
+                    "attribute": "Building",
+                    "count": "GatewayTower"
+                },
+                {
+                    "attribute": "False Alarms",
+                    "count": 70
+                },
+                {
+                    "attribute": "True Alarms",
+                    "count": 0
+                },
+                {
+                    "attribute": "TotalAlarms",
+                    "count": 76
+                }
+            ],
+            "query": "WITH AggregatedData AS ( SELECT SUM(CASE WHEN inlSubCategory_FRK = 1 THEN 1 ELSE 0 END) AS [False Alarms], SUM(CASE WHEN inlSubCategory_FRK = 2 THEN 1 ELSE 0 END) AS [True Alarms], bldBuildingName_TXT, COUNT(*) AS TotalAlarms FROM Test2.dbo.IncidentLog_TBL il LEFT OUTER JOIN Test2.dbo.ProEvent_TBL pe ON il.inlAlarmProEvent_FRK = pe.ProEvent_PRK LEFT OUTER JOIN Test2.dbo.DeviceStateLink_TBL dst ON dst.dstProEvent_FRK = pe.ProEvent_PRK LEFT OUTER JOIN Test2.dbo.Device_TBL d ON d.Device_PRK = dst.dstDevice_FRK LEFT OUTER JOIN Test2.dbo.Building_TBL b ON b.Building_PRK = il.inlBuilding_FRK WHERE il.inlCategory_FRK IN (2) AND dvcName_TXT NOT LIKE '%panel zone 1%' AND CAST(inlDateTime_DTM AS DATE) >= DATEADD(DAY, -30, CAST(GETDATE() AS DATE)) GROUP BY bldBuildingName_TXT ) SELECT COALESCE(a.bldBuildingName_TXT, 'Unknown Building') AS Building, COALESCE(a.[False Alarms], 0) AS [False Alarms], COALESCE(a.[True Alarms], 0) AS [True Alarms], COALESCE(a.TotalAlarms, 0) AS TotalAlarms FROM AggregatedData a ORDER BY a.bldBuildingName_TXT;"
+        }
+    },
+    {
+        "chart_name": "Recorder Status",
+        "overview_query": {
+            "chart_name": "Overview of Recorder Status",
+            "legends": [
+                "Total Alarms",
+                "False Alarms",
+                "True Alarms"
+            ],
+            "data": [
+                {
+                    "attribute": "Total Alarms",
+                    "count": 534
+                },
+                {
+                    "attribute": "False Alarms",
+                    "count": 498
+                },
+                {
+                    "attribute": "True Alarms",
+                    "count": 0
+                }
+            ],
+            "query": "SELECT COUNT(CASE WHEN inlCategory_FRK = 2 THEN 1 END) AS [Total Alarms], COUNT(CASE WHEN inlSubCategory_FRK = 1 THEN 1 END) AS [False Alarms], COUNT(CASE WHEN inlSubCategory_FRK = 2 THEN 1 END) AS [True Alarms] FROM Test2.dbo.IncidentLog_TBL il LEFT JOIN Test2.dbo.ProEvent_TBL pe ON il.inlAlarmProEvent_FRK = pe.ProEvent_PRK LEFT JOIN Test2.dbo.DeviceStateLink_TBL dst ON dst.dstProEvent_FRK = pe.ProEvent_PRK LEFT JOIN Test2.dbo.Device_TBL d ON d.Device_PRK = dst.dstDevice_FRK LEFT JOIN Test2.dbo.IncidentCategory_TBL ict ON ict.IncidentCategory_PRK = il.inlCategory_FRK LEFT JOIN Test2.dbo.CameraZone_TBL czt ON czt.CameraZone_PRK = il.inlZone_FRK LEFT JOIN Test2.dbo.Street_TBL st ON st.Street_PRK = il.inlStreet_FRK LEFT JOIN Test2.dbo.Building_TBL b ON b.Building_PRK = il.inlBuilding_FRK LEFT JOIN Test2.dbo.Unit_TBL ut ON ut.Unit_PRK = il.inlUnit_FRK LEFT JOIN Test2.dbo.ProAlarmType_TBL pat ON pat.ProAlarmType_PRK = il.inlProAlarmType_FRK LEFT JOIN Test2.dbo.Camera_TBL ct ON ct.Camera_PRK = d.dvcCamera_FRK WHERE il.inlCategory_FRK IN (2) AND dvcName_TXT NOT LIKE '%panel zone 1%' AND il.inlDateTime_DTM >= DATEADD(DAY, -30, CAST(SYSDATETIME() AS DATE));"
+        },
+        "drill_down_query": {
+            "chart_name": "Alarm NCR Wise",
+            "legends": [
+                "Total Alarms",
+                "False Alarms",
+                "True Alarms"
+            ],
+            "data": [
+                {
+                    "attribute": "Total Alarms",
+                    "count": 534
+                },
+                {
+                    "attribute": "False Alarms",
+                    "count": 498
+                },
+                {
+                    "attribute": "True Alarms",
+                    "count": 0
+                }
+            ],
+            "query": "SELECT COUNT(CASE WHEN inlCategory_FRK = 2 THEN 1 END) AS [Total Alarms], COUNT(CASE WHEN inlSubCategory_FRK = 1 THEN 1 END) AS [False Alarms], COUNT(CASE WHEN inlSubCategory_FRK = 2 THEN 1 END) AS [True Alarms] FROM Test2.dbo.IncidentLog_TBL il LEFT JOIN Test2.dbo.ProEvent_TBL pe ON il.inlAlarmProEvent_FRK = pe.ProEvent_PRK LEFT JOIN Test2.dbo.DeviceStateLink_TBL dst ON dst.dstProEvent_FRK = pe.ProEvent_PRK LEFT JOIN Test2.dbo.Device_TBL d ON d.Device_PRK = dst.dstDevice_FRK LEFT JOIN Test2.dbo.IncidentCategory_TBL ict ON ict.IncidentCategory_PRK = il.inlCategory_FRK LEFT JOIN Test2.dbo.CameraZone_TBL czt ON czt.CameraZone_PRK = il.inlZone_FRK LEFT JOIN Test2.dbo.Street_TBL st ON st.Street_PRK = il.inlStreet_FRK LEFT JOIN Test2.dbo.Building_TBL b ON b.Building_PRK = il.inlBuilding_FRK LEFT JOIN Test2.dbo.Unit_TBL ut ON ut.Unit_PRK = il.inlUnit_FRK LEFT JOIN Test2.dbo.ProAlarmType_TBL pat ON pat.ProAlarmType_PRK = il.inlProAlarmType_FRK LEFT JOIN Test2.dbo.Camera_TBL ct ON ct.Camera_PRK = d.dvcCamera_FRK WHERE il.inlCategory_FRK IN (2) AND dvcName_TXT NOT LIKE '%panel zone 1%' AND il.inlDateTime_DTM >= DATEADD(DAY, -30, CAST(SYSDATETIME() AS DATE));"
+        },
+        "report_query": {
+            "chart_name": "Alarm building wise report",
+            "legends": [
+                "Total Alarms",
+                "False Alarms",
+                "True Alarms"
+            ],
+            "data": [
+                {
+                    "attribute": "Building",
+                    "count": "Building 10"
+                },
+                {
+                    "attribute": "False Alarms",
+                    "count": 94
+                },
+                {
+                    "attribute": "True Alarms",
+                    "count": 0
+                },
+                {
+                    "attribute": "TotalAlarms",
+                    "count": 104
+                },
+                {
+                    "attribute": "Building",
+                    "count": "Building 8"
+                },
+                {
+                    "attribute": "False Alarms",
+                    "count": 334
+                },
+                {
+                    "attribute": "True Alarms",
+                    "count": 0
+                },
+                {
+                    "attribute": "TotalAlarms",
+                    "count": 354
+                },
+                {
+                    "attribute": "Building",
+                    "count": "GatewayTower"
+                },
+                {
+                    "attribute": "False Alarms",
+                    "count": 70
+                },
+                {
+                    "attribute": "True Alarms",
+                    "count": 0
+                },
+                {
+                    "attribute": "TotalAlarms",
+                    "count": 76
+                }
+            ],
+            "query": "WITH AggregatedData AS ( SELECT SUM(CASE WHEN inlSubCategory_FRK = 1 THEN 1 ELSE 0 END) AS [False Alarms], SUM(CASE WHEN inlSubCategory_FRK = 2 THEN 1 ELSE 0 END) AS [True Alarms], bldBuildingName_TXT, COUNT(*) AS TotalAlarms FROM Test2.dbo.IncidentLog_TBL il LEFT OUTER JOIN Test2.dbo.ProEvent_TBL pe ON il.inlAlarmProEvent_FRK = pe.ProEvent_PRK LEFT OUTER JOIN Test2.dbo.DeviceStateLink_TBL dst ON dst.dstProEvent_FRK = pe.ProEvent_PRK LEFT OUTER JOIN Test2.dbo.Device_TBL d ON d.Device_PRK = dst.dstDevice_FRK LEFT OUTER JOIN Test2.dbo.Building_TBL b ON b.Building_PRK = il.inlBuilding_FRK WHERE il.inlCategory_FRK IN (2) AND dvcName_TXT NOT LIKE '%panel zone 1%' AND CAST(inlDateTime_DTM AS DATE) >= DATEADD(DAY, -30, CAST(GETDATE() AS DATE)) GROUP BY bldBuildingName_TXT ) SELECT COALESCE(a.bldBuildingName_TXT, 'Unknown Building') AS Building, COALESCE(a.[False Alarms], 0) AS [False Alarms], COALESCE(a.[True Alarms], 0) AS [True Alarms], COALESCE(a.TotalAlarms, 0) AS TotalAlarms FROM AggregatedData a ORDER BY a.bldBuildingName_TXT;"
+        }
+    },
+    {
+        "chart_name": "Recorder Status",
+        "overview_query": {
+            "chart_name": "Overview of Recorder Status",
+            "legends": [
+                "Total Alarms",
+                "False Alarms",
+                "True Alarms"
+            ],
+            "data": [
+                {
+                    "attribute": "Total Alarms",
+                    "count": 534
+                },
+                {
+                    "attribute": "False Alarms",
+                    "count": 498
+                },
+                {
+                    "attribute": "True Alarms",
+                    "count": 0
+                }
+            ],
+            "query": "SELECT COUNT(CASE WHEN inlCategory_FRK = 2 THEN 1 END) AS [Total Alarms], COUNT(CASE WHEN inlSubCategory_FRK = 1 THEN 1 END) AS [False Alarms], COUNT(CASE WHEN inlSubCategory_FRK = 2 THEN 1 END) AS [True Alarms] FROM Test2.dbo.IncidentLog_TBL il LEFT JOIN Test2.dbo.ProEvent_TBL pe ON il.inlAlarmProEvent_FRK = pe.ProEvent_PRK LEFT JOIN Test2.dbo.DeviceStateLink_TBL dst ON dst.dstProEvent_FRK = pe.ProEvent_PRK LEFT JOIN Test2.dbo.Device_TBL d ON d.Device_PRK = dst.dstDevice_FRK LEFT JOIN Test2.dbo.IncidentCategory_TBL ict ON ict.IncidentCategory_PRK = il.inlCategory_FRK LEFT JOIN Test2.dbo.CameraZone_TBL czt ON czt.CameraZone_PRK = il.inlZone_FRK LEFT JOIN Test2.dbo.Street_TBL st ON st.Street_PRK = il.inlStreet_FRK LEFT JOIN Test2.dbo.Building_TBL b ON b.Building_PRK = il.inlBuilding_FRK LEFT JOIN Test2.dbo.Unit_TBL ut ON ut.Unit_PRK = il.inlUnit_FRK LEFT JOIN Test2.dbo.ProAlarmType_TBL pat ON pat.ProAlarmType_PRK = il.inlProAlarmType_FRK LEFT JOIN Test2.dbo.Camera_TBL ct ON ct.Camera_PRK = d.dvcCamera_FRK WHERE il.inlCategory_FRK IN (2) AND dvcName_TXT NOT LIKE '%panel zone 1%' AND il.inlDateTime_DTM >= DATEADD(DAY, -30, CAST(SYSDATETIME() AS DATE));"
+        },
+        "drill_down_query": {
+            "chart_name": "Alarm NCR Wise",
+            "legends": [
+                "Total Alarms",
+                "False Alarms",
+                "True Alarms"
+            ],
+            "data": [
+                {
+                    "attribute": "Total Alarms",
+                    "count": 534
+                },
+                {
+                    "attribute": "False Alarms",
+                    "count": 498
+                },
+                {
+                    "attribute": "True Alarms",
+                    "count": 0
+                }
+            ],
+            "query": "SELECT COUNT(CASE WHEN inlCategory_FRK = 2 THEN 1 END) AS [Total Alarms], COUNT(CASE WHEN inlSubCategory_FRK = 1 THEN 1 END) AS [False Alarms], COUNT(CASE WHEN inlSubCategory_FRK = 2 THEN 1 END) AS [True Alarms] FROM Test2.dbo.IncidentLog_TBL il LEFT JOIN Test2.dbo.ProEvent_TBL pe ON il.inlAlarmProEvent_FRK = pe.ProEvent_PRK LEFT JOIN Test2.dbo.DeviceStateLink_TBL dst ON dst.dstProEvent_FRK = pe.ProEvent_PRK LEFT JOIN Test2.dbo.Device_TBL d ON d.Device_PRK = dst.dstDevice_FRK LEFT JOIN Test2.dbo.IncidentCategory_TBL ict ON ict.IncidentCategory_PRK = il.inlCategory_FRK LEFT JOIN Test2.dbo.CameraZone_TBL czt ON czt.CameraZone_PRK = il.inlZone_FRK LEFT JOIN Test2.dbo.Street_TBL st ON st.Street_PRK = il.inlStreet_FRK LEFT JOIN Test2.dbo.Building_TBL b ON b.Building_PRK = il.inlBuilding_FRK LEFT JOIN Test2.dbo.Unit_TBL ut ON ut.Unit_PRK = il.inlUnit_FRK LEFT JOIN Test2.dbo.ProAlarmType_TBL pat ON pat.ProAlarmType_PRK = il.inlProAlarmType_FRK LEFT JOIN Test2.dbo.Camera_TBL ct ON ct.Camera_PRK = d.dvcCamera_FRK WHERE il.inlCategory_FRK IN (2) AND dvcName_TXT NOT LIKE '%panel zone 1%' AND il.inlDateTime_DTM >= DATEADD(DAY, -30, CAST(SYSDATETIME() AS DATE));"
+        },
+        "report_query": {
+            "chart_name": "Alarm building wise report",
+            "legends": [
+                "Total Alarms",
+                "False Alarms",
+                "True Alarms"
+            ],
+            "data": [
+                {
+                    "attribute": "Building",
+                    "count": "Building 10"
+                },
+                {
+                    "attribute": "False Alarms",
+                    "count": 94
+                },
+                {
+                    "attribute": "True Alarms",
+                    "count": 0
+                },
+                {
+                    "attribute": "TotalAlarms",
+                    "count": 104
+                },
+                {
+                    "attribute": "Building",
+                    "count": "Building 8"
+                },
+                {
+                    "attribute": "False Alarms",
+                    "count": 334
+                },
+                {
+                    "attribute": "True Alarms",
+                    "count": 0
+                },
+                {
+                    "attribute": "TotalAlarms",
+                    "count": 354
+                },
+                {
+                    "attribute": "Building",
+                    "count": "GatewayTower"
+                },
+                {
+                    "attribute": "False Alarms",
+                    "count": 70
+                },
+                {
+                    "attribute": "True Alarms",
+                    "count": 0
+                },
+                {
+                    "attribute": "TotalAlarms",
+                    "count": 76
+                }
+            ],
+            "query": "WITH AggregatedData AS ( SELECT SUM(CASE WHEN inlSubCategory_FRK = 1 THEN 1 ELSE 0 END) AS [False Alarms], SUM(CASE WHEN inlSubCategory_FRK = 2 THEN 1 ELSE 0 END) AS [True Alarms], bldBuildingName_TXT, COUNT(*) AS TotalAlarms FROM Test2.dbo.IncidentLog_TBL il LEFT OUTER JOIN Test2.dbo.ProEvent_TBL pe ON il.inlAlarmProEvent_FRK = pe.ProEvent_PRK LEFT OUTER JOIN Test2.dbo.DeviceStateLink_TBL dst ON dst.dstProEvent_FRK = pe.ProEvent_PRK LEFT OUTER JOIN Test2.dbo.Device_TBL d ON d.Device_PRK = dst.dstDevice_FRK LEFT OUTER JOIN Test2.dbo.Building_TBL b ON b.Building_PRK = il.inlBuilding_FRK WHERE il.inlCategory_FRK IN (2) AND dvcName_TXT NOT LIKE '%panel zone 1%' AND CAST(inlDateTime_DTM AS DATE) >= DATEADD(DAY, -30, CAST(GETDATE() AS DATE)) GROUP BY bldBuildingName_TXT ) SELECT COALESCE(a.bldBuildingName_TXT, 'Unknown Building') AS Building, COALESCE(a.[False Alarms], 0) AS [False Alarms], COALESCE(a.[True Alarms], 0) AS [True Alarms], COALESCE(a.TotalAlarms, 0) AS TotalAlarms FROM AggregatedData a ORDER BY a.bldBuildingName_TXT;"
+        }
+    }
+]

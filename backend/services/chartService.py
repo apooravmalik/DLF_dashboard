@@ -12,6 +12,7 @@ from apscheduler.triggers.interval import IntervalTrigger
 from apscheduler.jobstores.memory import MemoryJobStore
 from apscheduler.executors.pool import ThreadPoolExecutor
 import threading
+import msvcrt
 
 # Configure logging
 logging.basicConfig(
@@ -60,32 +61,41 @@ def get_scheduler():
 def get_cache_path(dashboard_id: str) -> str:
     """Get the path for the dashboard's cache file."""
     return os.path.join(CACHE_DIR, f"{dashboard_id}.json")
+   
+def serialize_for_json(obj):
+    """Recursively convert datetime objects to ISO strings."""
+    if isinstance(obj, dict):
+        return {k: serialize_for_json(v) for k, v in obj.items()}
+    elif isinstance(obj, list):
+        return [serialize_for_json(item) for item in obj]
+    elif isinstance(obj, datetime):
+        return obj.isoformat()
+    else:
+        return obj
 
 def save_cache(dashboard_id: str, data: Dict[str, Any]) -> None:
-    """Save data to cache."""
+    """Save data directly to cache without using temporary files."""
     cache_path = get_cache_path(dashboard_id)
-    temp_path = f"{cache_path}.tmp"
     
     try:
         now = datetime.now()
         cache_data = {
             "last_refresh_time": now.isoformat(),
             "next_refresh_time": (now + timedelta(seconds=CACHE_REFRESH_INTERVAL)).isoformat(),
-            "data": data,
+            "data": serialize_for_json(data),
             "instance_id": os.getpid()
         }
         
-        with open(temp_path, 'w') as f:
-            json.dump(cache_data, f)
-        # Use os.replace for atomic operation
-        os.replace(temp_path, cache_path)
-        
+        # Write directly to the cache file
+        with open(cache_path, 'w') as f:
+            json.dump(cache_data, f, indent=2)
+            f.flush()
+            os.fsync(f.fileno())  # Ensure data is written to disk
+            
+        logging.info(f"Cache file successfully updated for {dashboard_id}")
+            
     except Exception as e:
-        if os.path.exists(temp_path):
-            try:
-                os.remove(temp_path)
-            except Exception:
-                pass
+        logging.error(f"Error saving cache for {dashboard_id}: {str(e)}")
         raise e
 
 def load_cache(dashboard_id: str) -> Optional[Dict[str, Any]]:
@@ -106,11 +116,16 @@ def load_cache(dashboard_id: str) -> Optional[Dict[str, Any]]:
 def refresh_dashboard_cache(dashboard_id: str, chart_queries: list) -> None:
     """Refresh cache."""
     try:
+        logging.info(f"Starting cache refresh for dashboard {dashboard_id}")
         chart_results = get_all_charts(chart_queries)
+        logging.info(f"Got chart results for dashboard {dashboard_id}, attempting to save")
         save_cache(dashboard_id, chart_results)
-        logging.info(f"Cache refreshed for dashboard {dashboard_id} by instance {os.getpid()}")
+        logging.info(f"Cache successfully refreshed for dashboard {dashboard_id} by instance {os.getpid()}")
     except Exception as e:
         logging.error(f"Cache refresh failed for dashboard {dashboard_id}: {str(e)}")
+        # Log the full stack trace for better debugging
+        import traceback
+        logging.error(traceback.format_exc())
 
 def schedule_cache_refresh(dashboard_id: str, chart_queries: list) -> None:
     """Schedule cache refresh."""

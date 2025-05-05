@@ -1,0 +1,49 @@
+{
+  "last_refresh_time": "2025-05-05T12:32:22.959252",
+  "next_refresh_time": "2025-05-05T12:42:22.959252",
+  "data": [
+    {
+      "chart_name": "Recorder Status",
+      "overview_query": {
+        "chart_name": "Recorder Status",
+        "legends": [
+          "Total",
+          "Online",
+          "Offline"
+        ],
+        "data": [
+          {
+            "attribute": "Total",
+            "count": 0
+          },
+          {
+            "attribute": "Online",
+            "count": null
+          },
+          {
+            "attribute": "Offline",
+            "count": null
+          }
+        ],
+        "query": "SELECT COUNT(*) AS 'Total', SUM(CASE WHEN ptsCurrentState_LNG = 1 THEN 1 ELSE 0 END) AS 'Online', SUM(CASE WHEN ptsCurrentState_LNG = 2 THEN 1 ELSE 0 END) AS 'Offline' FROM PingTest_TBL WHERE ptsCameraZone_FRK = 4 AND (PingTest_PRK NOT BETWEEN 603 AND 786) AND (PingTest_PRK NOT BETWEEN 800 AND 806);;"
+      },
+      "drill_down_query": {
+        "chart_name": "Recorder Status Building Wise",
+        "legends": [
+          "Building Name",
+          "Online",
+          "Offline"
+        ],
+        "data": [],
+        "query": "SELECT bldBuildingName_TXT AS 'Building Name', SUM(CASE WHEN pts.ptsCurrentState_LNG = 1 THEN 1 ELSE 0 END) AS 'Online', SUM(CASE WHEN pts.ptsCurrentState_LNG = 2 THEN 1 ELSE 0 END) AS 'Offline' FROM PingTest_TBL pts JOIN Building_TBL ON Building_PRK = ptsBuilding_FRK JOIN CameraZone_TBL ON CameraZone_PRK = ptsCameraZone_FRK WHERE ptsCameraZone_FRK = 4 AND (PingTest_PRK NOT BETWEEN 603 AND 786) AND (PingTest_PRK NOT BETWEEN 800 AND 806) GROUP BY bldBuildingName_TXT ORDER BY [Building Name];"
+      },
+      "report_query": {
+        "chart_name": "Recorder Status Building Wise Report",
+        "legends": [],
+        "data": [],
+        "query": "SELECT ptsDeviceName_TXT AS 'Name', ptsIPAddress_TXT AS 'IP Detail', strName_TXT AS 'Region', bldBuildingName_TXT AS 'Building Name', ptsOfflineTime_DTM AS 'Offline Date Time', CASE WHEN ptsCurrentState_LNG=2 AND ptsOfflineTime_DTM IS NOT NULL THEN 'Offline' WHEN ptsCurrentState_LNG=1 THEN 'Online' END AS Status, DATEDIFF(HH, ptsOfflineTime_DTM, GETDATE()) AS 'Down Time (hours)' FROM [vtasData].[dbo].PingTest_TBL JOIN [vtasData].[dbo].Building_TBL ON Building_PRK = ptsBuilding_FRK JOIN [vtasData].[dbo].Street_TBL ON Street_PRK = ptsStreet_FRK JOIN [vtasData].[dbo].CameraZone_TBL ON CameraZone_PRK = ptsCameraZone_FRK WHERE ptsCameraZone_FRK = 4 and ptsBuilding_FRK in (1126,1128,1135,1134,1165,1129,1130,1132,1133,1155,1157,1158,1127,1137)  ORDER BY [Building Name], Region, [Device Name];"
+      }
+    }
+  ],
+  "instance_id": 10484
+}

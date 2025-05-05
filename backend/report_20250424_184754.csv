@@ -1,0 +1,596 @@
+Device Name,IP Detail,Region,Building Name,Offline Date Time,Status,Down Time (hours)
+Building 10 JOC _DVR,10.100.0.101,RJOC 10 A,Building 10,-,Online,-
+Building10_10.100.0.192_NVR,10.100.0.192,RJOC 10 A,Building 10,-,Online,-
+Building10_10.100.0.194_NVR,10.100.0.194,RJOC 10 A,Building 10,-,Online,-
+Building10_10.100.0.194_NVR,10.100.0.194,RJOC 10 A,Building 10,-,Online,-
+Building10_102_DVR,10.100.0.102,RJOC 10 A,Building 10,-,Online,-
+Building10_103_DVR,10.100.0.103,RJOC 10 A,Building 10,-,Online,-
+Building10_104_DVR,10.100.0.104,RJOC 10 A,Building 10,-,Online,-
+Building10_104_DVR,10.100.0.104,RJOC 10 A,Building 10,-,Online,-
+Building10_105_DVR,10.100.0.105,RJOC 10 A,Building 10,-,Online,-
+Building10_106_DVR,10.100.0.106,RJOC 10 A,Building 10,-,Online,-
+Building10_107_DVR,10.100.0.107,RJOC 10 A,Building 10,-,Online,-
+Building10_108_DVR,10.100.0.108,RJOC 10 A,Building 10,-,Online,-
+Building10_109_DVR,10.100.0.109,RJOC 10 A,Building 10,-,Online,-
+Building10_110_DVR,10.100.0.110,RJOC 10 A,Building 10,-,Online,-
+Building10_111_DVR,10.100.0.111,RJOC 10 A,Building 10,-,Online,-
+Building10_112_DVR,10.100.0.112,RJOC 10 A,Building 10,-,Online,-
+Building10_113_DVR,10.100.0.113,RJOC 10 A,Building 10,-,Online,-
+Building10_114_DVR,10.100.0.114,RJOC 10 A,Building 10,-,Online,-
+Building10_115_DVR,10.100.0.115,RJOC 10 A,Building 10,-,Online,-
+Building10_116_DVR,10.100.0.116,RJOC 10 A,Building 10,-,Online,-
+Building10_117_DVR,10.100.0.117,RJOC 10 A,Building 10,-,Online,-
+Building10_118_DVR,10.100.0.118,RJOC 10 A,Building 10,-,Online,-
+Building10_119_DVR,10.100.0.119,RJOC 10 A,Building 10,-,Online,-
+Building10_120_DVR,10.100.0.120,RJOC 10 A,Building 10,-,Online,-
+Building10_121_DVR,10.100.0.121,RJOC 10 A,Building 10,-,Online,-
+Building10_122_DVR,10.100.0.122,RJOC 10 A,Building 10,-,Online,-
+Building10_123_DVR,10.100.0.123,RJOC 10 A,Building 10,-,Online,-
+Building10_124_DVR,10.100.0.124,RJOC 10 A,Building 10,-,Online,-
+Building10_125_DVR,10.100.0.125,RJOC 10 A,Building 10,-,Online,-
+Building10_126_DVR,10.100.0.126,RJOC 10 A,Building 10,-,Online,-
+Building10_127_DVR,10.100.0.127,RJOC 10 A,Building 10,-,Online,-
+Building10_128_DVR,10.100.0.128,RJOC 10 A,Building 10,-,Online,-
+Building10_129_DVR,10.100.0.129,RJOC 10 A,Building 10,-,Online,-
+Building10_130_DVR,10.100.0.130,RJOC 10 A,Building 10,-,Online,-
+Building10_131_DVR,10.100.0.131,RJOC 10 A,Building 10,-,Online,-
+Building10_132_DVR,10.100.0.132,RJOC 10 A,Building 10,-,Online,-
+Building10_133_DVR,10.100.0.133,RJOC 10 A,Building 10,-,Online,-
+Building10_134_DVR,10.100.0.134,RJOC 10 A,Building 10,-,Online,-
+Building10_135_DVR,10.100.0.135,RJOC 10 A,Building 10,-,Online,-
+Building10_136_DVR,10.100.0.136,RJOC 10 A,Building 10,-,Online,-
+Building10_137_DVR,10.100.0.137,RJOC 10 A,Building 10,-,Online,-
+Building10_138_DVR,10.100.0.138,RJOC 10 A,Building 10,-,Online,-
+Building10_139_DVR,10.100.0.139,RJOC 10 A,Building 10,-,Online,-
+Building10_141_DVR,10.100.0.141,RJOC 10 A,Building 10,-,Online,-
+Building10_142_DVR,10.100.0.142,RJOC 10 A,Building 10,-,Online,-
+Building10_143_DVR,10.100.0.143,RJOC 10 A,Building 10,-,Online,-
+Building10_144_DVR,10.100.0.144,RJOC 10 A,Building 10,-,Online,-
+Building10_145_DVR,10.100.0.145,RJOC 10 A,Building 10,-,Online,-
+Building10_146_DVR,10.100.0.146,RJOC 10 A,Building 10,-,Online,-
+Building10_147_DVR,10.100.0.147,RJOC 10 A,Building 10,-,Online,-
+Building10_148_DVR,10.100.0.148,RJOC 10 A,Building 10,-,Online,-
+Building10_149_DVR,10.100.0.149,RJOC 10 A,Building 10,-,Online,-
+Building10_150_DVR,10.100.0.150,RJOC 10 A,Building 10,-,Online,-
+Building10_151_DVR,10.100.0.151,RJOC 10 A,Building 10,-,Online,-
+Building10_152_DVR,10.100.0.152,RJOC 10 A,Building 10,-,Online,-
+Building10_153_DVR,10.100.0.153,RJOC 10 A,Building 10,-,Online,-
+Building10_154_DVR,10.100.0.154,RJOC 10 A,Building 10,-,Online,-
+Building10_155_DVR,10.100.0.155,RJOC 10 A,Building 10,-,Online,-
+Building10_156_DVR,10.100.0.156,RJOC 10 A,Building 10,-,Online,-
+Building10_157_DVR,10.100.0.157,RJOC 10 A,Building 10,-,Online,-
+Building10_158_DVR,10.100.0.158,RJOC 10 A,Building 10,-,Online,-
+Building10_159_DVR,10.100.0.159,RJOC 10 A,Building 10,-,Online,-
+Building10_160_DVR,10.100.0.160,RJOC 10 A,Building 10,-,Online,-
+Building10_161_DVR,10.100.0.161,RJOC 10 A,Building 10,-,Online,-
+Building10_162_DVR,10.100.0.162,RJOC 10 A,Building 10,-,Online,-
+Building10_163_DVR,10.100.0.163,RJOC 10 A,Building 10,-,Online,-
+Building10_164_DVR,10.100.0.164,RJOC 10 A,Building 10,-,Online,-
+Building10_165_DVR,10.100.0.165,RJOC 10 A,Building 10,-,Online,-
+Building10_166_DVR,10.100.0.166,RJOC 10 A,Building 10,-,Online,-
+Building10_167_DVR,10.100.0.167,RJOC 10 A,Building 10,-,Online,-
+Building10_168_DVR,10.100.0.168,RJOC 10 A,Building 10,-,Online,-
+Building10_169_DVR,10.100.0.169,RJOC 10 A,Building 10,-,Online,-
+Building10_171_DVR,10.100.0.171,RJOC 10 A,Building 10,-,Online,-
+Building10_172_DVR,10.100.0.172,RJOC 10 A,Building 10,-,Online,-
+Building10_173_DVR,10.100.0.173,RJOC 10 A,Building 10,-,Online,-
+Building10_174_DVR,10.100.0.174,RJOC 10 A,Building 10,-,Online,-
+Building10_175_DVR,10.100.0.175,RJOC 10 A,Building 10,-,Online,-
+Building10_176_DVR,10.100.0.176,RJOC 10 A,Building 10,-,Online,-
+Building10_177_DVR,10.100.0.177,RJOC 10 A,Building 10,-,Online,-
+Building10_179_DVR,10.100.0.179,RJOC 10 A,Building 10,-,Online,-
+Building 14 (AB)_105_DVR,10.100.72.105,RJOC 10 A,Building 14,-,Online,-
+Building 14 (AB)_106_DVR,10.100.72.106,RJOC 10 A,Building 14,-,Online,-
+Building 14 (AB)_107_DVR,10.100.72.107,RJOC 10 A,Building 14,-,Online,-
+Building 14 (AB)_108_DVR,10.100.72.108,RJOC 10 A,Building 14,-,Online,-
+Building 14 (AB)_109_DVR,10.100.72.109,RJOC 10 A,Building 14,-,Online,-
+Building 14 (AB)_110_DVR,10.100.72.110,RJOC 10 A,Building 14,-,Online,-
+Building 14 (AB)_111_DVR,10.100.72.111,RJOC 10 A,Building 14,-,Online,-
+Building 14 (AB)_112_DVR,10.100.72.112,RJOC 10 A,Building 14,-,Online,-
+Building 14 (AB)_113_DVR,10.100.72.113,RJOC 10 A,Building 14,-,Online,-
+Building 14 (AB)_114_DVR,10.100.72.114,RJOC 10 A,Building 14,-,Online,-
+Building 14 (AB)_115_DVR,10.100.72.115,RJOC 10 A,Building 14,-,Online,-
+Building 14 (AB)_116_DVR,10.100.72.116,RJOC 10 A,Building 14,-,Online,-
+Building 14 (AB)_117_DVR,10.100.72.117,RJOC 10 A,Building 14,-,Online,-
+Building 14 (AB)_118_DVR,10.100.72.118,RJOC 10 A,Building 14,-,Online,-
+Building 14 (AB)_119_DVR,10.100.72.119,RJOC 10 A,Building 14,-,Online,-
+Building 14 (AB)_120_DVR,10.100.72.120,RJOC 10 A,Building 14,-,Online,-
+Building 14 (AB)_121_DVR,10.100.72.121,RJOC 10 A,Building 14,-,Online,-
+Building 14 (AB)_122_DVR,10.100.72.122,RJOC 10 A,Building 14,-,Online,-
+Building 14 (AB)_124,10.100.72.124,RJOC 10 A,Building 14,-,Online,-
+Building 14 (AB)_21_DVR,10.100.72.21,RJOC 10 A,Building 14,-,Online,-
+Building 14 (AB)_22_DVR,10.100.72.22,RJOC 10 A,Building 14,-,Online,-
+Building 14 (AB)_23_DVR,10.100.72.23,RJOC 10 A,Building 14,-,Online,-
+Building 14 (AB)_24_DVR,10.100.72.24,RJOC 10 A,Building 14,-,Online,-
+Building 14 (AB)_24_DVR,10.100.72.24,RJOC 10 A,Building 14,-,Online,-
+Building 14 (AB)_25_DVR,10.100.72.25,RJOC 10 A,Building 14,-,Online,-
+Building 14 (AB)_26_DVR,10.100.72.26,RJOC 10 A,Building 14,-,Online,-
+Building 14 (AB)_27_DVR,10.100.72.27,RJOC 10 A,Building 14,-,Online,-
+Building 14 (AB)_28_DVR,10.100.72.28,RJOC 10 A,Building 14,-,Online,-
+Building 14 (AB)_29_DVR,10.100.72.29,RJOC 10 A,Building 14,-,Online,-
+Building 14 (AB)_30_DVR,10.100.72.30,RJOC 10 A,Building 14,-,Online,-
+Building 14 (AB)_31_DVR,10.100.72.31,RJOC 10 A,Building 14,-,Online,-
+Building 14 (AB)_32_DVR,10.100.72.32,RJOC 10 A,Building 14,-,Online,-
+Building 14 (AB)_33_DVR,10.100.72.33,RJOC 10 A,Building 14,-,Online,-
+Building 14 (AB)_34_DVR,10.100.72.34,RJOC 10 A,Building 14,-,Online,-
+Building 14 (AB)_35_DVR,10.100.72.35,RJOC 10 A,Building 14,-,Online,-
+Building 14 (AB)_36_DVR,10.100.72.36,RJOC 10 A,Building 14,-,Online,-
+Building 14 (AB)_37_DVR,10.100.72.37,RJOC 10 A,Building 14,-,Online,-
+Building 14 (AB)_38_DVR,10.100.72.38,RJOC 10 A,Building 14,-,Online,-
+Building 14 (AB)_39_DVR,10.100.72.39,RJOC 10 A,Building 14,-,Online,-
+Building 14 (AB)_40_DVR,10.100.72.40,RJOC 10 A,Building 14,-,Online,-
+Building 14 (AB)_41_DVR,10.100.72.41,RJOC 10 A,Building 14,-,Online,-
+Building 14 (AB)_42_DVR,10.100.72.42,RJOC 10 A,Building 14,-,Online,-
+Building 14 (AB)_44_DVR,10.100.72.44,RJOC 10 A,Building 14,-,Online,-
+Building 14 (AB)_47_DVR,10.100.72.47,RJOC 10 A,Building 14,-,Online,-
+Building 14 (AB)_49_DVR,10.100.72.49,RJOC 10 A,Building 14,-,Online,-
+Building 14 (CD)_100_DVR,10.100.72.100,RJOC 10 A,Building 14,-,Online,-
+Building 14 (CD)_101_DVR,10.100.72.101,RJOC 10 A,Building 14,-,Online,-
+Building 14 (CD)_102_DVR,10.100.72.102,RJOC 10 A,Building 14,-,Online,-
+Building 14 (CD)_103_DVR,10.100.72.103,RJOC 10 A,Building 14,-,Online,-
+Building 14 (CD)_104_DVR,10.100.72.104,RJOC 10 A,Building 14,-,Online,-
+Building 14 (CD)_127_DVR,10.100.72.127,RJOC 10 A,Building 14,-,Online,-
+Building 14 (CD)_128_DVR,10.100.72.128,RJOC 10 A,Building 14,-,Online,-
+Building 14 (CD)_177_DVR,10.100.72.177,RJOC 10 A,Building 14,"Thu, 23 Jan 2025 00:53:16 GMT",Offline,2202
+Building 14 (CD)_178_DVR,10.100.72.178,RJOC 10 A,Building 14,"Sat, 25 Jan 2025 16:40:12 GMT",Offline,2138
+Building 14 (CD)_43_DVR,10.100.72.43,RJOC 10 A,Building 14,-,Online,-
+Building 14 (CD)_46_DVR,10.100.72.46,RJOC 10 A,Building 14,-,Online,-
+Building 14 (CD)_51_DVR,10.100.72.51,RJOC 10 A,Building 14,-,Online,-
+Building 14 (CD)_52_DVR,10.100.72.52,RJOC 10 A,Building 14,-,Online,-
+Building 14 (CD)_53_DVR,10.100.72.53,RJOC 10 A,Building 14,-,Online,-
+Building 14 (CD)_54_DVR,10.100.72.54,RJOC 10 A,Building 14,-,Online,-
+Building 14 (CD)_55_DVR,10.100.72.55,RJOC 10 A,Building 14,-,Online,-
+Building 14 (CD)_56_DVR,10.100.72.56,RJOC 10 A,Building 14,-,Online,-
+Building 14 (CD)_57_DVR,10.100.72.57,RJOC 10 A,Building 14,-,Online,-
+Building 14 (CD)_58_DVR,10.100.72.58,RJOC 10 A,Building 14,-,Online,-
+Building 14 (CD)_59_DVR,10.100.72.59,RJOC 10 A,Building 14,-,Online,-
+Building 14 (CD)_60_DVR,10.100.72.60,RJOC 10 A,Building 14,-,Online,-
+Building 14 (CD)_61_DVR,10.100.72.61,RJOC 10 A,Building 14,-,Online,-
+Building 14 (CD)_62_DVR,10.100.72.62,RJOC 10 A,Building 14,-,Online,-
+Building 14 (CD)_63_DVR,10.100.72.63,RJOC 10 A,Building 14,-,Online,-
+Building 14 (CD)_64_DVR,10.100.72.64,RJOC 10 A,Building 14,-,Online,-
+Building 14 (CD)_65_DVR,10.100.72.65,RJOC 10 A,Building 14,-,Online,-
+Building 14 (CD)_66_DVR,10.100.72.66,RJOC 10 A,Building 14,-,Online,-
+Building 14 (CD)_67_DVR,10.100.72.67,RJOC 10 A,Building 14,-,Online,-
+Building 14 (CD)_68_DVR,10.100.72.68,RJOC 10 A,Building 14,-,Online,-
+Building 14 (CD)_69_DVR,10.100.72.69,RJOC 10 A,Building 14,-,Online,-
+Building 14 (CD)_70_DVR,10.100.72.70,RJOC 10 A,Building 14,-,Online,-
+Building 14 (CD)_71_DVR,10.100.72.71,RJOC 10 A,Building 14,-,Online,-
+Building 14 (CD)_72_DVR,10.100.72.72,RJOC 10 A,Building 14,-,Online,-
+Building 14 (CD)_73_DVR,10.100.72.73,RJOC 10 A,Building 14,-,Online,-
+Building 14 (CD)_74_DVR,10.100.72.74,RJOC 10 A,Building 14,-,Online,-
+Building 14 (CD)_75_DVR,10.100.72.75,RJOC 10 A,Building 14,-,Online,-
+Building 14 (CD)_76_DVR,10.100.72.76,RJOC 10 A,Building 14,-,Online,-
+Building 14 (CD)_77_DVR,10.100.72.77,RJOC 10 A,Building 14,-,Online,-
+Building 14 (CD)_78_DVR,10.100.72.78,RJOC 10 A,Building 14,-,Online,-
+Building 14 (CD)_79_DVR,10.100.72.79,RJOC 10 A,Building 14,-,Online,-
+Building 14 (CD)_80_DVR,10.100.72.80,RJOC 10 A,Building 14,-,Online,-
+Building 14 (CD)_81_DVR,10.100.72.81,RJOC 10 A,Building 14,-,Online,-
+Building 14 (CD)_82_DVR,10.100.72.82,RJOC 10 A,Building 14,-,Online,-
+Building 14 (CD)_83_DVR,10.100.72.83,RJOC 10 A,Building 14,-,Online,-
+Building 14 (CD)_84_DVR,10.100.72.84,RJOC 10 A,Building 14,-,Online,-
+Building 14 (CD)_85_DVR,10.100.72.85,RJOC 10 A,Building 14,-,Online,-
+Building 14 (CD)_86_DVR,10.100.72.86,RJOC 10 A,Building 14,-,Online,-
+Building 14 (CD)_87_DVR,10.100.72.87,RJOC 10 A,Building 14,-,Online,-
+Building 14 (CD)_88_DVR,10.100.72.88,RJOC 10 A,Building 14,-,Online,-
+Building 14 (CD)_89_DVR,10.100.72.89,RJOC 10 A,Building 14,-,Online,-
+Building 14 (CD)_90_DVR,10.100.72.90,RJOC 10 A,Building 14,-,Online,-
+Building 14 (CD)_91_DVR,10.100.72.91,RJOC 10 A,Building 14,-,Online,-
+Building 14 (CD)_92_DVR,10.100.72.92,RJOC 10 A,Building 14,-,Online,-
+Building 14 (CD)_93_DVR,10.100.72.93,RJOC 10 A,Building 14,-,Online,-
+Building 14 (CD)_94_DVR,10.100.72.94,RJOC 10 A,Building 14,-,Online,-
+Building 14 (CD)_95_DVR,10.100.72.95,RJOC 10 A,Building 14,-,Online,-
+Building 14 (CD)_96_DVR,10.100.72.96,RJOC 10 A,Building 14,-,Online,-
+Building 14 (CD)_97_DVR,10.100.72.97,RJOC 10 A,Building 14,-,Online,-
+Building 14 (CD)_98_DVR,10.100.72.98,RJOC 10 A,Building 14,-,Online,-
+Building 14 (CD)_99_DVR,10.100.72.99,RJOC 10 A,Building 14,-,Online,-
+Building 5_100_DVR,10.100.48.100,RJOC 10 A,Building 5,-,Online,-
+Building 5_101_DVR,10.100.48.101,RJOC 10 A,Building 5,-,Online,-
+Building 5_102_DVR,10.100.48.102,RJOC 10 A,Building 5,-,Online,-
+Building 5_103_DVR,10.100.48.103,RJOC 10 A,Building 5,-,Online,-
+Building 5_104_DVR,10.100.48.104,RJOC 10 A,Building 5,-,Online,-
+Building 5_105_DVR,10.100.48.105,RJOC 10 A,Building 5,"Thu, 24 Apr 2025 17:29:52 GMT",Offline,1
+Building 5_106_DVR,10.100.48.106,RJOC 10 A,Building 5,-,Online,-
+Building 5_107_DVR,10.100.48.107,RJOC 10 A,Building 5,-,Online,-
+Building 5_108_DVR,10.100.48.108,RJOC 10 A,Building 5,-,Online,-
+Building 5_109_DVR,10.100.48.109,RJOC 10 A,Building 5,-,Online,-
+Building 5_110_DVR,10.100.48.110,RJOC 10 A,Building 5,-,Online,-
+Building 5_111_NVR,10.100.48.111,RJOC 10 A,Building 5,"Mon, 20 Jan 2025 17:04:12 GMT",Offline,2257
+Building 5_112_DVR,10.100.48.112,RJOC 10 A,Building 5,-,Online,-
+Building 5_113_DVR,10.100.48.113,RJOC 10 A,Building 5,-,Online,-
+Building 5_114_DVR,10.100.48.114,RJOC 10 A,Building 5,-,Online,-
+Building 5_115_DVR,10.100.48.115,RJOC 10 A,Building 5,-,Online,-
+Building 5_116_DVR,10.100.48.116,RJOC 10 A,Building 5,-,Online,-
+Building 5_117_NVR ,10.100.48.117,RJOC 10 A,Building 5,"Mon, 20 Jan 2025 17:04:17 GMT",Offline,2257
+Building 5_21_DVR,10.100.48.21,RJOC 10 A,Building 5,-,Online,-
+Building 5_22_DVR,10.100.48.22,RJOC 10 A,Building 5,-,Online,-
+Building 5_23_DVR,10.100.48.23,RJOC 10 A,Building 5,-,Online,-
+Building 5_24_DVR,10.100.48.24,RJOC 10 A,Building 5,-,Online,-
+Building 5_25_DVR,10.100.48.25,RJOC 10 A,Building 5,-,Online,-
+Building 5_26_DVR,10.100.48.26,RJOC 10 A,Building 5,-,Online,-
+Building 5_27_DVR,10.100.48.27,RJOC 10 A,Building 5,-,Online,-
+Building 5_28_DVR,10.100.48.28,RJOC 10 A,Building 5,-,Online,-
+Building 5_29_DVR,10.100.48.29,RJOC 10 A,Building 5,-,Online,-
+Building 5_30_DVR,10.100.48.30,RJOC 10 A,Building 5,-,Online,-
+Building 5_31_DVR,10.100.48.31,RJOC 10 A,Building 5,-,Online,-
+Building 5_32_DVR,10.100.48.32,RJOC 10 A,Building 5,-,Online,-
+Building 5_33_DVR,10.100.48.33,RJOC 10 A,Building 5,-,Online,-
+Building 5_34_DVR,10.100.48.34,RJOC 10 A,Building 5,"Tue, 15 Apr 2025 16:36:36 GMT",Offline,218
+Building 5_35_DVR,10.100.48.35,RJOC 10 A,Building 5,-,Online,-
+Building 5_36_DVR,10.100.48.36,RJOC 10 A,Building 5,-,Online,-
+Building 5_37_DVR,10.100.48.37,RJOC 10 A,Building 5,-,Online,-
+Building 5_38_DVR,10.100.48.38,RJOC 10 A,Building 5,-,Online,-
+Building 5_39_DVR,10.100.48.39,RJOC 10 A,Building 5,-,Online,-
+Building 5_40_DVR,10.100.48.40,RJOC 10 A,Building 5,-,Online,-
+Building 5_41_DVR,10.100.48.41,RJOC 10 A,Building 5,-,Online,-
+Building 5_42_DVR,10.100.48.42,RJOC 10 A,Building 5,-,Online,-
+Building 5_43_DVR,10.100.48.43,RJOC 10 A,Building 5,-,Online,-
+Building 5_44_DVR,10.100.48.44,RJOC 10 A,Building 5,-,Online,-
+Building 5_45_DVR,10.100.48.45,RJOC 10 A,Building 5,-,Online,-
+Building 5_46_DVR,10.100.48.46,RJOC 10 A,Building 5,-,Online,-
+Building 5_47_DVR,10.100.48.47,RJOC 10 A,Building 5,-,Online,-
+Building 5_48_DVR,10.100.48.48,RJOC 10 A,Building 5,-,Online,-
+Building 5_49_DVR,10.100.48.49,RJOC 10 A,Building 5,-,Online,-
+Building 5_50_DVR,10.100.48.50,RJOC 10 A,Building 5,-,Online,-
+Building 5_51_DVR,10.100.48.51,RJOC 10 A,Building 5,-,Online,-
+Building 5_52_DVR,10.100.48.52,RJOC 10 A,Building 5,-,Online,-
+Building 5_53_DVR,10.100.48.53,RJOC 10 A,Building 5,-,Online,-
+Building 5_54_DVR,10.100.48.54,RJOC 10 A,Building 5,-,Online,-
+Building 5_55_DVR,10.100.48.55,RJOC 10 A,Building 5,-,Online,-
+Building 5_56_DVR,10.100.48.56,RJOC 10 A,Building 5,-,Online,-
+Building 5_57_DVR,10.100.48.57,RJOC 10 A,Building 5,-,Online,-
+Building 5_58_DVR,10.100.48.58,RJOC 10 A,Building 5,-,Online,-
+Building 5_59_DVR,10.100.48.59,RJOC 10 A,Building 5,-,Online,-
+Building 5_60_DVR,10.100.48.60,RJOC 10 A,Building 5,-,Online,-
+Building 5_61_DVR,10.100.48.61,RJOC 10 A,Building 5,-,Online,-
+Building 5_62_DVR,10.100.48.62,RJOC 10 A,Building 5,-,Online,-
+Building 5_63_DVR,10.100.48.63,RJOC 10 A,Building 5,-,Online,-
+Building 5_64_DVR,10.100.48.64,RJOC 10 A,Building 5,-,Online,-
+Building 5_65_DVR,10.100.48.65,RJOC 10 A,Building 5,-,Online,-
+Building 5_66_DVR,10.100.48.66,RJOC 10 A,Building 5,-,Online,-
+Building 5_67_DVR,10.100.48.67,RJOC 10 A,Building 5,-,Online,-
+Building 5_68_DVR,10.100.48.68,RJOC 10 A,Building 5,-,Online,-
+Building 5_69_DVR,10.100.48.69,RJOC 10 A,Building 5,-,Online,-
+Building 5_70_DVR,10.100.48.70,RJOC 10 A,Building 5,-,Online,-
+Building 5_71_DVR,10.100.48.71,RJOC 10 A,Building 5,-,Online,-
+Building 5_72_DVR,10.100.48.72,RJOC 10 A,Building 5,-,Online,-
+Building 5_73_DVR,10.100.48.73,RJOC 10 A,Building 5,-,Online,-
+Building 5_74_DVR,10.100.48.74,RJOC 10 A,Building 5,-,Online,-
+Building 5_75_DVR,10.100.48.75,RJOC 10 A,Building 5,-,Online,-
+Building 5_76_DVR,10.100.48.76,RJOC 10 A,Building 5,-,Online,-
+Building 5_77_DVR,10.100.48.77,RJOC 10 A,Building 5,-,Online,-
+Building 5_78_DVR,10.100.48.78,RJOC 10 A,Building 5,-,Online,-
+Building 5_79_DVR,10.100.48.79,RJOC 10 A,Building 5,-,Online,-
+Building 5_80_DVR,10.100.48.80,RJOC 10 A,Building 5,-,Online,-
+Building 5_81_DVR,10.100.48.81,RJOC 10 A,Building 5,-,Online,-
+Building 5_82_DVR,10.100.48.82,RJOC 10 A,Building 5,-,Online,-
+Building 5_83_DVR,10.100.48.83,RJOC 10 A,Building 5,-,Online,-
+Building 5_84_DVR,10.100.48.84,RJOC 10 A,Building 5,-,Online,-
+Building 5_85_DVR,10.100.48.85,RJOC 10 A,Building 5,-,Online,-
+Building 5_86_DVR,10.100.48.86,RJOC 10 A,Building 5,-,Online,-
+Building 5_87_DVR,10.100.48.87,RJOC 10 A,Building 5,-,Online,-
+Building 5_88_DVR,10.100.48.88,RJOC 10 A,Building 5,-,Online,-
+Building 5_89_DVR,10.100.48.89,RJOC 10 A,Building 5,-,Online,-
+Building 5_90_DVR,10.100.48.90,RJOC 10 A,Building 5,-,Online,-
+Building 5_91_DVR,10.100.48.91,RJOC 10 A,Building 5,-,Online,-
+Building 5_92_DVR,10.100.48.92,RJOC 10 A,Building 5,-,Online,-
+Building 5_93_DVR,10.100.48.93,RJOC 10 A,Building 5,-,Online,-
+Building 5_94_DVR,10.100.48.94,RJOC 10 A,Building 5,-,Online,-
+Building 5_95_DVR,10.100.48.95,RJOC 10 A,Building 5,-,Online,-
+Building 5_96_DVR,10.100.48.96,RJOC 10 A,Building 5,-,Online,-
+Building 5_97_DVR,10.100.48.97,RJOC 10 A,Building 5,-,Online,-
+Building 5_98_DVR,10.100.48.98,RJOC 10 A,Building 5,-,Online,-
+Building 5_99_DVR,10.100.48.99,RJOC 10 A,Building 5,-,Online,-
+Building 6_21_DVR,10.100.80.21,RJOC 10 A,Building 6,-,Online,-
+Building 6_22_DVR,10.100.80.22,RJOC 10 A,Building 6,-,Online,-
+Building 6_23_DVR,10.100.80.23,RJOC 10 A,Building 6,-,Online,-
+Building 6_24_DVR,10.100.80.24,RJOC 10 A,Building 6,-,Online,-
+Building 6_25_DVR,10.100.80.25,RJOC 10 A,Building 6,-,Online,-
+Building 6_26_DVR,10.100.80.26,RJOC 10 A,Building 6,-,Online,-
+Building 6_27_DVR,10.100.80.27,RJOC 10 A,Building 6,-,Online,-
+Building 6_28_DVR,10.100.80.28,RJOC 10 A,Building 6,-,Online,-
+Building 6_29_DVR,10.100.80.29,RJOC 10 A,Building 6,-,Online,-
+Building 6_30_DVR,10.100.80.30,RJOC 10 A,Building 6,-,Online,-
+Building 6_31_DVR,10.100.80.31,RJOC 10 A,Building 6,-,Online,-
+Building 6_32_DVR,10.100.80.32,RJOC 10 A,Building 6,-,Online,-
+Building 6_33_DVR,10.100.80.33,RJOC 10 A,Building 6,-,Online,-
+Building 6_34_DVR,10.100.80.34,RJOC 10 A,Building 6,-,Online,-
+Building 6_35_DVR,10.100.80.35,RJOC 10 A,Building 6,-,Online,-
+Building 6_36_DVR,10.100.80.36,RJOC 10 A,Building 6,-,Online,-
+Building 6_37_DVR,10.100.80.37,RJOC 10 A,Building 6,-,Online,-
+Building 6_38_DVR,10.100.80.38,RJOC 10 A,Building 6,-,Online,-
+Building 6_39_DVR,10.100.80.39,RJOC 10 A,Building 6,-,Online,-
+Building 6_40_DVR,10.100.80.40,RJOC 10 A,Building 6,-,Online,-
+Building 6_41_DVR,10.100.80.41,RJOC 10 A,Building 6,-,Online,-
+Building 6_42_DVR,10.100.80.42,RJOC 10 A,Building 6,-,Online,-
+Building 6_43_DVR,10.100.80.43,RJOC 10 A,Building 6,-,Online,-
+Building 6_44_DVR,10.100.80.44,RJOC 10 A,Building 6,-,Online,-
+Building 6_45_DVR,10.100.80.45,RJOC 10 A,Building 6,-,Online,-
+Building 6_46_DVR,10.100.80.46,RJOC 10 A,Building 6,-,Online,-
+Building 6_47_DVR,10.100.80.47,RJOC 10 A,Building 6,-,Online,-
+Building 6_48_DVR,10.100.80.48,RJOC 10 A,Building 6,-,Online,-
+Building 6_49_DVR,10.100.80.49,RJOC 10 A,Building 6,-,Online,-
+Building 6_50_DVR,10.100.80.50,RJOC 10 A,Building 6,-,Online,-
+Building 6_51,10.100.80.51,RJOC 10 A,Building 6,"Tue, 04 Mar 2025 15:12:45 GMT",Offline,1227
+Building 6_52,10.100.80.52,RJOC 10 A,Building 6,"Tue, 04 Mar 2025 15:12:45 GMT",Offline,1227
+Building 7_21_DVR,10.100.44.21,RJOC 10 A,Building 7,-,Online,-
+Building 7_22_DVR,10.100.44.22,RJOC 10 A,Building 7,-,Online,-
+Building 7_23_DVR,10.100.44.23,RJOC 10 A,Building 7,-,Online,-
+Building 7_24_DVR,10.100.44.24,RJOC 10 A,Building 7,-,Online,-
+Building 7_25_DVR,10.100.44.25,RJOC 10 A,Building 7,-,Online,-
+Building 7_26_DVR,10.100.44.26,RJOC 10 A,Building 7,-,Online,-
+Building 7_27_DVR,10.100.44.27,RJOC 10 A,Building 7,-,Online,-
+Building 7_28_DVR,10.100.44.28,RJOC 10 A,Building 7,-,Online,-
+Building 7_29_DVR,10.100.44.29,RJOC 10 A,Building 7,-,Online,-
+Building 7_30_DVR,10.100.44.30,RJOC 10 A,Building 7,-,Online,-
+Building 7_31_DVR,10.100.44.31,RJOC 10 A,Building 7,-,Online,-
+Building 7_32_DVR,10.100.44.32,RJOC 10 A,Building 7,-,Online,-
+Building 7_34_DVR,10.100.44.34,RJOC 10 A,Building 7,-,Online,-
+Building 7_35_DVR,10.100.44.35,RJOC 10 A,Building 7,-,Online,-
+Building 7_36_DVR,10.100.44.36,RJOC 10 A,Building 7,-,Online,-
+Building 7_37_DVR,10.100.44.37,RJOC 10 A,Building 7,-,Online,-
+Building 7_38_DVR,10.100.44.38,RJOC 10 A,Building 7,-,Online,-
+Building 7_39_DVR,10.100.44.39,RJOC 10 A,Building 7,-,Online,-
+Building 7_41_DVR,10.100.44.41,RJOC 10 A,Building 7,-,Online,-
+Building 8(21)_DVR,10.100.16.21,RJOC 10 A,Building 8,-,Online,-
+Building 8(22)_DVR,10.100.16.22,RJOC 10 A,Building 8,-,Online,-
+Building 8(23)_DVR,10.100.16.23,RJOC 10 A,Building 8,-,Online,-
+Building 8(24)_DVR,10.100.16.24,RJOC 10 A,Building 8,-,Online,-
+Building 8(25)_DVR,10.100.16.25,RJOC 10 A,Building 8,-,Online,-
+Building 8(26)_DVR,10.100.16.26,RJOC 10 A,Building 8,-,Online,-
+Building 8(27)_DVR,10.100.16.27,RJOC 10 A,Building 8,-,Online,-
+Building 8(28)_DVR,10.100.16.28,RJOC 10 A,Building 8,-,Online,-
+Building 8(29)_DVR,10.100.16.29,RJOC 10 A,Building 8,-,Online,-
+Building 8(30)_DVR,10.100.16.30,RJOC 10 A,Building 8,-,Online,-
+Building 8(31)_DVR,10.100.16.31,RJOC 10 A,Building 8,-,Online,-
+Building 8(32)_DVR,10.100.16.32,RJOC 10 A,Building 8,-,Online,-
+Building 8(33)_DVR,10.100.16.33,RJOC 10 A,Building 8,-,Online,-
+Building 8(34)_DVR,10.100.16.34,RJOC 10 A,Building 8,-,Online,-
+Building 8(35)_DVR,10.100.16.35,RJOC 10 A,Building 8,-,Online,-
+Building 8(36)_DVR,10.100.16.36,RJOC 10 A,Building 8,-,Online,-
+Building 8(37)_DVR,10.100.16.37,RJOC 10 A,Building 8,-,Online,-
+Building 8(38)_DVR,10.100.16.38,RJOC 10 A,Building 8,-,Online,-
+Building 8(39)_DVR,10.100.16.39,RJOC 10 A,Building 8,-,Online,-
+Building 8(40)_DVR,10.100.16.40,RJOC 10 A,Building 8,-,Online,-
+Building 8(41)_DVR,10.100.16.41,RJOC 10 A,Building 8,-,Online,-
+Building 8(42)_DVR,10.100.16.42,RJOC 10 A,Building 8,-,Online,-
+Building 8(43)_DVR,10.100.16.43,RJOC 10 A,Building 8,-,Online,-
+Building 8(44)_DVR,10.100.16.44,RJOC 10 A,Building 8,-,Online,-
+Building 8(45)_DVR,10.100.16.45,RJOC 10 A,Building 8,-,Online,-
+Building 8(46)_DVR,10.100.16.46,RJOC 10 A,Building 8,-,Online,-
+Building 8(47)_DVR,10.100.16.47,RJOC 10 A,Building 8,-,Online,-
+Building 8(48)_DVR,10.100.16.48,RJOC 10 A,Building 8,-,Online,-
+Building 8(49)_DVR,10.100.16.49,RJOC 10 A,Building 8,-,Online,-
+Building 8(50)_DVR,10.100.16.50,RJOC 10 A,Building 8,-,Online,-
+Building 8(51)_DVR,10.100.16.51,RJOC 10 A,Building 8,-,Online,-
+Building 8(52)_DVR,10.100.16.52,RJOC 10 A,Building 8,-,Online,-
+Building 8(53)_DVR,10.100.16.53,RJOC 10 A,Building 8,-,Online,-
+Building 8(54)_DVR,10.100.16.54,RJOC 10 A,Building 8,-,Online,-
+Building 8(55)_DVR,10.100.16.55,RJOC 10 A,Building 8,-,Online,-
+Building 8(56)_DVR,10.100.16.56,RJOC 10 A,Building 8,-,Online,-
+Building 8(57)_DVR,10.100.16.57,RJOC 10 A,Building 8,-,Online,-
+Building 8(58)_DVR,10.100.16.58,RJOC 10 A,Building 8,-,Online,-
+Building 8(59)_DVR,10.100.16.59,RJOC 10 A,Building 8,-,Online,-
+Building 8(60)_DVR,10.100.16.60,RJOC 10 A,Building 8,-,Online,-
+Building 8(61)_DVR,10.100.16.61,RJOC 10 A,Building 8,-,Online,-
+Building 8(62)_DVR,10.100.16.62,RJOC 10 A,Building 8,-,Online,-
+Building 8(63)_NVR,10.100.16.63,RJOC 10 A,Building 8,-,Online,-
+Building 8(64)_DVR,10.100.16.64,RJOC 10 A,Building 8,-,Online,-
+Building 8(65)_DVR,10.100.16.65,RJOC 10 A,Building 8,-,Online,-
+Building 8(67)_DVR,10.100.16.67,RJOC 10 A,Building 8,-,Online,-
+Building 8(68)_DVR,10.100.16.68,RJOC 10 A,Building 8,-,Online,-
+Building 8(69)_DVR,10.100.16.69,RJOC 10 A,Building 8,-,Online,-
+Building 8(70)_DVR,10.100.16.70,RJOC 10 A,Building 8,-,Online,-
+Building 8(71)_DVR,10.100.16.71,RJOC 10 A,Building 8,-,Online,-
+Building 8(72)_DVR,10.100.16.72,RJOC 10 A,Building 8,-,Online,-
+Building 8(73)_DVR,10.100.16.73,RJOC 10 A,Building 8,-,Online,-
+Building 8(74)_DVR,10.100.16.74,RJOC 10 A,Building 8,-,Online,-
+Building 8(75)_DVR,10.100.16.75,RJOC 10 A,Building 8,-,Online,-
+Building 8(76)_DVR,10.100.16.76,RJOC 10 A,Building 8,-,Online,-
+Building 8(77)_NVR,10.100.16.77,RJOC 10 A,Building 8,-,Online,-
+Building 8(78)_DVR,10.100.16.78,RJOC 10 A,Building 8,-,Online,-
+Building 9_21_DVR,10.100.64.21,RJOC 10 A,Building 9,-,Online,-
+Building 9_22_DVR,10.100.64.22,RJOC 10 A,Building 9,-,Online,-
+Building 9_23_DVR,10.100.64.23,RJOC 10 A,Building 9,-,Online,-
+Building 9_24_DVR,10.100.64.24,RJOC 10 A,Building 9,-,Online,-
+Building 9_25_DVR,10.100.64.25,RJOC 10 A,Building 9,-,Online,-
+Building 9_26_DVR,10.100.64.26,RJOC 10 A,Building 9,-,Online,-
+Building 9_27_DVR,10.100.64.27,RJOC 10 A,Building 9,-,Online,-
+Building 9_28_DVR,10.100.64.28,RJOC 10 A,Building 9,-,Online,-
+Building 9_29_DVR,10.100.64.29,RJOC 10 A,Building 9,-,Online,-
+Building 9_30_DVR,10.100.64.30,RJOC 10 A,Building 9,-,Online,-
+Building 9_31_DVR,10.100.64.31,RJOC 10 A,Building 9,-,Online,-
+Building 9_32_DVR,10.100.64.32,RJOC 10 A,Building 9,-,Online,-
+Building 9_33_DVR,10.100.64.33,RJOC 10 A,Building 9,-,Online,-
+Building 9_34_DVR,10.100.64.34,RJOC 10 A,Building 9,-,Online,-
+Building 9_35_DVR,10.100.64.35,RJOC 10 A,Building 9,-,Online,-
+Building 9_36_DVR,10.100.64.36,RJOC 10 A,Building 9,-,Online,-
+Building 9_37_DVR,10.100.64.37,RJOC 10 A,Building 9,-,Online,-
+Building 9_38_DVR,10.100.64.38,RJOC 10 A,Building 9,-,Online,-
+Building 9_39_DVR,10.100.64.39,RJOC 10 A,Building 9,-,Online,-
+Building 9_40_DVR,10.100.64.40,RJOC 10 A,Building 9,-,Online,-
+Building 9_41_DVR,10.100.64.41,RJOC 10 A,Building 9,-,Online,-
+Building 9_42_DVR,10.100.64.42,RJOC 10 A,Building 9,-,Online,-
+Building 9_43_DVR,10.100.64.43,RJOC 10 A,Building 9,-,Online,-
+Building 9_44_DVR,10.100.64.44,RJOC 10 A,Building 9,-,Online,-
+Building 9_45_DVR,10.100.64.45,RJOC 10 A,Building 9,-,Online,-
+Building 9_46_DVR,10.100.64.46,RJOC 10 A,Building 9,-,Online,-
+Building 9_47_DVR,10.100.64.47,RJOC 10 A,Building 9,-,Online,-
+Building 9_48_DVR,10.100.64.48,RJOC 10 A,Building 9,-,Online,-
+Building 9_49_DVR,10.100.64.49,RJOC 10 A,Building 9,-,Online,-
+Building 9_50_DVR,10.100.64.50,RJOC 10 A,Building 9,-,Online,-
+Building 9_51_DVR,10.100.64.51,RJOC 10 A,Building 9,-,Online,-
+Building 9_52_DVR,10.100.64.52,RJOC 10 A,Building 9,-,Online,-
+Building 9_53_DVR,10.100.64.53,RJOC 10 A,Building 9,-,Online,-
+Building 9_54_DVR,10.100.64.54,RJOC 10 A,Building 9,-,Online,-
+Building 9_55_DVR,10.100.64.55,RJOC 10 A,Building 9,-,Online,-
+Building 9_56_DVR,10.100.64.56,RJOC 10 A,Building 9,-,Online,-
+Building 9_57_DVR,10.100.64.57,RJOC 10 A,Building 9,-,Online,-
+Building 9_58_DVR,10.100.64.58,RJOC 10 A,Building 9,-,Online,-
+Building 9_59_DVR,10.100.64.59,RJOC 10 A,Building 9,-,Online,-
+Building 9_60_DVR,10.100.64.60,RJOC 10 A,Building 9,-,Online,-
+Building 9_61_DVR,10.100.64.61,RJOC 10 A,Building 9,-,Online,-
+Building 9_62_DVR,10.100.64.62,RJOC 10 A,Building 9,-,Online,-
+Building 9_63_DVR,10.100.64.63,RJOC 10 A,Building 9,-,Online,-
+Building 9_64_DVR,10.100.64.64,RJOC 10 A,Building 9,-,Online,-
+Building 9_65_DVR,10.100.64.65,RJOC 10 A,Building 9,-,Online,-
+Building 9_66_DVR,10.100.64.66,RJOC 10 A,Building 9,-,Online,-
+Building 9_67_DVR,10.100.64.67,RJOC 10 A,Building 9,"Mon, 20 Jan 2025 17:04:17 GMT",Offline,2257
+Building 9_68_DVR,10.100.64.68,RJOC 10 A,Building 9,-,Online,-
+Building 9_69_DVR,10.100.64.69,RJOC 10 A,Building 9,-,Online,-
+Building 9_70_DVR,10.100.64.70,RJOC 10 A,Building 9,-,Online,-
+Building 9_71_DVR,10.100.64.71,RJOC 10 A,Building 9,-,Online,-
+Building 9_73_DVR,10.100.64.73,RJOC 10 A,Building 9,-,Online,-
+Cyber Green_21,10.100.40.21,RJOC 10 A,Cyber Green,-,Online,-
+Cyber Green_22_DVR,10.100.40.22,RJOC 10 A,Cyber Green,-,Online,-
+Cyber Green_23_DVR,10.100.40.23,RJOC 10 A,Cyber Green,-,Online,-
+Cyber Green_24_DVR,10.100.40.24,RJOC 10 A,Cyber Green,-,Online,-
+Cyber Green_25_DVR,10.100.40.25,RJOC 10 A,Cyber Green,-,Online,-
+Cyber Green_26_DVR,10.100.40.26,RJOC 10 A,Cyber Green,-,Online,-
+Cyber Green_27_DVR,10.100.40.27,RJOC 10 A,Cyber Green,-,Online,-
+Cyber Green_28_DVR,10.100.40.28,RJOC 10 A,Cyber Green,-,Online,-
+Cyber Green_29_DVR,10.100.40.29,RJOC 10 A,Cyber Green,-,Online,-
+Cyber Green_30_DVR,10.100.40.30,RJOC 10 A,Cyber Green,-,Online,-
+Cyber Green_31_DVR,10.100.40.31,RJOC 10 A,Cyber Green,-,Online,-
+Cyber Green_32_DVR,10.100.40.32,RJOC 10 A,Cyber Green,-,Online,-
+Cyber Green_33_DVR,10.100.40.33,RJOC 10 A,Cyber Green,-,Online,-
+Cyber Green_34_DVR,10.100.40.34,RJOC 10 A,Cyber Green,-,Online,-
+Cyber Green_35_DVR,10.100.40.35,RJOC 10 A,Cyber Green,-,Online,-
+Cyber Green_36_DVR,10.100.40.36,RJOC 10 A,Cyber Green,-,Online,-
+Cyber Green_37_DVR,10.100.40.37,RJOC 10 A,Cyber Green,-,Online,-
+Cyber Green_38_DVR,10.100.40.38,RJOC 10 A,Cyber Green,-,Online,-
+Cyber Green_39_DVR,10.100.40.39,RJOC 10 A,Cyber Green,-,Online,-
+Cyber Green_40_DVR,10.100.40.40,RJOC 10 A,Cyber Green,-,Online,-
+Cyber Green_41_DVR,10.100.40.41,RJOC 10 A,Cyber Green,-,Online,-
+Cyber Green_44_DVR,10.100.40.44,RJOC 10 A,Cyber Green,-,Online,-
+Cyber Green_45_DVR,10.100.40.45,RJOC 10 A,Cyber Green,-,Online,-
+Cyber Green_46_DVR,10.100.40.46,RJOC 10 A,Cyber Green,-,Online,-
+Cyber Green_47_DVR,10.100.40.47,RJOC 10 A,Cyber Green,-,Online,-
+Cyber Green_48_DVR,10.100.40.48,RJOC 10 A,Cyber Green,-,Online,-
+Cyber Green_49_DVR,10.100.40.49,RJOC 10 A,Cyber Green,-,Online,-
+Cyber Green_50_DVR,10.100.40.50,RJOC 10 A,Cyber Green,-,Online,-
+Cyber Green_51_DVR,10.100.40.51,RJOC 10 A,Cyber Green,-,Online,-
+Cyber Green_52_DVR,10.100.40.52,RJOC 10 A,Cyber Green,-,Online,-
+Cyber Green_53_DVR,10.100.40.53,RJOC 10 A,Cyber Green,-,Online,-
+Cyber Green_54_DVR,10.100.40.54,RJOC 10 A,Cyber Green,-,Online,-
+Cyber Green_55_DVR,10.100.40.55,RJOC 10 A,Cyber Green,-,Online,-
+Cyber Green_56_DVR,10.100.40.56,RJOC 10 A,Cyber Green,-,Online,-
+Cyber Green_57_DVR,10.100.40.57,RJOC 10 A,Cyber Green,-,Online,-
+Cyber Green_58_DVR,10.100.40.58,RJOC 10 A,Cyber Green,-,Online,-
+Cyber Green_59_DVR,10.100.40.59,RJOC 10 A,Cyber Green,-,Online,-
+Cyber Hub_NVR,10.100.2.35,RJOC 10 A,Cyber Hub,-,Online,-
+DLF Cyber hub_36_DVR,10.100.2.36,RJOC 10 A,Cyber Hub,-,Online,-
+DLF Cyber hub_37_DVR,10.100.2.37,RJOC 10 A,Cyber Hub,-,Online,-
+DLF Cyber hub_38_DVR,10.100.2.38,RJOC 10 A,Cyber Hub,-,Online,-
+DLF Cyber hub_39_DVR,10.100.2.39,RJOC 10 A,Cyber Hub,-,Online,-
+DLF Cyber hub_41_DVR,10.100.2.41,RJOC 10 A,Cyber Hub,-,Online,-
+DLF Cyber hub_42_DVR,10.100.2.42,RJOC 10 A,Cyber Hub,-,Online,-
+DLF Cyber hub_43_DVR,10.100.2.43,RJOC 10 A,Cyber Hub,-,Online,-
+DLF Cyber hub_44,10.100.2.44,RJOC 10 A,Cyber Hub,-,Online,-
+DLF Cyber hub_45_DVR,10.100.2.45,RJOC 10 A,Cyber Hub,-,Online,-
+DLF Cyber hub_46_DVR,10.100.2.46,RJOC 10 A,Cyber Hub,-,Online,-
+DLF Cyber hub_47_DVR,10.100.2.47,RJOC 10 A,Cyber Hub,-,Online,-
+DLF Cyber hub_48_DVR,10.100.2.48,RJOC 10 A,Cyber Hub,-,Online,-
+DLF Cyber hub_49_DVR,10.100.2.49,RJOC 10 A,Cyber Hub,-,Online,-
+DLF Cyber hub_50_DVR,10.100.2.50,RJOC 10 A,Cyber Hub,-,Online,-
+Cyber Park_22_NVR,10.100.32.22,RJOC DT,Cyber Park,-,Online,-
+Cyber Park_23_NVR,10.100.32.23,RJOC DT,Cyber Park,-,Online,-
+Cyber Park_24_NVR,10.100.32.24,RJOC DT,Cyber Park,-,Online,-
+Cyber Park_25_NVR,10.100.32.25,RJOC DT,Cyber Park,-,Online,-
+Cyber Park_26_NVR,10.100.32.26,RJOC DT,Cyber Park,-,Online,-
+Cyber Park_27_NVR,10.100.32.27,RJOC DT,Cyber Park,-,Online,-
+Cyber Park_28_DVR_DVR,10.100.32.28,RJOC DT,Cyber Park,-,Online,-
+Cyber Park_29_NVR,10.100.32.29,RJOC DT,Cyber Park,-,Online,-
+Cyber Park_30_NVR,10.100.32.30,RJOC DT,Cyber Park,-,Online,-
+Cyber Park_31_NVR,10.100.32.31,RJOC DT,Cyber Park,-,Online,-
+Cyber Park_32_NVR,10.100.32.32,RJOC DT,Cyber Park,-,Online,-
+Cyber Park_33_NVR,10.100.32.33,RJOC DT,Cyber Park,-,Online,-
+Cyber Park_34_NVR,10.100.32.34,RJOC DT,Cyber Park,-,Online,-
+Cyber Park_35_NVR,10.100.32.35,RJOC DT,Cyber Park,-,Online,-
+Cyber Park_36_NVR,10.100.32.36,RJOC DT,Cyber Park,-,Online,-
+Cyber Park_37_NVR,10.100.32.37,RJOC DT,Cyber Park,-,Online,-
+Cyber Park_38_NVR,10.100.32.38,RJOC DT,Cyber Park,-,Online,-
+Cyber Park_39_NVR,10.100.32.39,RJOC DT,Cyber Park,-,Online,-
+Cyber Park_DVR,10.100.32.21,RJOC DT,Cyber Park,-,Online,-
+DLF Forum_21_DVR,10.100.28.21,RJOC 10 A,DLF Forum,-,Online,-
+DLF Forum_22_DVR,10.100.28.22,RJOC 10 A,DLF Forum,-,Online,-
+DLF Forum_23_DVR,10.100.28.23,RJOC 10 A,DLF Forum,-,Online,-
+DLF Forum_24_DVR,10.100.28.24,RJOC 10 A,DLF Forum,-,Online,-
+DLF Forum_25_DVR,10.100.28.25,RJOC 10 A,DLF Forum,-,Online,-
+DLF Forum_26_DVR,10.100.28.26,RJOC 10 A,DLF Forum,-,Online,-
+DLF Forum_27_DVR,10.100.28.27,RJOC 10 A,DLF Forum,-,Online,-
+DLF Forum_28_DVR,10.100.28.28,RJOC 10 A,DLF Forum,-,Online,-
+DLF Forum_29_DVR,10.100.28.29,RJOC 10 A,DLF Forum,-,Online,-
+DLF Forum_30_DVR,10.100.28.30,RJOC 10 A,DLF Forum,-,Online,-
+DT Gurgaon_21_NVR,10.100.104.21,RJOC 10 A,DownTown,-,Online,-
+DT Gurgaon_22_NVR,10.100.104.22,RJOC 10 A,DownTown,-,Online,-
+DT Gurgaon_23_NVR,10.100.104.23,RJOC 10 A,DownTown,-,Online,-
+DT Gurgaon_24_NVR,10.100.104.24,RJOC 10 A,DownTown,-,Online,-
+DT Gurgaon_25_NVR,10.100.104.25,RJOC 10 A,DownTown,-,Online,-
+DT Gurgaon_26_NVR,10.100.104.26,RJOC 10 A,DownTown,-,Online,-
+DT Gurgaon_27_NVR,10.100.104.27,RJOC 10 A,DownTown,-,Online,-
+DT Gurgaon_28_NVR,10.100.104.28,RJOC 10 A,DownTown,-,Online,-
+DT Gurgaon_29_NVR,10.100.104.29,RJOC 10 A,DownTown,-,Online,-
+DT Gurgaon_30_NVR,10.100.104.30,RJOC 10 A,DownTown,-,Online,-
+DT Gurgaon_31_NVR,10.100.104.31,RJOC 10 A,DownTown,-,Online,-
+Gateway tower(21)_DVR,10.100.24.21,RJOC 10 A,GatewayTower,-,Online,-
+Gateway tower(22)_DVR,10.100.24.22,RJOC 10 A,GatewayTower,-,Online,-
+Gateway tower(23)_DVR,10.100.24.23,RJOC 10 A,GatewayTower,-,Online,-
+Gateway tower(24)_DVR,10.100.24.24,RJOC 10 A,GatewayTower,-,Online,-
+Gateway tower(25)_DVR,10.100.24.25,RJOC 10 A,GatewayTower,-,Online,-
+Gateway tower(26)_DVR,10.100.24.26,RJOC 10 A,GatewayTower,-,Online,-
+Gateway tower(27)_DVR,10.100.24.27,RJOC 10 A,GatewayTower,-,Online,-
+Gateway tower(28)_DVR,10.100.24.28,RJOC 10 A,GatewayTower,-,Online,-
+Gateway tower(30),10.100.24.30,RJOC 10 A,GatewayTower,-,Online,-
+Gateway tower(31)_DVR,10.100.24.31,RJOC 10 A,GatewayTower,-,Online,-
+Gateway tower12(30),10.100.24.30,RJOC 10 A,GatewayTower,-,Online,-
+Infinity Tower_10_DVR,10.100.3.10,RJOC 10 A,Infinity,-,Online,-
+Infinity Tower_11_DVR,10.100.3.11,RJOC 10 A,Infinity,-,Online,-
+Infinity Tower_12_DVR,10.100.3.12,RJOC 10 A,Infinity,-,Online,-
+Infinity Tower_13_DVR,10.100.3.13,RJOC 10 A,Infinity,-,Online,-
+Infinity Tower_14_DVR,10.100.3.14,RJOC 10 A,Infinity,-,Online,-
+Infinity Tower_15_DVR,10.100.3.15,RJOC 10 A,Infinity,-,Online,-
+Infinity Tower_16_DVR,10.100.3.16,RJOC 10 A,Infinity,-,Online,-
+Infinity Tower_17_DVR,10.100.3.17,RJOC 10 A,Infinity,-,Online,-
+Infinity Tower_18_DVR,10.100.3.18,RJOC 10 A,Infinity,-,Online,-
+Infinity Tower_19_DVR,10.100.3.19,RJOC 10 A,Infinity,-,Online,-
+Infinity Tower_20_DVR,10.100.3.20,RJOC 10 A,Infinity,-,Online,-
+Infinity Tower_21_DVR,10.100.3.21,RJOC 10 A,Infinity,-,Online,-
+Infinity Tower_22_DVR,10.100.3.22,RJOC 10 A,Infinity,-,Online,-
+Infinity Tower_23_DVR,10.100.3.23,RJOC 10 A,Infinity,-,Online,-
+Infinity Tower_24_DVR,10.100.3.24,RJOC 10 A,Infinity,-,Online,-
+Infinity Tower_25_DVR,10.100.3.25,RJOC 10 A,Infinity,-,Online,-
+Infinity Tower_26_DVR,10.100.3.26,RJOC 10 A,Infinity,-,Online,-
+Infinity Tower_27_DVR,10.100.3.27,RJOC 10 A,Infinity,-,Online,-
+Infinity Tower_28_DVR,10.100.3.28,RJOC 10 A,Infinity,-,Online,-
+Infinity Tower_29_DVR,10.100.3.29,RJOC 10 A,Infinity,-,Online,-
+Infinity Tower_3_NVR,10.100.3.3,RJOC 10 A,Infinity,-,Online,-
+Infinity Tower_3_NVR,10.100.3.3,RJOC 10 A,Infinity,-,Online,-
+Infinity Tower_30_DVR,10.100.3.30,RJOC 10 A,Infinity,-,Online,-
+Infinity Tower_31_DVR,10.100.3.31,RJOC 10 A,Infinity,-,Online,-
+Infinity Tower_32_DVR,10.100.3.32,RJOC 10 A,Infinity,-,Online,-
+Infinity Tower_33_DVR,10.100.3.33,RJOC 10 A,Infinity,-,Online,-
+Infinity Tower_34_DVR,10.100.3.34,RJOC 10 A,Infinity,-,Online,-
+Infinity Tower_35_DVR,10.100.3.35,RJOC 10 A,Infinity,-,Online,-
+Infinity Tower_36,10.100.3.36,RJOC 10 A,Infinity,-,Online,-
+Infinity Tower_37_DVR,10.100.3.37,RJOC 10 A,Infinity,-,Online,-
+Infinity Tower_38_DVR,10.100.3.38,RJOC 10 A,Infinity,-,Online,-
+Infinity Tower_39_DVR,10.100.3.39,RJOC 10 A,Infinity,-,Online,-
+Infinity Tower_4_DVR,10.100.3.4,RJOC 10 A,Infinity,-,Online,-
+Infinity Tower_40_DVR,10.100.3.40,RJOC 10 A,Infinity,-,Online,-
+Infinity Tower_41_DVR,10.100.3.41,RJOC 10 A,Infinity,-,Online,-
+Infinity Tower_42_DVR,10.100.3.42,RJOC 10 A,Infinity,-,Online,-
+Infinity Tower_43_DVR,10.100.3.43,RJOC 10 A,Infinity,-,Online,-
+Infinity Tower_44_DVR,10.100.3.44,RJOC 10 A,Infinity,-,Online,-
+Infinity Tower_45_DVR,10.100.3.45,RJOC 10 A,Infinity,-,Online,-
+Infinity Tower_46_DVR,10.100.3.46,RJOC 10 A,Infinity,-,Online,-
+Infinity Tower_47_DVR,10.100.3.47,RJOC 10 A,Infinity,-,Online,-
+Infinity Tower_48_DVR,10.100.3.48,RJOC 10 A,Infinity,-,Online,-
+Infinity Tower_49_DVR,10.100.3.49,RJOC 10 A,Infinity,-,Online,-
+Infinity Tower_5_DVR,10.100.3.5,RJOC 10 A,Infinity,-,Online,-
+Infinity Tower_50,10.100.3.50,RJOC 10 A,Infinity,-,Online,-
+Infinity Tower_6_DVR,10.100.3.6,RJOC 10 A,Infinity,-,Online,-
+Infinity Tower_7_DVR,10.100.3.7,RJOC 10 A,Infinity,-,Online,-
+Infinity Tower_8_DVR,10.100.3.8,RJOC 10 A,Infinity,-,Online,-
+Infinity Tower_9_DVR,10.100.3.9,RJOC 10 A,Infinity,-,Online,-
+Infinity_02_NVR ,10.100.3.2,RJOC 10 A,Infinity,-,Online,-

@@ -11,7 +11,15 @@ import {
 import ChartDataLabels from "chartjs-plugin-datalabels";
 import PropTypes from "prop-types";
 
-ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, ChartDataLabels);
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
+  ChartDataLabels
+);
 
 const DoubleBarChart = ({
   labels,
@@ -22,8 +30,8 @@ const DoubleBarChart = ({
   showValues,
   isStacked,
   drillDownData,
+  chartIndex,
 }) => {
-
   if (!labels || !dataPoints || dataPoints.length < 2) {
     return (
       <div className="flex items-center justify-center h-full text-gray-400">
@@ -35,7 +43,14 @@ const DoubleBarChart = ({
   const barData = {
     labels: labels,
     datasets: dataPoints.map((point, index) => {
-      const label = drillDownData?.data?.[index]?.counts?.[index]?.type || `Dataset ${index + 1}`;
+      let label;
+      if (chartIndex === "camera") {
+        label = index === 0 ? "Online" : "Offline";
+      } else {
+        label =
+          drillDownData?.data?.[index]?.counts?.[index]?.type ||
+          (index === 0 ? "Online" : "Offline");
+      }
       return {
         label: label,
         data: point,
@@ -49,6 +64,7 @@ const DoubleBarChart = ({
 
   const options = {
     responsive: true,
+    maintainAspectRatio: false, // Allow chart to fill container
     plugins: {
       tooltip: {
         callbacks: {
@@ -60,50 +76,97 @@ const DoubleBarChart = ({
       datalabels: {
         display: showValues,
         align: "top",
-        color: "white",
+        anchor: "end",
+        color: "#FFFFFF",
+        font: {
+          size: 14,
+        },
       },
       legend: {
         position: "top",
         labels: {
           color: "#FFFFFF",
           font: {
-            size: 12,
+            size: 14,
           },
-          generateLabels: (chart) => {
-            return chart.data.datasets.map((dataset, index) => ({
-              text: dataset.label,
-              fillStyle: dataset.backgroundColor,
-              strokeStyle: dataset.borderColor,
-              hidden: false,
-              index,
-              fontColor: "#FFFFFF",
-            }));
-          },
+        },
+      },
+      title: {
+        display: true,
+        text: title,
+        color: "#FFFFFF",
+        font: {
+          size: 18,
+        },
+        padding: {
+          top: 10,
+          bottom: 20,
         },
       },
     },
     scales: {
       x: {
         stacked: isStacked,
+        ticks: {
+          font: {
+            size: 12,
+          },
+          color: "#FFFFFF",
+          maxRotation: 45,
+          minRotation: 0,
+        },
+        grid: {
+          display: false,
+        },
       },
       y: {
         stacked: isStacked,
+        ticks: {
+          font: {
+            size: 12,
+          },
+          color: "#FFFFFF",
+        },
+        grid: {
+          color: "rgba(255, 255, 255, 0.1)",
+        },
+        beginAtZero: true,
+      },
+    },
+    layout: {
+      padding: {
+        top: 20,
+        right: 10,
+        bottom: 20,
+        left: 10,
+      },
+    },
+    datasets: {
+      bar: {
+        barThickness: 40, // Fixed thickness to prevent shrinking
+        maxBarThickness: 50,
+        minBarLength: 2, // Ensure bars are visible even with small values
       },
     },
     onClick: (event, elements) => {
       if (elements.length > 0) {
         const barIndex = elements[0].index;
+        const datasetIndex = elements[0].datasetIndex;
         const label = labels[barIndex];
+        const status = dataPoints[datasetIndex]?.status || (datasetIndex === 0 ? "Online" : "Offline");
+    
         if (onBarClick) {
-          onBarClick(label);
-        };
+          onBarClick(label, status);
+        }
       }
-    },
+    }
+    
   };
 
+  console.log("DoubleBarChart container height:", document.querySelector(".w-full.h-full")?.offsetHeight);
+
   return (
-    <div className="flex flex-col items-center">
-      <h2 className="text-xl font-semibold mb-2">{title}</h2>
+    <div className="w-full h-full">
       <Bar data={barData} options={options} />
     </div>
   );
@@ -114,16 +177,18 @@ DoubleBarChart.propTypes = {
   dataPoints: PropTypes.array.isRequired,
   title: PropTypes.string.isRequired,
   colors: PropTypes.array.isRequired,
-  onBarClick: PropTypes.func.isRequired,
+  onBarClick: PropTypes.func,
   showValues: PropTypes.bool.isRequired,
-  chartIndex: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  chartIndex: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   isStacked: PropTypes.bool,
-  drillDownData: PropTypes.object.isRequired,
+  drillDownData: PropTypes.object,
 };
 
 DoubleBarChart.defaultProps = {
   isStacked: false,
-  path: null, // Default is no path
+  onBarClick: null,
+  chartIndex: null,
+  drillDownData: null,
 };
 
 export default DoubleBarChart;

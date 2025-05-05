@@ -1,0 +1,676 @@
+{
+  "last_refresh_time": "2025-05-05T12:31:14.915505",
+  "next_refresh_time": "2025-05-05T12:41:14.915505",
+  "data": [
+    {
+      "chart_name": "Total Alarms",
+      "overview_query": {
+        "chart_name": "Overview of Total Alarm ",
+        "legends": [
+          "Total Alarms",
+          "False Alarms",
+          "True Alarms"
+        ],
+        "data": [
+          {
+            "attribute": "Total Alarms",
+            "count": 0
+          },
+          {
+            "attribute": "False Alarms",
+            "count": 0
+          },
+          {
+            "attribute": "True Alarms",
+            "count": 0
+          },
+          {
+            "attribute": "Not Marked",
+            "count": 0
+          }
+        ],
+        "query": "SELECT COUNT(CASE WHEN inlCategory_FRK = 2 THEN 1 END) AS [Total Alarms], COUNT(CASE WHEN inlSubCategory_FRK = 1 THEN 1 END) AS [False Alarms], COUNT(CASE WHEN inlSubCategory_FRK = 2 THEN 1 END) AS [True Alarms], COUNT(CASE WHEN inlSubCategory_FRK IS NULL THEN 1 END) AS [Not Marked] FROM IncidentLog_TBL WHERE inlCategory_FRK = 2 AND CAST(inlDateTime_DTM AS DATE) >= CAST(CONVERT(VARCHAR, GETDATE(), 120) AS DATE) AND CAST(inlDateTime_DTM AS DATE) <= CAST(GETDATE() AS DATE);"
+      },
+      "drill_down_query": {
+        "chart_name": "Alarm NCR Wise",
+        "legends": [
+          "Total Alarms",
+          "False Alarms",
+          "True Alarms"
+        ],
+        "data": [
+          {
+            "attribute": "Building Name",
+            "value": 0,
+            "counts": [
+              {
+                "type": "False Alarms",
+                "value": 0
+              },
+              {
+                "type": "True Alarms",
+                "value": 0
+              },
+              {
+                "type": "Not Marked",
+                "value": 0
+              }
+            ]
+          }
+        ],
+        "query": "SELECT COUNT(CASE WHEN inlCategory_FRK = 2 THEN 1 END) AS [Total Alarms], COUNT(CASE WHEN inlSubCategory_FRK = 1 THEN 1 END) AS [False Alarms], COUNT(CASE WHEN inlSubCategory_FRK = 2 THEN 1 END) AS [True Alarms], COUNT(CASE WHEN inlSubCategory_FRK IS NULL THEN 1 END) AS [Not Marked] FROM IncidentLog_TBL WHERE inlCategory_FRK = 2 AND CAST(inlDateTime_DTM AS DATE) >= CAST(CONVERT(VARCHAR, GETDATE(), 120) AS DATE) AND CAST(inlDateTime_DTM AS DATE) <= CAST(GETDATE() AS DATE);"
+      },
+      "report_query": {
+        "chart_name": "Alarm building wise report",
+        "legends": [
+          "Total Alarms",
+          "False Alarms",
+          "True Alarms"
+        ],
+        "data": [],
+        "query": "SELECT COALESCE(bld.bldBuildingName_TXT, 'Unknown Building') AS Building, COUNT(CASE WHEN inlCategory_FRK = 2 THEN 1 END) AS [Total Alarms], COUNT(CASE WHEN inlSubCategory_FRK = 1 THEN 1 END) AS [False Alarms], COUNT(CASE WHEN inlSubCategory_FRK = 2 THEN 1 END) AS [True Alarms], COUNT(CASE WHEN inlSubCategory_FRK IS NULL THEN 1 END) AS [Not Marked] FROM IncidentLog_TBL il LEFT JOIN Building_TBL bld ON bld.Building_PRK = il.inlBuilding_FRK WHERE inlCategory_FRK = 2 AND CAST(inlDateTime_DTM AS DATE) >= CAST(CONVERT(VARCHAR, GETDATE(), 120) AS DATE) AND CAST(inlDateTime_DTM AS DATE) <= CAST(GETDATE() AS DATE) GROUP BY bld.bldBuildingName_TXT;"
+      }
+    },
+    {
+      "chart_name": "IOT Device Status",
+      "overview_query": {
+        "chart_name": "Overview of IOT Device",
+        "legends": [
+          "Total",
+          "Offline",
+          "Online"
+        ],
+        "data": [],
+        "query": "SELECT COUNT(CASE WHEN ptsCurrentState_LNG = 1 THEN 1 END) AS Online, COUNT(CASE WHEN ptsCurrentState_LNG = 2 THEN 1 END) AS Offline, COUNT(PingTest_PRK) AS Total FROM vtasData.dbo.PingTest_TBL LEFT OUTER JOIN vtasData.dbo.Building_TBL ON ptsBuilding_FRK = Building_PRK WHERE PingTest_PRK IN (171, 172, 173, 800, 801, 802, 803, 804, 805, 806);"
+      },
+      "drill_down_query": {
+        "chart_name": "IOT Device Status Building Wise",
+        "legends": [
+          "Total",
+          "Online",
+          "Offline"
+        ],
+        "data": [
+          {
+            "attribute": "Building Name",
+            "value": "Building 10",
+            "counts": [
+              {
+                "type": "Online",
+                "value": 1
+              },
+              {
+                "type": "Offline",
+                "value": 0
+              },
+              {
+                "type": "Total",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "attribute": "Building Name",
+            "value": "Building 8",
+            "counts": [
+              {
+                "type": "Online",
+                "value": 1
+              },
+              {
+                "type": "Offline",
+                "value": 0
+              },
+              {
+                "type": "Total",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "attribute": "Building Name",
+            "value": "GatewayTower",
+            "counts": [
+              {
+                "type": "Online",
+                "value": 1
+              },
+              {
+                "type": "Offline",
+                "value": 0
+              },
+              {
+                "type": "Total",
+                "value": 1
+              }
+            ]
+          }
+        ],
+        "query": "SELECT bldBuildingName_TXT AS 'Building Name', ISNULL([Online], 0) AS Online, ISNULL([Offline], 0) AS Offline, ISNULL([Online], 0) + ISNULL([Offline], 0) AS Total FROM (SELECT bldBuildingName_TXT, CASE WHEN ptsCurrentState_LNG = 1 THEN 'Online' WHEN ptsCurrentState_LNG = 2 THEN 'Offline' END AS Status, PingTest_PRK FROM PingTest_TBL LEFT OUTER JOIN Building_TBL ON ptsBuilding_FRK = Building_PRK WHERE PingTest_PRK IN (171, 172, 173, 800, 801, 802, 803, 804, 805, 806)) AS SourceTable PIVOT (COUNT(PingTest_PRK) FOR Status IN ([Online], [Offline])) AS PivotTable ORDER BY bldBuildingName_TXT;"
+      },
+      "report_query": {
+        "chart_name": "IOT Device Report",
+        "legends": [],
+        "data": [
+          {
+            "attribute": "Device Name",
+            "count": "Fire Panel Building 8"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.16.4"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Fire Panel Building 10"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.1.2"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          },
+          {
+            "attribute": "Device Name",
+            "count": "Fire Panel Gateway tower"
+          },
+          {
+            "attribute": "IP Detail",
+            "count": "10.100.24.4"
+          },
+          {
+            "attribute": "Offline Date Time",
+            "count": null
+          },
+          {
+            "attribute": "Status",
+            "count": "Online"
+          },
+          {
+            "attribute": "Down Time (hours)",
+            "count": null
+          }
+        ],
+        "query": "SELECT ptsDeviceName_TXT AS 'Device Name', ptsIPAddress_TXT AS 'IP Detail', ptsOfflineTime_DTM AS 'Offline Date Time', CASE WHEN ptsCurrentState_LNG = 2 AND ptsOfflineTime_DTM IS NOT NULL THEN 'Offline' WHEN ptsCurrentState_LNG = 1 THEN 'Online' END AS Status, DATEDIFF(HH, ptsOfflineTime_DTM, GETDATE()) AS 'Down Time (hours)' FROM PingTest_TBL WHERE PingTest_PRK IN (171, 172, 173, 800, 801, 802, 803, 804, 805, 806);"
+      }
+    },
+    {
+      "chart_name": "Hourly Trend",
+      "overview_query": {
+        "chart_name": "Hourly Trend",
+        "legends": [
+          "Total Alarms",
+          "False Alarms",
+          "True Alarms"
+        ],
+        "data": [],
+        "query": "WITH HourIntervals AS (SELECT FORMAT(ROW_NUMBER() OVER (ORDER BY (SELECT NULL)) - 1, '00') AS HourInterval FROM master..spt_values WHERE type = 'P' AND number BETWEEN 0 AND 23) SELECT h.HourInterval, COALESCE(i.[Total Alarms], 0) AS [Total Alarms], COALESCE(i.[True Alarms], 0) AS [True Alarms], COALESCE(i.[False Alarms], 0) AS [False Alarms] FROM HourIntervals h LEFT JOIN (SELECT FORMAT(i.inlDateTime_DTM, 'HH') AS HourInterval, SUM(CASE WHEN i.inlCategory_FRK = 2 THEN 1 ELSE 0 END) AS [Total Alarms], SUM(CASE WHEN i.inlSubCategory_FRK = 1 THEN 1 ELSE 0 END) AS [False Alarms], SUM(CASE WHEN i.inlSubCategory_FRK = 2 THEN 1 ELSE 0 END) AS [True Alarms] FROM vtasData.dbo.IncidentLog_TBL i WHERE i.inlCategory_FRK = 2 AND i.inlDateTime_DTM >= CAST(CAST(SYSDATETIME() AS DATE) AS DATETIME) GROUP BY FORMAT(i.inlDateTime_DTM, 'HH')) i ON h.HourInterval = i.HourInterval ORDER BY CAST(h.HourInterval AS INT);"
+      },
+      "drill_down_query": {
+        "chart_name": "Hourly Trend NCR-1",
+        "legends": [
+          "True Alarms",
+          "False Alarms"
+        ],
+        "data": [
+          {
+            "attribute": "Building Name",
+            "value": "00",
+            "counts": [
+              {
+                "type": "Total Alarms",
+                "value": 0
+              },
+              {
+                "type": "True Alarms",
+                "value": 0
+              },
+              {
+                "type": "False Alarms",
+                "value": 0
+              }
+            ]
+          },
+          {
+            "attribute": "Building Name",
+            "value": "01",
+            "counts": [
+              {
+                "type": "Total Alarms",
+                "value": 0
+              },
+              {
+                "type": "True Alarms",
+                "value": 0
+              },
+              {
+                "type": "False Alarms",
+                "value": 0
+              }
+            ]
+          },
+          {
+            "attribute": "Building Name",
+            "value": "02",
+            "counts": [
+              {
+                "type": "Total Alarms",
+                "value": 0
+              },
+              {
+                "type": "True Alarms",
+                "value": 0
+              },
+              {
+                "type": "False Alarms",
+                "value": 0
+              }
+            ]
+          },
+          {
+            "attribute": "Building Name",
+            "value": "03",
+            "counts": [
+              {
+                "type": "Total Alarms",
+                "value": 0
+              },
+              {
+                "type": "True Alarms",
+                "value": 0
+              },
+              {
+                "type": "False Alarms",
+                "value": 0
+              }
+            ]
+          },
+          {
+            "attribute": "Building Name",
+            "value": "04",
+            "counts": [
+              {
+                "type": "Total Alarms",
+                "value": 0
+              },
+              {
+                "type": "True Alarms",
+                "value": 0
+              },
+              {
+                "type": "False Alarms",
+                "value": 0
+              }
+            ]
+          },
+          {
+            "attribute": "Building Name",
+            "value": "05",
+            "counts": [
+              {
+                "type": "Total Alarms",
+                "value": 0
+              },
+              {
+                "type": "True Alarms",
+                "value": 0
+              },
+              {
+                "type": "False Alarms",
+                "value": 0
+              }
+            ]
+          },
+          {
+            "attribute": "Building Name",
+            "value": "06",
+            "counts": [
+              {
+                "type": "Total Alarms",
+                "value": 0
+              },
+              {
+                "type": "True Alarms",
+                "value": 0
+              },
+              {
+                "type": "False Alarms",
+                "value": 0
+              }
+            ]
+          },
+          {
+            "attribute": "Building Name",
+            "value": "07",
+            "counts": [
+              {
+                "type": "Total Alarms",
+                "value": 0
+              },
+              {
+                "type": "True Alarms",
+                "value": 0
+              },
+              {
+                "type": "False Alarms",
+                "value": 0
+              }
+            ]
+          },
+          {
+            "attribute": "Building Name",
+            "value": "08",
+            "counts": [
+              {
+                "type": "Total Alarms",
+                "value": 0
+              },
+              {
+                "type": "True Alarms",
+                "value": 0
+              },
+              {
+                "type": "False Alarms",
+                "value": 0
+              }
+            ]
+          },
+          {
+            "attribute": "Building Name",
+            "value": "09",
+            "counts": [
+              {
+                "type": "Total Alarms",
+                "value": 0
+              },
+              {
+                "type": "True Alarms",
+                "value": 0
+              },
+              {
+                "type": "False Alarms",
+                "value": 0
+              }
+            ]
+          },
+          {
+            "attribute": "Building Name",
+            "value": "10",
+            "counts": [
+              {
+                "type": "Total Alarms",
+                "value": 0
+              },
+              {
+                "type": "True Alarms",
+                "value": 0
+              },
+              {
+                "type": "False Alarms",
+                "value": 0
+              }
+            ]
+          },
+          {
+            "attribute": "Building Name",
+            "value": "11",
+            "counts": [
+              {
+                "type": "Total Alarms",
+                "value": 0
+              },
+              {
+                "type": "True Alarms",
+                "value": 0
+              },
+              {
+                "type": "False Alarms",
+                "value": 0
+              }
+            ]
+          },
+          {
+            "attribute": "Building Name",
+            "value": "12",
+            "counts": [
+              {
+                "type": "Total Alarms",
+                "value": 0
+              },
+              {
+                "type": "True Alarms",
+                "value": 0
+              },
+              {
+                "type": "False Alarms",
+                "value": 0
+              }
+            ]
+          },
+          {
+            "attribute": "Building Name",
+            "value": "13",
+            "counts": [
+              {
+                "type": "Total Alarms",
+                "value": 0
+              },
+              {
+                "type": "True Alarms",
+                "value": 0
+              },
+              {
+                "type": "False Alarms",
+                "value": 0
+              }
+            ]
+          },
+          {
+            "attribute": "Building Name",
+            "value": "14",
+            "counts": [
+              {
+                "type": "Total Alarms",
+                "value": 0
+              },
+              {
+                "type": "True Alarms",
+                "value": 0
+              },
+              {
+                "type": "False Alarms",
+                "value": 0
+              }
+            ]
+          },
+          {
+            "attribute": "Building Name",
+            "value": "15",
+            "counts": [
+              {
+                "type": "Total Alarms",
+                "value": 0
+              },
+              {
+                "type": "True Alarms",
+                "value": 0
+              },
+              {
+                "type": "False Alarms",
+                "value": 0
+              }
+            ]
+          },
+          {
+            "attribute": "Building Name",
+            "value": "16",
+            "counts": [
+              {
+                "type": "Total Alarms",
+                "value": 0
+              },
+              {
+                "type": "True Alarms",
+                "value": 0
+              },
+              {
+                "type": "False Alarms",
+                "value": 0
+              }
+            ]
+          },
+          {
+            "attribute": "Building Name",
+            "value": "17",
+            "counts": [
+              {
+                "type": "Total Alarms",
+                "value": 0
+              },
+              {
+                "type": "True Alarms",
+                "value": 0
+              },
+              {
+                "type": "False Alarms",
+                "value": 0
+              }
+            ]
+          },
+          {
+            "attribute": "Building Name",
+            "value": "18",
+            "counts": [
+              {
+                "type": "Total Alarms",
+                "value": 0
+              },
+              {
+                "type": "True Alarms",
+                "value": 0
+              },
+              {
+                "type": "False Alarms",
+                "value": 0
+              }
+            ]
+          },
+          {
+            "attribute": "Building Name",
+            "value": "19",
+            "counts": [
+              {
+                "type": "Total Alarms",
+                "value": 0
+              },
+              {
+                "type": "True Alarms",
+                "value": 0
+              },
+              {
+                "type": "False Alarms",
+                "value": 0
+              }
+            ]
+          },
+          {
+            "attribute": "Building Name",
+            "value": "20",
+            "counts": [
+              {
+                "type": "Total Alarms",
+                "value": 0
+              },
+              {
+                "type": "True Alarms",
+                "value": 0
+              },
+              {
+                "type": "False Alarms",
+                "value": 0
+              }
+            ]
+          },
+          {
+            "attribute": "Building Name",
+            "value": "21",
+            "counts": [
+              {
+                "type": "Total Alarms",
+                "value": 0
+              },
+              {
+                "type": "True Alarms",
+                "value": 0
+              },
+              {
+                "type": "False Alarms",
+                "value": 0
+              }
+            ]
+          },
+          {
+            "attribute": "Building Name",
+            "value": "22",
+            "counts": [
+              {
+                "type": "Total Alarms",
+                "value": 0
+              },
+              {
+                "type": "True Alarms",
+                "value": 0
+              },
+              {
+                "type": "False Alarms",
+                "value": 0
+              }
+            ]
+          },
+          {
+            "attribute": "Building Name",
+            "value": "23",
+            "counts": [
+              {
+                "type": "Total Alarms",
+                "value": 0
+              },
+              {
+                "type": "True Alarms",
+                "value": 0
+              },
+              {
+                "type": "False Alarms",
+                "value": 0
+              }
+            ]
+          }
+        ],
+        "query": "WITH HourIntervals AS (SELECT FORMAT(ROW_NUMBER() OVER (ORDER BY (SELECT NULL)) - 1, '00') AS HourInterval FROM master..spt_values WHERE type = 'P' AND number BETWEEN 0 AND 23) SELECT h.HourInterval, COALESCE(i.[Total Alarms], 0) AS [Total Alarms], COALESCE(i.[True Alarms], 0) AS [True Alarms], COALESCE(i.[False Alarms], 0) AS [False Alarms] FROM HourIntervals h LEFT JOIN (SELECT FORMAT(i.inlDateTime_DTM, 'HH') AS HourInterval, SUM(CASE WHEN i.inlCategory_FRK = 2 THEN 1 ELSE 0 END) AS [Total Alarms], SUM(CASE WHEN i.inlSubCategory_FRK = 1 THEN 1 ELSE 0 END) AS [False Alarms], SUM(CASE WHEN i.inlSubCategory_FRK = 2 THEN 1 ELSE 0 END) AS [True Alarms] FROM IncidentLog_TBL i WHERE i.inlCategory_FRK = 2 AND i.inlDateTime_DTM >= CAST(CAST(SYSDATETIME() AS DATE) AS DATETIME) GROUP BY FORMAT(i.inlDateTime_DTM, 'HH')) i ON h.HourInterval = i.HourInterval ORDER BY CAST(h.HourInterval AS INT);"
+      }
+    }
+  ],
+  "instance_id": 10484
+}

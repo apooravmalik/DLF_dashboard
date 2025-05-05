@@ -11,10 +11,17 @@ import {
 import ChartDataLabels from "chartjs-plugin-datalabels";
 import PropTypes from "prop-types";
 
-ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, ChartDataLabels);
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
+  ChartDataLabels
+);
 
-const Chart = ({ labels, dataPoints, title, colors, onBarClick}) => {
-
+const Chart = ({ labels, dataPoints, title, colors, onBarClick }) => {
   if (!labels || !dataPoints) {
     return (
       <div className="flex items-center justify-center h-full text-gray-400">
@@ -28,7 +35,9 @@ const Chart = ({ labels, dataPoints, title, colors, onBarClick}) => {
     acc[label] = colors[index] || defaultColor;
     return acc;
   }, {});
-  const orderedColors = labels.map((label) => labelColorMapping[label] || defaultColor);
+  const orderedColors = labels.map(
+    (label) => labelColorMapping[label] || defaultColor
+  );
 
   const data = {
     labels,
@@ -45,7 +54,7 @@ const Chart = ({ labels, dataPoints, title, colors, onBarClick}) => {
 
   const options = {
     responsive: true,
-    maintainAspectRatio: true,
+    maintainAspectRatio: false,
     onClick: (event, elements) => {
       if (elements.length > 0) {
         const index = elements[0].index;
@@ -58,10 +67,12 @@ const Chart = ({ labels, dataPoints, title, colors, onBarClick}) => {
     plugins: {
       legend: {
         position: "top",
+        fullSize: false,
         labels: {
           color: "#FFFFFF",
+          padding: 20,
           font: {
-            size: 12,
+            size: 14,
           },
           generateLabels: (chart) => {
             const dataset = chart.data.datasets[0];
@@ -95,14 +106,15 @@ const Chart = ({ labels, dataPoints, title, colors, onBarClick}) => {
         cornerRadius: 4,
       },
       datalabels: {
-        display: true,
+        display: (context) => context.dataset.data[context.dataIndex] !== 0,
         color: "#FFFFFF",
         font: {
-          size: 18,
+          size: 24,
           weight: "bold",
         },
         anchor: "end",
-        align: "start",
+        align: "end",
+        offset: -10,
         formatter: (value) => value,
       },
     },
@@ -114,10 +126,13 @@ const Chart = ({ labels, dataPoints, title, colors, onBarClick}) => {
         ticks: {
           color: "#E2E8F0",
         },
+        categoryPercentage: 0.2// Reduces spacing between bars  
       },
       y: {
+        beginAtZero: true,
+        suggestedMax: Math.max(...dataPoints) + 18, // Slightly above the max value to shrink bar height
         grid: {
-          color: "rgba(75, 85, 99, 0.2)",
+          color: "rgba(255, 255, 255, 0.1)",
         },
         ticks: {
           color: "#E2E8F0",
@@ -126,7 +141,7 @@ const Chart = ({ labels, dataPoints, title, colors, onBarClick}) => {
     },
     layout: {
       padding: {
-        top: 20,
+        top: 10,
         right: 20,
         bottom: 20,
         left: 20,
@@ -136,6 +151,12 @@ const Chart = ({ labels, dataPoints, title, colors, onBarClick}) => {
       duration: 2000,
       easing: "easeOutQuart",
     },
+    datasets: {
+    bar: {
+      // barThickness: 210, // Controls the exact thickness of the bars
+      // maxBarThickness: 250, // Ensures bars do not get too wide
+    },
+  },
   };
 
   return (

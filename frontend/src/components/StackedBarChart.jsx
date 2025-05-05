@@ -13,7 +13,7 @@ import PropTypes from "prop-types";
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, ChartDataLabels);
 
-const StackedBarChart = ({ labels, dataPoints, title, colors, onBarClick, showValues }) => {
+const StackedBarChart = ({ labels, dataPoints, title, colors, onBarClick, showValues, isFullHeight }) => {
   if (!labels || !dataPoints || dataPoints.length === 0) {
     return (
       <div className="flex items-center justify-center h-full text-gray-400">
@@ -22,7 +22,6 @@ const StackedBarChart = ({ labels, dataPoints, title, colors, onBarClick, showVa
     );
   }
 
-  // Dynamically create dataset objects
   const barData = {
     labels,
     datasets: dataPoints.map((point, index) => ({
@@ -50,13 +49,17 @@ const StackedBarChart = ({ labels, dataPoints, title, colors, onBarClick, showVa
         display: showValues,
         align: "top",
         color: "white",
+        font: {
+          size: 19,
+          weight: "bold",
+        },
       },
       legend: {
         position: "top",
         labels: {
           color: "#FFFFFF",
           font: {
-            size: 12,
+            size: 15,
           },
         },
       },
@@ -64,7 +67,7 @@ const StackedBarChart = ({ labels, dataPoints, title, colors, onBarClick, showVa
     layout: {
       padding: {
         top: 20,
-        bottom: 10,
+        bottom: 30,
         left: 10,
         right: 10,
       },
@@ -75,32 +78,32 @@ const StackedBarChart = ({ labels, dataPoints, title, colors, onBarClick, showVa
         ticks: {
           color: "#FFFFFF",
           font: {
-            size: 12,
+            size: 22,
           },
         },
         grid: {
           display: false,
         },
-        categoryPercentage: 0.8, // Space between bars
-        barPercentage: 0.8, // Adjust bar width
+        categoryPercentage: 0.8,
+        barPercentage: 0.8,
       },
       y: {
         stacked: true,
         ticks: {
           color: "#FFFFFF",
           font: {
-            size: 12,
+            size: 22,
           },
         },
         grid: {
-          color: "#424242",
+          color: "rgba(255, 255, 255, 0.1)",
         },
       },
     },
     elements: {
       bar: {
-        barThickness: 40, // Fixed bar width
-        maxBarThickness: 50, // Max bar width
+        barThickness: 40,
+        maxBarThickness: 50,
       },
     },
     onClick: (event, elements) => {
@@ -115,9 +118,11 @@ const StackedBarChart = ({ labels, dataPoints, title, colors, onBarClick, showVa
   };
 
   return (
-    <div className="w-full h-[25rem] flex flex-col items-center">
+    <div className={`w-full ${isFullHeight ? "h-full" : "h-[25rem]"} flex flex-col`}>
       <h2 className="text-xl font-semibold mb-2">{title}</h2>
-      <Bar data={barData} options={options} />
+      <div className="flex-1">
+        <Bar data={barData} options={options} />
+      </div>
     </div>
   );
 };
@@ -129,6 +134,7 @@ StackedBarChart.propTypes = {
   colors: PropTypes.array.isRequired,
   onBarClick: PropTypes.func.isRequired,
   showValues: PropTypes.bool.isRequired,
+  isFullHeight: PropTypes.bool, // New prop
 };
 
 export default StackedBarChart;
